@@ -7,7 +7,8 @@
     "image": "p4_05",
     "exemple": true,
     "debut": "2026-11-15",
-    "_note": "« debut » = date du jour 1 : le « Jour X sur 7 » et la prière du jour avancent seuls. Sans « debut », on utilise « jour »."
+    "_note": "« debut » = date du jour 1 : le « Jour X sur 7 » et la prière du jour avancent seuls. Sans « debut », on utilise « jour ».",
+    "id": "autels"
   },
   "titre_page": "Prière de délivrance et de guérison",
   "accroche_page": "Vous ne recevez pas parce que vous demandez mal. Apprends à prier avec stratégie.",
@@ -21,7 +22,7 @@
       "bandeau": "p3_03",
       "exemple": true,
       "matin": {
-        "enseignement": "Les rêves peuvent être un canal de communication spirituelle. Mais quand ils sont pollués par l'ennemi, ils deviennent une porte d'attaque dans ta vie : fatigue, blocage, maladie, échec, peur.\n\nDans cet enseignement, tu apprends à fermer ces portes par la prière et par la Parole. Dieu donne le sommeil à ceux qu'il aime (Psaume 127:2). Tu peux te coucher en paix et te réveiller en victoire.\n\nChaque matin, remets ta nuit entre les mains de Dieu, renonce à toute influence qui n'est pas de lui, et déclare la protection du Seigneur sur ta journée.",
+        "enseignement": "Les rêves peuvent être un canal de communication spirituelle. Mais quand ils sont pollués par l'ennemi, ils deviennent une porte d'attaque dans ta vie : fatigue, blocage, maladie, échec, peur.\n\nDans cet enseignement, tu apprends à fermer ces portes par la prière et par la Parole. « Il en donne autant à ses bien-aimés pendant leur sommeil » (Psaume 127:2). Tu peux te coucher en paix et te réveiller en victoire.\n\nChaque matin, remets ta nuit entre les mains de Dieu, renonce à toute influence qui n'est pas de lui, et déclare la protection du Seigneur sur ta journée.",
         "sujets": [
           "Demande à Dieu de purifier ton sommeil et de fermer toute porte au diable.",
           "Prie pour l'annulation de tout mauvais rêve qui t'a troublé(e) récemment.",
@@ -39,7 +40,8 @@
           "Demande un sommeil paisible et des rêves qui viennent de Dieu.",
           "Confie à Dieu les personnes que tu aimes."
         ]
-      }
+      },
+      "theme": "autels"
     },
     {
       "id": "f2",
@@ -67,7 +69,8 @@
           "Demande la paix de Dieu sur tes pensées.",
           "Remercie pour la victoire déjà obtenue."
         ]
-      }
+      },
+      "theme": "autels"
     },
     {
       "id": "f3",
@@ -95,7 +98,8 @@
           "Prie pour la provision de ton foyer.",
           "Termine par une bénédiction sur ta maison."
         ]
-      }
+      },
+      "theme": "autels"
     },
     {
       "id": "f4",
@@ -123,7 +127,8 @@
           "Demande la sagesse pour les parents.",
           "Scelle la journée par une prière de bénédiction."
         ]
-      }
+      },
+      "theme": "autels"
     }
   ],
   "_note_audio": "Sans « audio », l'enseignement et les 5 sujets sont lus par la voix du téléphone. Ajouter \"audio\": \"audio/ma-fiche.mp3\" pour une voix enregistrée."

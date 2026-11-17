@@ -49,7 +49,12 @@ h1,h2,h3{font-family:var(--t-titre);line-height:1.15}
 .entete-marque{display:flex;align-items:center;gap:8px}
 .entete-groupe{font-family:var(--t-texte);font-weight:700;font-size:11px;line-height:1.1;letter-spacing:.3px}
 .entete-sep{width:1px;height:34px;background:rgba(255,255,255,.35)}
-.entete-nom{font-family:var(--t-titre);font-weight:800;font-size:28px;color:var(--or-clair);flex:1;text-align:center;text-shadow:0 2px 6px rgba(0,0,0,.4)}
+.entete-nom{flex:1;display:flex;flex-direction:column;align-items:center;line-height:1;min-width:0}
+.entete-nom .nom{font-family:var(--t-titre);font-weight:800;font-size:27px;color:var(--or-clair);text-shadow:0 2px 6px rgba(0,0,0,.4)}
+.entete-nom .devise{display:flex;align-items:center;gap:6px;margin-top:3px;font-family:var(--t-titre);font-style:italic;font-weight:600;font-size:12.5px;letter-spacing:.4px;color:#fff;white-space:nowrap}
+.entete-nom .devise::before,.entete-nom .devise::after{content:"";width:14px;height:1px;background:linear-gradient(90deg,transparent,var(--or-clair))}
+.entete-nom .devise::after{background:linear-gradient(270deg,transparent,var(--or-clair))}
+.entete-nom .devise b{color:var(--or-clair);font-weight:700;margin-left:-2px}
 .cloche{position:relative;color:#fff;padding:4px}
 .pastille{position:absolute;top:2px;right:2px;width:11px;height:11px;border-radius:50%;background:var(--rouge);border:2px solid var(--nuit)}
 .vue{flex:1;padding-bottom:calc(var(--haut-onglets) + 24px + env(safe-area-inset-bottom))}
@@ -370,7 +375,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 .feuille .btn{width:100%;margin-top:8px}
 
 @media (max-width:370px){
-  .entete-groupe{font-size:10px}.entete-nom{font-size:23px}
+  .entete-groupe{font-size:10px}.entete-nom .nom{font-size:23px}.entete-nom .devise{font-size:11px}
   .salut h2{font-size:21px}.theme-txt h2{font-size:23px}.tuile-bas{font-size:12.5px}
   .hero h1{font-size:22px}.onglets a{font-size:10px}
 }
@@ -473,3 +478,81 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 .nayla-btns{display:flex;flex-direction:column;align-items:center;gap:6px;padding-right:4px}
 .nayla-btns .btn-fav{width:34px;height:34px}
 .nayla-btns .btn-fav svg{width:19px;height:19px}
+
+/* ===== Lecture à voix haute : mot en couleur ===== */
+.lecture-texte{font-size:calc(1em * var(--echelle,1))}
+.mot{border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.mot.lu{background:var(--surligne-fond,#F7D154);color:var(--surligne-texte,#1A1A2E);box-shadow:0 0 0 2px var(--surligne-fond,#F7D154)}
+.mot.lu a,.mot.lu strong{color:inherit}
+.ref-bible{color:var(--bleu);font-weight:600;text-decoration:underline;text-decoration-color:var(--or);text-decoration-thickness:2px;text-underline-offset:3px;white-space:nowrap}
+.ref-bible::before{content:"📖 ";font-size:.85em}
+.hero .ref-bible,.lect .ref-bible{color:var(--or-clair)}
+.citation::before{content:"« "}.citation::after{content:" »"}
+.cat-Guérison-intérieure{background:#E3F1FB;color:#1C5D8C}
+/* ===== Plus ===== */
+h2.groupe{font-family:var(--t-texte);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--gris);margin:18px 16px 8px}
+.rythme{font-size:12px!important;color:var(--vert-fonce)!important;font-weight:600;margin-top:4px}
+.portrait{width:120px;height:120px;object-fit:contain;margin:0 auto}
+/* ===== Réglages ===== */
+.reglage{background:#fff;margin:12px;border-radius:var(--rayon);box-shadow:var(--ombre);padding:14px}
+.reglage h2{font-size:19px;color:var(--nuit)}
+.aide{font-size:13px;color:var(--gris);margin-top:4px}
+.choix{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.option{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;border:2px solid #DDE2F2;font-weight:600;font-size:14px;color:var(--nuit);background:#fff}
+.option.actif{border-color:var(--or);background:#FFF6DD}
+.pastille-couleur{width:20px;height:20px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.essai{margin:10px 0 12px;font-family:var(--t-titre);font-size:18px;line-height:1.6;color:var(--nuit)}
+/* ===== Accueil : nouveau venu, message du jour ===== */
+.nouveau-venu .etiquette{background:var(--grad-bleu)}
+.nouveau-venu::after{background:linear-gradient(90deg,rgba(255,255,255,.97) 50%,rgba(255,255,255,.75) 72%,rgba(255,255,255,.1))!important}
+.plus-tard{color:var(--gris);font-size:13px;text-decoration:underline;padding:8px}
+.message-jour{margin:12px 12px 0;padding:12px 14px;border-radius:var(--rayon);background:linear-gradient(135deg,#E9EEFC,#fff);box-shadow:var(--ombre);border-left:4px solid var(--bleu)}
+.message-jour p{font-family:var(--t-titre);font-size:16px;color:var(--nuit);margin:8px 0 10px;line-height:1.45}
+.message-jour .etiquette{background:linear-gradient(180deg,#2D52C9,#1F3FAE)}
+/* ===== Radio ===== */
+.emission{background:#fff;border-radius:var(--rayon);box-shadow:var(--ombre);padding:12px}
+.emission-tete{display:flex;gap:12px;align-items:flex-start;margin-bottom:8px}
+.emission-tete small{color:var(--gris);font-size:12px}
+.emission-tete h3{font-size:18px;color:var(--nuit);margin:2px 0 8px}
+.emission .lecture-texte p{margin-bottom:6px}
+.emission .lien-partage{margin:6px 0 0;font-size:14px}
+/* ===== Vidéo ===== */
+.cadre-video{width:100%;aspect-ratio:16/9;min-height:200px;min-width:200px;background:#000;border-radius:12px;overflow:hidden}
+.cadre-video iframe{width:100%;height:100%;border:0;display:block}
+.feuille-video h2{margin-bottom:10px}
+.lect-pochette.video{aspect-ratio:16/9;min-height:200px}
+.interview{border:0;padding:0;cursor:pointer}
+.interview-titre{position:absolute;left:0;right:0;bottom:0;padding:16px 6px 6px;font-size:11px;font-weight:600;color:#fff;background:linear-gradient(transparent,rgba(15,31,92,.9));text-align:center;line-height:1.2}
+/* ===== Bible ===== */
+.hero-bible{min-height:0;padding-bottom:18px;background:linear-gradient(160deg,#0F1F5C 0%,#1F3FAE 70%,#3A2A7A 100%)}
+.hero-bible .hero-ligne>svg{width:34px;height:34px;color:var(--or-clair);flex:none}
+.hero-bible h1{max-width:none}
+.hero-bible .hero-sous{max-width:none}
+.hero-bible+.recherche{margin-top:-14px}
+.reprise{display:flex;align-items:center;gap:10px;margin:0 12px 10px;padding:12px 14px;background:#FFF6DD;border-radius:var(--rayon);box-shadow:var(--ombre);color:var(--nuit);font-size:14px}
+.reprise svg{width:22px;height:22px;flex:none;color:var(--or-fonce)}
+.reprise span{flex:1}
+.hl-bible{margin:0 12px 12px;padding:10px 14px;border-radius:14px;background:#EEF1FA;font-size:13px;color:var(--nuit);display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.hl-bible.ok{background:#E3F6E7;color:var(--vert-fonce);font-weight:600}
+.hl-bible svg{width:18px;height:18px}
+.hl-bible .progres{flex-basis:100%;height:8px;margin:0;background:#D6DCEF;border:0}
+.bascule-bible{margin:0 12px 12px}
+.bascule-bible button{font-size:14px;padding:9px 6px}
+.livres{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:0 12px 12px}
+.livre{background:#fff;border-radius:14px;box-shadow:var(--ombre);padding:12px 10px;font-family:var(--t-titre);font-weight:700;font-size:15px;color:var(--nuit);text-align:center;border-bottom:3px solid var(--or)}
+.consigne{margin:14px 16px 8px;color:var(--gris);font-weight:600}
+.chapitres{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:8px;padding:0 12px 16px}
+.chap{display:grid;place-items:center;height:50px;background:#fff;border-radius:12px;box-shadow:var(--ombre);font-weight:700;color:var(--nuit)}
+.bible-barre{position:sticky;top:calc(66px + env(safe-area-inset-top));z-index:20;display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--grad-bleu);color:#fff;box-shadow:var(--ombre)}
+.bible-titre{flex:1;font-family:var(--t-titre);font-weight:700;font-size:21px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.revenir{flex:none;display:flex;align-items:center;gap:6px;padding:8px 12px;font-size:14px;border-radius:999px;background:#FFF6DD;color:var(--nuit);font-weight:600;box-shadow:var(--ombre);border:1px solid #EBD9A8}
+.revenir svg{width:20px;height:20px}
+.bible-texte{background:#fff;margin:10px 12px;border-radius:var(--rayon);box-shadow:var(--ombre);padding:14px 16px;font-family:var(--t-titre);font-size:18px;line-height:1.65;color:#1E2140}
+.verset{padding:3px 6px;margin:0 -6px;border-radius:8px;cursor:pointer}
+.verset+.verset{margin-top:2px}
+.verset sup{font-family:var(--t-texte);font-size:.6em;font-weight:700;color:var(--or-fonce);margin-right:5px;vertical-align:.45em}
+.verset.cible{background:#FFF1C4;box-shadow:inset 3px 0 0 var(--or)}
+.bible-nav{display:flex;justify-content:space-between;gap:10px;margin:4px 12px 6px}
+.bible-nav .btn svg{width:18px;height:18px}
+.mention{text-align:center;color:var(--gris);font-size:12px;margin:6px 0 10px}
+.recherche-priere{margin:0 12px 6px}

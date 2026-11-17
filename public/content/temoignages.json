@@ -3,7 +3,8 @@
     "Délivrance",
     "Guérison",
     "Famille",
-    "Affaires"
+    "Affaires",
+    "Guérison intérieure"
   ],
   "items": [
     {
@@ -41,6 +42,17 @@
       "image": "q2_05",
       "extrait": "Mon commerce était en faillite. Après avoir appliqué les enseignements et prié, Dieu a ouvert de nouvelles portes. Mon activité prospère…",
       "exemple": true
+    },
+    {
+      "id": "t5",
+      "prenom": "Exemple E.",
+      "ville": "Ville",
+      "categorie": "Guérison intérieure",
+      "image": "q1_01",
+      "extrait": "J'avais le cœur brisé après une trahison. Grâce aux enseignements et à la prière, j'ai pu pardonner et retrouver la paix intérieure…",
+      "exemple": true
     }
-  ]
+  ],
+  "titre": "Ils ont été libérés",
+  "sous": "Ce que Dieu a fait pour eux, il peut le faire pour toi."
 }

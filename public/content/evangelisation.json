@@ -8,13 +8,54 @@
     "suite": "Si tu as prié cette prière, écris-nous : nous voulons prier avec toi et t'accompagner."
   },
   "croisades": [
-    { "titre": "Grande croisade — exemple", "image": "q1_08", "exemple": true },
-    { "titre": "Croisade de louange — exemple", "image": "q2_08", "exemple": true },
-    { "titre": "Rassemblement — exemple", "image": "q1_04", "exemple": true }
+    {
+      "titre": "Grande croisade — exemple",
+      "image": "q1_08",
+      "exemple": true
+    },
+    {
+      "titre": "Croisade de louange — exemple",
+      "image": "q2_08",
+      "exemple": true
+    },
+    {
+      "titre": "Rassemblement — exemple",
+      "image": "q1_04",
+      "exemple": true
+    }
   ],
   "interviews": [
-    { "titre": "Interview — exemple 1", "image": "q3_03", "lien": "https://www.youtube.com/@A_COMPLETER", "exemple": true },
-    { "titre": "Interview — exemple 2", "image": "q1_07", "lien": "https://www.youtube.com/@A_COMPLETER", "exemple": true },
-    { "titre": "Interview — exemple 3", "image": "q1_06", "lien": "https://www.youtube.com/@A_COMPLETER", "exemple": true }
+    {
+      "titre": "Interview — exemple 1",
+      "image": "q3_03",
+      "exemple": true,
+      "video": ""
+    },
+    {
+      "titre": "Interview — exemple 2",
+      "image": "q1_07",
+      "exemple": true,
+      "video": ""
+    },
+    {
+      "titre": "Interview — exemple 3",
+      "image": "q1_06",
+      "exemple": true,
+      "video": ""
+    }
+  ],
+  "enseignements": [
+    {
+      "titre": "Pourquoi évangéliser ? — exemple",
+      "image": "p4_06",
+      "video": "",
+      "exemple": true
+    },
+    {
+      "titre": "Comment parler de Jésus — exemple",
+      "image": "p1_10",
+      "video": "",
+      "exemple": true
+    }
   ]
 }

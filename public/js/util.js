@@ -109,16 +109,21 @@ export function toast(msg, action) {
 // Petit égaliseur animé « en cours de lecture »
 export const eq = (n = 4, cls = 'eq') => h('span', { class: cls, 'aria-hidden': 'true' }, Array.from({ length: n }, (_, i) => h('i', { style: `--d:${(-((i * 37) % 11) / 10).toFixed(1)}s;--v:${(0.7 + ((i * 53) % 7) / 10).toFixed(1)}s` })));
 
-// ---- NAYLA : deux significations qui alternent d'une ouverture à l'autre ----
-export const NAYLA = [
-  [['N', 'ouvelle '], ['A', 'doration à '], ['Y', 'ahweh,'], ['L', '\'Éternel des '], ['A', 'rmées']],
-  [['N', 'ous '], ['A', 'dorons '], ['Y', 'eshua,'], ['L', '\'Éternel des '], ['A', 'rmées']]
-];
-export const naylaIndex = () => (store.get('ouvertures', 1) - 1) % NAYLA.length;
-export const naylaTexte = i => NAYLA[i].map(([a, b]) => a + b).join(' ').replace(/ ' /g, ' ').replace(/  +/g, ' ').replace(/ ,/g, ',');
-export function naylaSens(i, cls = 'nayla-sens') {
-  return h('p', { class: cls, 'aria-label': naylaTexte(i).replace(/\s+/g, ' ') },
-    NAYLA[i].map(([a, b], k) => [h('b', { 'aria-hidden': 'true' }, a), h('span', { 'aria-hidden': 'true' }, b), k === 2 ? h('br') : (b.endsWith(' ') ? null : ' ')]));
+// ---- NAYLA : significations (content/nayla.json) qui alternent d'une ouverture à l'autre ----
+// Format : « [N]ouvelle [A]doration à [Y]ahweh,|[L]'Éternel des [A]rmées » ([X] = initiale en or, | = retour à la ligne)
+export const NAYLA_DEFAUT = ["[N]ouvelle [A]doration à [Y]ahweh,|[L]'Éternel des [A]rmées", "[N]ous [A]dorons [Y]eshua,|[L]'Éternel des [A]rmées"];
+export const naylaIndex = (n = 2) => (store.get('ouvertures', 1) - 1) % n;
+export const naylaTexte = s => s.replace(/[[\]]/g, '').replace('|', ' ');
+export function naylaSens(s, cls = 'nayla-sens') {
+  const p = h('p', { class: cls, 'aria-label': naylaTexte(s) });
+  s.split('|').forEach((ligne, k) => {
+    if (k) p.append(h('br'));
+    for (const part of ligne.split(/(\[[^\]]+\])/)) {
+      if (!part) continue;
+      p.append(part.startsWith('[') ? h('b', { 'aria-hidden': 'true' }, part.slice(1, -1)) : h('span', { 'aria-hidden': 'true' }, part));
+    }
+  });
+  return p;
 }
 
 // ---- Feuille modale ----
@@ -195,6 +200,8 @@ export function jourTheme(t) {
 }
 export function ficheDuJour(d) {
   if (d.du_jour && d.du_jour !== 'auto') return d.fiches.find(f => f.id === d.du_jour) || d.fiches[0];
-  return d.fiches[(jourTheme(d.theme) - 1) % d.fiches.length];
+  const duTheme = d.theme && d.theme.id ? d.fiches.filter(f => f.theme === d.theme.id) : d.fiches;
+  const liste = duTheme.length ? duTheme : d.fiches;
+  return liste[(jourTheme(d.theme) - 1) % liste.length];
 }
 export const prieAujourdhui = id => ['matin', 'soir'].some(p => store.get(`prie:${id}:${p}`, '') === aujourdhui());

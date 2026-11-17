@@ -11,7 +11,8 @@
     "tiktok": "https://www.tiktok.com/@A_COMPLETER",
     "facebook": "https://www.facebook.com/A_COMPLETER",
     "instagram": "https://www.instagram.com/A_COMPLETER",
-    "whatsapp": ""
+    "whatsapp": "",
+    "telegram": "https://t.me/A_COMPLETER"
   },
   "dons": {
     "texte": "Ton soutien permet de poursuivre l'œuvre : croisades, enseignements, accompagnement.",
@@ -31,7 +32,7 @@
     "conseil": "Bonjour, j'aimerais demander conseil.",
     "sujet": "Bonjour, j'aimerais demander un sujet de prière : ",
     "appel": "Bonjour, j'aimerais demander un appel personnel.",
-    "consultation": "Bonjour, je souhaite consulter le Médecin des cœurs pour être écouté(e) et accompagné(e).",
+    "consultation": "Bonjour, je souhaite consulter le Médecin des cœurs pour être écouté(e) et accompagné(e). Mon besoin : ",
     "inviter": "Bonjour, j'aimerais inviter l'homme de Dieu pour une réunion, une croisade ou un séminaire.",
     "temoigner_vocal": "Bonjour, je souhaite partager mon témoignage par message vocal.",
     "temoigner_texte": "Bonjour, je souhaite partager mon témoignage : ",
@@ -39,6 +40,17 @@
     "don": "Bonjour, je souhaite soutenir l'œuvre (faire un don).",
     "coaching": "Bonjour, je souhaite rejoindre le coaching Hommes et femmes d'affaires.",
     "livres": "Bonjour, je souhaite acheter les livres.",
-    "salut": "Bonjour, j'ai fait la prière du salut et je veux connaître Jésus."
+    "salut": "Bonjour, j'ai fait la prière du salut et je veux connaître Jésus.",
+    "radio": "Bonjour, j'aimerais réagir à l'émission : "
+  },
+  "devise": "De zéro à héros",
+  "slogan_splash": "Un peuple, une foi, une victoire",
+  "telegram_rythme": "Partages les mercredis et dimanches à partir de 18 h · prière à partir de 21 h",
+  "coaching_lien": "",
+  "sophonie": {
+    "titre": "Docteur Sophonie",
+    "texte": "Évangéliste, fondateur du ministère LAJC — Les Amoureux de Jésus-Christ — et du groupe de prière « Les Vainqueurs de Dieu ».\n\nPrésentation complète à fournir par l'équipe.",
+    "image": "",
+    "exemple": true
   }
 }

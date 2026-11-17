@@ -25,17 +25,27 @@ Avant publication, remplacer ou supprimer tous les témoignages d'exemple.
 - `config.json` : numéro WhatsApp (chiffres seulement, avec l'indicatif du pays, ex. `2376XXXXXXXX` ; tant qu'il est vide, les boutons affichent « bientôt disponible »), lien Telegram, réseaux sociaux, moyens de don, texte « À propos », messages pré-remplis de WhatsApp.
 - `accueil.json` : accroches et paroles du jour (une nouvelle chaque jour), tuiles de l'accueil.
 - `coeurs_brises.json` : thèmes et articles ; `"priere"` = la courte prière affichée par le bouton « Prier pour ce sujet » ; ajouter `"audio": "audio/xxx.mp3"` pour un article lu par une voix enregistrée (sinon la voix du téléphone lit l'article).
-- `affaires.json`, `evangelisation.json` (croisades, liens des interviews YouTube, prière du salut), `nouveautes.json` (liste de la cloche).
+- `affaires.json`, `evangelisation.json` (message, croisades, interviews, enseignements, prière du salut), `nouveautes.json` (liste de la cloche : chaque nouvel élément affiche « Un nouveau message est arrivé »).
+- `plus.json` : les cartes de la page Plus (titre, texte, image, action). `radio.json` : émissions de radio. `accueil.json` : salutations, accroches, paroles, **messages du jour** (texte, audio ou vidéo), carte « Nouveau ici ? ».
+- `config.json` : aussi la **devise** sous « Vainqueur », le **rythme du groupe Telegram**, le lien du **coaching** (`coaching_lien`) et la page **Docteur Sophonie** (`sophonie`).
+- Prière : chaque fiche a un `"theme"` ; les fiches du thème de la semaine (`theme.id`) passent en premier, et la recherche aide à retrouver les autres.
 
 ## Les audios
-- **Avec un MP3** : déposer le fichier dans `public/audio/`, puis écrire son chemin : `"audio": "audio/nom.mp3"`. On peut aussi mettre l'adresse complète d'un MP3 hébergé ailleurs.
-- **Sans MP3** (fiches, Cœurs brisés, Affaires, témoignages) : le texte est lu par la voix du téléphone. Rien à faire.
-- Taille : MP3 mono 64 kbit/s (environ 0,5 Mo par minute). Limite de Cloudflare : 25 Mo par fichier.
-- Le bouton « Télécharger » garde l'audio dans l'application pour l'écouter sans internet (liste dans Plus › Mes téléchargements, avec « Enregistrer » pour en garder aussi une copie dans le téléphone).
+- **Où les mettre** : dans le dépôt séparé **vainqueur-audio**, publié sur Cloudflare Pages (modèle et marche à suivre : `outils/vainqueur-audio/LISEZ_MOI.md`). Ne pas utiliser Google Drive comme source de lecture.
+- **Format** : MP3 **mono 48 kbit/s** (1 h ≈ 22 Mo). Limite : **25 Mo par fichier** ; au-delà, couper en parties. Outil fourni : `sh outils/compresser-audio.sh enregistrement.m4a f5-matin` (ou Audacity : Stéréo vers mono, export MP3 48 kbit/s).
+- **Dans le contenu** : l'adresse complète, par exemple `"audio": "https://vainqueur-audio.pages.dev/fiches/f5-matin.mp3"`.
+  Fiche de prière : un audio pour le matin et un pour le soir → `"audios": { "matin": "…", "soir": "…" }`.
+- **Sans audio** (fiches, Cœurs brisés, Affaires, Radio, témoignages, Bible) : le texte est lu par la voix du téléphone, avec le mot prononcé en couleur.
+- Le bouton « Télécharger » garde l'audio dans l'application pour l'écouter sans internet (Plus › Mes téléchargements, avec « Enregistrer » pour une copie dans le téléphone).
 
-## Les vidéos (Nayla)
-Les vidéos ne se mettent **pas** dans le dépôt : les publier sur **YouTube** (publiques ou « non répertoriées »), puis coller le lien dans l'adoration : `"video": "https://youtu.be/XXXXXXXXXXX"`.
-L'adoration affiche alors un badge « Vidéo » et le bouton « Regarder la vidéo », qui la joue dans l'application. Une adoration peut avoir un audio, une vidéo, ou les deux.
+## Les vidéos
+Toujours sur **YouTube** (publiques ou « non répertoriées »). Dans le contenu, une vidéo = son **identifiant YouTube** (les 11 caractères après `v=` ou `youtu.be/`), par exemple `"video": "dQw4w9WgXcQ"`.
+Elles se regardent dans l'application, avec le lecteur officiel de YouTube (connexion nécessaire).
+- Nayla : `"video"` dans une adoration. · Évangélisation : `interviews` et `enseignements`. · Accueil : `messages_du_jour`.
+
+## Références bibliques
+Écrire les références normalement, avec deux-points : « Jean 3:16 », « Psaume 4:9 », « 1 Corinthiens 15:57 », « Lamentations 3:22-23 ».
+Elles deviennent automatiquement des liens vers la Bible intégrée (Louis Segond 1910). Pour une citation, recopier le texte exact de la LSG 1910.
 
 ## NAYLA
-Les deux significations (« Nouvelle Adoration à Yahweh, l'Éternel des Armées » et « Nous Adorons Yeshua, l'Éternel des Armées ») alternent à chaque ouverture de l'application, et changent aussi en douceur sur la page Nayla. Elles se modifient dans `public/js/util.js` (liste `NAYLA`).
+Les significations alternent à chaque ouverture de l'application, et changent aussi en douceur sur la page Nayla. Elles se modifient dans `nayla.json` (`significations`) : `[N]` = initiale en or, `|` = retour à la ligne.

@@ -1,9 +1,10 @@
+import { riche } from '../bible-refs.js';
 import { h, img, ico, contenu, partager, toast, store, ficheDuJour, prieAujourdhui } from '../util.js';
-import { pisteParole } from '../pistes.js';
-import { boutonEcoute } from './commun.js';
+import { pisteParole, pisteMessage } from '../pistes.js';
+import { boutonEcoute, ouvrirVideo } from './commun.js';
 import * as player from '../player.js';
 import { imageParole, partagerImage } from '../partage.js';
-import { enveloppe } from './commun.js';
+import { enveloppe, ex } from './commun.js';
 
 const jourDeAnnee = () => Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 864e5);
 
@@ -14,6 +15,13 @@ export default async function () {
   const pa = acc.paroles[j % acc.paroles.length];
   const fiche = ficheDuJour(fiches);
   const fait = prieAujourdhui(fiche.id);
+  // Salutation du jour : « Bonjour,|champion ! » (la 2e partie en or) ; « Bonsoir » après 18 h
+  let [sal1, sal2] = (acc.salutations || ['Bonjour,|champion !'])[j % (acc.salutations || [1]).length].split('|');
+  if (new Date().getHours() >= 18) sal1 = sal1.replace(/^Bonjour/, 'Bonsoir');
+  const msgs = acc.messages_du_jour || [];
+  const msg = msgs.find(m => m.date === new Date().toISOString().slice(0, 10)) || msgs.filter(m => !m.date)[j % Math.max(1, msgs.filter(m => !m.date).length)];
+  const nv = acc.nouveau_venu;
+  const nouveau = nv && !store.get('salut_vu', false);
 
   const btnEcouter = boutonEcoute(pisteParole(pa), null, { cls: 'btn btn-bleu btn-petit', off: 'Écouter', on: 'Pause' });
 
@@ -29,16 +37,18 @@ export default async function () {
   const noeud = h('div', {},
     h('section', { class: 'salut' },
       img(ac.image, '', 'salut-img', false),
-      h('div', { class: 'salut-bonjour' }, new Date().getHours() >= 18 ? 'Bonsoir,' : 'Bonjour,', h('b', {}, 'champion !')),
+      h('div', { class: 'salut-bonjour' }, sal1, sal2 ? h('b', {}, sal2) : null),
       h('h2', {}, ac.titre),
       h('p', {}, ac.sous)),
-    h('section', { class: 'parole' },
-      img('p1_12', '', ''),
-      h('div', { class: 'parole-txt' },
-        h('span', { class: 'etiquette' }, ico('livre'), 'Parole du jour'),
-        h('q', {}, pa.texte), h('small', {}, pa.ref)),
-      h('div', { class: 'parole-btns' }, btnEcouter,
-        btnPartager)),
+    nouveau ? h('section', { class: 'priere-jour nouveau-venu' },
+      img(nv.image, '', '', false),
+      h('div', {},
+        h('span', { class: 'etiquette' }, nv.titre),
+        h('h2', {}, 'La nouvelle naissance'),
+        h('small', {}, nv.texte),
+        h('div', { style: 'display:flex;gap:8px;align-items:center;flex-wrap:wrap' },
+          h('a', { class: 'btn btn-or', href: nv.lien }, ico('croix'), nv.bouton),
+          h('button', { class: 'plus-tard', onclick: e => { store.set('salut_vu', true); e.currentTarget.closest('section').remove(); } }, 'Plus tard')))) : null,
     h('section', { class: 'priere-jour' },
       img(fiche.image, '', '', false),
       h('div', {},
@@ -47,6 +57,18 @@ export default async function () {
         h('small', {}, `Enseignement ${fiche.duree} min + 5 sujets de prière`),
         fait ? h('span', { class: 'prie-ok', style: 'margin-bottom:6px' }, ico('coche'), 'Tu as prié aujourd\'hui') : null,
         h('a', { class: 'btn btn-or', href: `#/priere/${fiche.id}` }, ico('play'), fait ? 'Revoir' : 'Commencer'))),
+    msg ? h('section', { class: 'message-jour' },
+      h('span', { class: 'etiquette' }, ico('chat'), msg.titre || 'Message du jour', ex(msg)),
+      h('p', { 'data-lu': `msg-${msg.id}:t`, class: 'lecture-texte' }, msg.texte),
+      h('div', { class: 'parole-btns' }, boutonEcoute(pisteMessage(msg), null, { cls: 'btn btn-bleu btn-petit', off: 'Écouter', on: 'Pause' }),
+        msg.video ? h('button', { class: 'btn btn-clair btn-petit', onclick: () => ouvrirVideo(msg.video, msg.titre) }, ico('video'), 'Regarder') : null)) : null,
+    h('section', { class: 'parole' },
+      img('p1_12', '', ''),
+      h('div', { class: 'parole-txt' },
+        h('span', { class: 'etiquette' }, ico('livre'), 'Parole du jour'),
+        h('q', { 'data-lu': 'parole:t' }, pa.texte), h('small', { html: riche(pa.ref) })),
+      h('div', { class: 'parole-btns' }, btnEcouter,
+        btnPartager)),
     installer(),
     h('section', { class: 'tuiles', 'aria-label': 'Rubriques' },
       acc.tuiles.map(t => h('a', { class: 'tuile', href: t.route },

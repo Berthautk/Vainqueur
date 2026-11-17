@@ -1,0 +1,24 @@
+{
+  "titre": "Émissions de radio",
+  "sous": "Les thèmes de la semaine, à réécouter.",
+  "emissions": [
+    {
+      "id": "r1",
+      "titre": "Vaincre la dépression",
+      "date": "2026-11-12",
+      "image": "q2_11",
+      "audio": "",
+      "texte": "La dépression n'est pas une faiblesse. Dans cette émission, nous parlons des signes qui doivent alerter, de l'importance d'en parler et de la place de la prière dans le chemin de la guérison.",
+      "exemple": true
+    },
+    {
+      "id": "r2",
+      "titre": "L'estime de soi",
+      "date": "2026-11-05",
+      "image": "p5_02",
+      "audio": "",
+      "texte": "Comment se voir avec les yeux de Dieu ? Une émission pour apprendre à s'aimer, à s'accepter et à refuser les paroles qui détruisent.",
+      "exemple": true
+    }
+  ]
+}

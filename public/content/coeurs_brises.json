@@ -119,6 +119,32 @@
       "priere": "Seigneur, je suis fatigué(e) et je te le dis. Relève mon âme, entoure-moi de bonnes personnes et guide-moi vers l'aide dont j'ai besoin. Au nom de Jésus, amen."
     },
     {
+      "id": "maladie",
+      "titre": "Maladie et souffrance sans cause connue",
+      "image": "p4_10",
+      "duree": 6,
+      "audio": "",
+      "exemple": true,
+      "sections": [
+        {
+          "titre": "Quand on ne comprend pas",
+          "icone": "💔",
+          "texte": "Douleurs répétées, fatigue, examens sans réponse : souffrir sans explication épuise le corps et le moral. Dieu voit ta souffrance."
+        },
+        {
+          "titre": "Comment avancer",
+          "icone": "🌱",
+          "liste": [
+            "**Continue** à te faire suivre par un médecin.",
+            "**Prie** et fais prier pour ta guérison.",
+            "**Parle** de ce que tu vis, ne reste pas seul(e).",
+            "**Garde** la foi : « L'Éternel est près de ceux qui ont le cœur brisé » (Psaume 34:19)."
+          ]
+        }
+      ],
+      "priere": "Seigneur, tu connais cette souffrance que personne n'explique. Touche mon corps et mon âme, donne de la sagesse aux médecins et garde ma foi. Au nom de Jésus, amen."
+    },
+    {
       "id": "aimer",
       "titre": "S'aimer et s'accepter",
       "image": "p4_02",
@@ -129,19 +155,45 @@
         {
           "titre": "Pourquoi c'est difficile",
           "icone": "💔",
-          "texte": "Beaucoup se jugent durement. Pourtant Dieu t'a créé(e) avec amour : « Je te loue de ce que je suis une créature si merveilleuse » (Psaume 139:14)."
+          "texte": "Beaucoup se jugent durement : leur passé, leur corps, la couleur ou l'état de leur peau. Pourtant Dieu t'a créé(e) avec amour : « Je te loue de ce que je suis une créature si merveilleuse » (Psaume 139:14)."
         },
         {
           "titre": "Comment avancer",
           "icone": "🌱",
           "liste": [
             "**Remplace** les paroles dures par des paroles de vérité.",
+            "**Accepte** ton corps et ta peau : ils sont l'œuvre de Dieu.",
             "**Reçois** l'amour de Dieu tel que tu es.",
             "**Évite** de te comparer aux autres."
           ]
         }
       ],
       "priere": "Seigneur, apprends-moi à me voir comme tu me vois. Je reçois ton amour et je refuse les paroles qui me détruisent. Au nom de Jésus, amen."
+    },
+    {
+      "id": "identite",
+      "titre": "Savoir qui l'on est",
+      "image": "q2_07",
+      "duree": 5,
+      "audio": "",
+      "exemple": true,
+      "sections": [
+        {
+          "titre": "La question de l'identité",
+          "icone": "💔",
+          "texte": "Quand on ne sait pas qui l'on est, on laisse les autres nous définir. En Christ, tu as une identité nouvelle : « Si quelqu'un est en Christ, il est une nouvelle créature » (2 Corinthiens 5:17)."
+        },
+        {
+          "titre": "Pour avancer",
+          "icone": "🌱",
+          "liste": [
+            "**Découvre** ce que la Parole dit de toi.",
+            "**Identifie** tes dons et tes talents.",
+            "**Refuse** les étiquettes du passé."
+          ]
+        }
+      ],
+      "priere": "Seigneur, révèle-moi qui je suis en toi. Je refuse les étiquettes du passé et je reçois l'identité que tu me donnes. Au nom de Jésus, amen."
     },
     {
       "id": "pardon",
@@ -218,5 +270,7 @@
       ],
       "priere": "Seigneur, je te confie mes enfants. Donne-moi la sagesse pour les éduquer et garde-les sur ton chemin. Au nom de Jésus, amen."
     }
-  ]
+  ],
+  "titre": "Médecin des cœurs brisés",
+  "sous": "Tu n'es pas seul. Ensemble, guérissons ce qui fait mal."
 }

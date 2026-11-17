@@ -278,7 +278,7 @@
       "ref": "Psaume 118:24"
     },
     {
-      "texte": "Fortifie-toi et prends courage ; car l'Éternel, ton Dieu, est avec toi dans tout ce que tu entreprendras.",
+      "texte": "Fortifie-toi et prends courage ! Ne t'effraie point et ne t'épouvante point, car l'Éternel, ton Dieu, est avec toi dans tout ce que tu entreprendras.",
       "ref": "Josué 1:9"
     }
   ],
@@ -320,5 +320,29 @@
       "route": "#/temoignages"
     }
   ],
-  "_note": "Une accroche et une parole différentes chaque jour (elles tournent dans l'ordre de la liste). On peut en ajouter autant qu'on veut."
+  "_note": "Une accroche et une parole différentes chaque jour (elles tournent dans l'ordre de la liste). On peut en ajouter autant qu'on veut.",
+  "salutations": [
+    "Bonjour,|champion !",
+    "Bienvenue sur la plateforme|des Vainqueurs !",
+    "Tu es un|champion !",
+    "Bonjour,|vainqueur !",
+    "Heureux de te revoir,|champion !"
+  ],
+  "messages_du_jour": [
+    {
+      "id": "m1",
+      "titre": "Message du jour",
+      "texte": "Aujourd'hui, ne regarde pas ce qui te manque : regarde Celui qui marche avec toi. Celui qui a commencé en toi cette bonne œuvre la rendra parfaite. Avance avec foi.",
+      "audio": "",
+      "video": "",
+      "exemple": true
+    }
+  ],
+  "nouveau_venu": {
+    "titre": "Nouveau ici ?",
+    "texte": "Commence par le plus important : la nouvelle naissance. Découvre comment donner ta vie à Jésus.",
+    "bouton": "Commencer",
+    "lien": "#/salut",
+    "image": "p3_01"
+  }
 }

@@ -1,6 +1,12 @@
-import { $, $$, h, ico, eq, store, contenu, imgSrc, toast } from './util.js';
+import { $, $$, h, ico, eq, store, contenu, imgSrc, toast, getConfig } from './util.js';
 import { pisteAdoration } from './pistes.js';
 import { majBouton } from './views/commun.js';
+import * as surlignage from './surlignage.js';
+import * as reglages from './reglages.js';
+import { chargerLivres } from './bible-refs.js';
+reglages.appliquer();
+player.regleVitesse(reglages.vitesse);
+player.surMot((lu, k) => surlignage.marquer(lu, k));
 import * as player from './player.js';
 
 const routes = [
@@ -18,7 +24,13 @@ const routes = [
   [/^plus$/, () => import('./views/plus.js'), 'plus'],
   [/^telechargements$/, () => import('./views/telechargements.js'), 'plus'],
   [/^apropos$/, () => import('./views/apropos.js'), 'plus'],
-  [/^nouveautes$/, () => import('./views/nouveautes.js'), 'origine']
+  [/^nouveautes$/, () => import('./views/nouveautes.js'), 'origine'],
+  [/^bible$/, () => import('./views/bible.js'), 'origine'],
+  [/^bible\/([\w-]+)$/, () => import('./views/bible.js').then(m => ({ default: m.livrePage })), 'origine'],
+  [/^bible\/([\w-]+)\/(\d+)$/, () => import('./views/bible.js').then(m => ({ default: m.chapitrePage })), 'origine'],
+  [/^reglages$/, () => import('./views/reglages.js'), 'plus'],
+  [/^radio$/, () => import('./views/radio.js'), 'origine'],
+  [/^sophonie$/, () => import('./views/sophonie.js'), 'plus']
 ];
 
 let origine = 'accueil';   // onglet d'où l'on vient (pour les pages « satellites »)
@@ -26,7 +38,10 @@ let courant = null;        // vue affichée (pour nettoyer)
 let jeton = 0;
 
 async function aller() {
-  const chemin = decodeURIComponent((location.hash || '#/').replace(/^#\/?/, '').replace(/\/$/, ''));
+  const brut = (location.hash || '#/').replace(/^#\/?/, '');
+  const [cheminBrut, requete = ''] = brut.split('?');
+  const chemin = decodeURIComponent(cheminBrut.replace(/\/$/, ''));
+  const params = new URLSearchParams(requete);
   const mon = ++jeton;
   let trouve = null;
   for (const [re, charge, onglet] of routes) { const m = chemin.match(re); if (m) { trouve = { charge, onglet, args: m.slice(1) }; break; } }
@@ -48,7 +63,7 @@ async function aller() {
   majMini();
   try {
     const mod = await trouve.charge();
-    const resultat = await mod.default(...trouve.args);
+    const resultat = await mod.default(...trouve.args, params);
     if (mon !== jeton) return;
     courant = resultat;
     vue.replaceChildren(resultat.noeud);
@@ -99,12 +114,18 @@ function majMiniTemps() {
 player.sur(t => { if (t !== 'temps') { majMini(); document.querySelectorAll('[data-piste]').forEach(majBouton); } majMiniTemps(); });
 
 // ---- Cloche / nouveautés ----
-async function pastille() {
+async function pastille(annonce = false) {
   try {
     const n = await contenu('nouveautes');
     const vu = store.get('news_vu', '');
     const dernier = n.items.map(i => i.id + i.date).sort().pop() || '';
-    $('#pastille').hidden = !dernier || vu === dernier;
+    const neuf = !!dernier && vu !== dernier;
+    $('#pastille').hidden = !neuf;
+    // Annonce une seule fois chaque nouveauté
+    if (annonce && neuf && store.get('news_annonce', '') !== dernier) {
+      store.set('news_annonce', dernier);
+      setTimeout(() => toast('🔔 Un nouveau message est arrivé', { label: 'Voir', href: '#/nouveautes' }), 2200);
+    }
   } catch { /* hors connexion sans cache : pas de pastille */ }
 }
 window.addEventListener('vq-news', pastille);
@@ -121,10 +142,12 @@ async function demarrer() {
   app.hidden = false;
   majReseau();
   addEventListener('hashchange', aller);
+  await chargerLivres().catch(() => {});
   const prete = aller();
   // Restaure la dernière écoute
   contenu('nayla').then(c => player.restaurer(c.adorations.filter(a => a.audio).map(pisteAdoration))).catch(() => {});
-  pastille();
+  pastille(true);
+  getConfig().then(c => { if (c.devise) { const k = c.devise.lastIndexOf(' '); $('#devise').replaceChildren(c.devise.slice(0, k + 1), h('b', {}, c.devise.slice(k + 1))); } }).catch(() => {});
   await prete;
   const reste = Math.max(0, 1500 - (performance.now() - debut));
   setTimeout(() => { splash.classList.add('fin'); setTimeout(() => splash.remove(), 450); }, reste);

@@ -67,5 +67,10 @@
       "video": ""
     }
   ],
-  "_note": "audio = MP3 (dossier audio/ ou adresse complète). video = lien YouTube (facultatif) : la vidéo se regarde dans l'application. Une adoration peut avoir l'un, l'autre ou les deux."
+  "_note": "audio = MP3 (dossier audio/ ou adresse complète). video = lien YouTube (facultatif) : la vidéo se regarde dans l'application. Une adoration peut avoir l'un, l'autre ou les deux.",
+  "significations": [
+    "[N]ouvelle [A]doration à [Y]ahweh,|[L]'Éternel des [A]rmées",
+    "[N]ous [A]dorons [Y]eshua,|[L]'Éternel des [A]rmées"
+  ],
+  "sous_titre": "Chaque adoration porte une vie, un enseignement."
 }

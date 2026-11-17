@@ -10,7 +10,7 @@ export default async function () {
     h('section', { class: 'hero', style: 'min-height:260px' }, img('p1_02', '', 'hero-img', false),
       h('div', { class: 'hero-ligne' }, h('span', { style: 'font-size:46px;line-height:1' }, '❤️'),
         h('h1', {}, 'Médecin des ', h('em', {}, 'cœurs brisés'))),
-      h('p', { class: 'hero-sous' }, 'Tu n\'es pas seul. Ensemble, guérissons ce qui fait mal.')),
+      h('p', { class: 'hero-sous' }, d.sous || '')),
     h('div', { class: 'grille2' }, d.themes.map(t =>
       h('article', { class: 'theme-cb' }, img(t.image, '', '', true),
         h('h3', {}, t.titre, ex(t)),

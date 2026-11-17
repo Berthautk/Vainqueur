@@ -1,17 +1,18 @@
-import { h, img, ico, eq, contenu, store, toast, naylaIndex, naylaSens, NAYLA } from '../util.js';
+import { h, img, ico, eq, contenu, store, toast, naylaIndex, naylaSens, NAYLA_DEFAUT } from '../util.js';
 import * as player from '../player.js';
 import { pisteAdoration, pistesAdorations } from '../pistes.js';
 import { enveloppe, ex, vide } from './commun.js';
 
 // En-tête NAYLA : la signification alterne d'une ouverture à l'autre, et change aussi en douceur sur la page
-export function enteteNayla() {
-  let i = naylaIndex();
-  const zone = h('div', { class: 'nayla-zone' }, naylaSens(i));
+export function enteteNayla(d) {
+  const NAYLA = (d && d.significations && d.significations.length) ? d.significations : NAYLA_DEFAUT;
+  let i = naylaIndex(NAYLA.length);
+  const zone = h('div', { class: 'nayla-zone' }, naylaSens(NAYLA[i]));
   const points = h('div', { class: 'nayla-points', 'aria-hidden': 'true' }, NAYLA.map((_, k) => h('i', { class: k === i ? 'actif' : '' })));
   const changer = () => {
     i = (i + 1) % NAYLA.length;
     const ancien = zone.firstChild; ancien.classList.add('sort');
-    setTimeout(() => { zone.replaceChildren(naylaSens(i, 'nayla-sens entre')); [...points.children].forEach((p, k) => p.classList.toggle('actif', k === i)); }, 450);
+    setTimeout(() => { zone.replaceChildren(naylaSens(NAYLA[i], 'nayla-sens entre')); [...points.children].forEach((p, k) => p.classList.toggle('actif', k === i)); }, 450);
   };
   const calme = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const minuteur = calme ? null : setInterval(changer, 9000);
@@ -78,7 +79,7 @@ export default async function () {
   }
   rech.oninput = dessiner;
   const off = player.sur(maj);
-  const tete = enteteNayla();
+  const tete = enteteNayla(d);
   const noeud = h('div', {}, tete.noeud, h('div', { class: 'recherche' }, ico('loupe'), rech), chips, liste);
   dessiner();
   return enveloppe(noeud, () => { off(); tete.stop(); });

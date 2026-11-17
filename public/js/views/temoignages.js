@@ -1,9 +1,10 @@
+import { riche } from '../bible-refs.js';
 import { h, img, ico, contenu, ouvrirWhatsApp, mmss } from '../util.js';
 import * as player from '../player.js';
 import { retour, enveloppe, ex, vide, boutonEcoute } from './commun.js';
 import { pisteTemoignage } from '../pistes.js';
 
-const ICONES = { 'Délivrance': '🔗', 'Guérison': '❤️', 'Famille': '👨‍👩‍👧', 'Affaires': '📈' };
+const ICONES = { 'Délivrance': '🔗', 'Guérison': '❤️', 'Famille': '👨‍👩‍👧', 'Affaires': '📈', 'Guérison intérieure': '🕊️' };
 function onde(seed) { const e = h('div', { class: 'onde', 'aria-hidden': 'true' }); for (let i = 0; i < 34; i++) e.append(h('i', { style: `height:${20 + Math.abs(Math.sin((i + seed) * 1.7)) * 80}%` })); return e; }
 
 export default async function () {
@@ -21,8 +22,8 @@ export default async function () {
     const pp = boutonEcoute(pisteTemoignage(t), file, { cls: 'btn-lire', icone: 'play', aria: `Écouter le témoignage de ${t.prenom}` });
     return h('article', { class: 'temo' }, img(t.image, '', ''),
       h('div', { class: 'temo-corps' },
-        h('div', { class: 'temo-tete' }, h('div', {}, h('h3', {}, t.prenom, ex(t)), h('small', {}, '📍 ' + t.ville)), h('span', { class: `cat cat-${t.categorie}` }, `${ICONES[t.categorie] || ''} ${t.categorie}`)),
-        h('p', {}, `« ${t.extrait} »`),
+        h('div', { class: 'temo-tete' }, h('div', {}, h('h3', {}, t.prenom, ex(t)), h('small', {}, '📍 ' + t.ville)), h('span', { class: `cat cat-${t.categorie.replace(/\s+/g, '-')}` }, `${ICONES[t.categorie] || ''} ${t.categorie}`)),
+        h('p', { class: 'citation', 'data-lu': `tem-${t.id}:x` }, t.extrait),
         h('div', { class: 'audio-temo' }, pp, onde(i * 3), h('time', {}, t.audio ? t.duree : 'Voix'))));
   }
   const menu = h('div', { class: 'menu-temo', hidden: true },
@@ -32,8 +33,8 @@ export default async function () {
   const noeud = h('div', {},
     h('section', { class: 'hero', style: 'min-height:190px' }, img('p3_08', '', 'hero-img', false),
       h('div', { class: 'hero-ligne' }, retour('#/'), h('span', { style: 'font-size:30px' }, '💬'), h('h1', { style: 'font-size:24px' }, 'Témoignages')),
-      h('h2', { style: 'margin-top:16px;font-size:28px;font-style:italic' }, 'Ils ont été ', h('span', { class: 'or' }, 'libérés')),
-      h('p', { class: 'hero-sous' }, 'Ce que Dieu a fait pour eux, il peut le faire pour toi.')),
+      h('h2', { style: 'margin-top:16px;font-size:28px;font-style:italic' }, ...(() => { const t = d.titre || 'Ils ont été libérés'; const k = t.lastIndexOf(' '); return [t.slice(0, k + 1), h('span', { class: 'or' }, t.slice(k + 1))]; })()),
+      h('p', { class: 'hero-sous' }, d.sous || '')),
     barre, h('p', { style: 'margin:10px 14px 0;font-size:12px;color:var(--gris)' }, d.items.some(t => t.exemple) ? 'Témoignages d\'exemple : ils seront remplacés par de vrais témoignages.' : ''),
     h('div', { style: 'height:10px' }), liste,
     h('div', { class: 'fab-zone' }, fab, menu));

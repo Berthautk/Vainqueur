@@ -7,7 +7,7 @@
       "image": "p4_07",
       "icone": "i6_01",
       "exemple": true,
-      "enseignement": "Sans vision, le peuple est sans frein (Proverbes 29:18). Écris ce que Dieu met sur ton cœur et avance étape par étape.",
+      "enseignement": "« Quand il n'y a pas de révélation, le peuple est sans frein » (Proverbes 29:18). Écris ce que Dieu met sur ton cœur et avance étape par étape.",
       "sujet": "Demande à Dieu de te révéler la vision de ton activité et la sagesse pour la réaliser."
     },
     {
@@ -25,8 +25,26 @@
       "image": "p2_11",
       "icone": "i4_05",
       "exemple": true,
-      "enseignement": "Les projets bien pensés réussissent (Proverbes 21:5). Fixe des objectifs, des échéances, et révise chaque semaine.",
+      "enseignement": "« Les projets de l'homme diligent ne mènent qu'à l'abondance » (Proverbes 21:5). Fixe des objectifs, des échéances, et révise chaque semaine.",
       "sujet": "Demande à Dieu l'ordre, la discipline et de bons plans pour ton activité."
+    },
+    {
+      "id": "saisir",
+      "titre": "Gérer et saisir ses affaires",
+      "image": "p4_09",
+      "icone": "i5_03",
+      "exemple": true,
+      "enseignement": "Une affaire se gère au quotidien : noter ses ventes, suivre ses clients, saisir chaque occasion avec courage et honnêteté.",
+      "sujet": "Demande à Dieu la sagesse et le courage de saisir les occasions qu'il place devant toi."
+    },
+    {
+      "id": "opportunite",
+      "titre": "Voir une opportunité derrière chaque problème",
+      "image": "p3_07",
+      "icone": "i6_07",
+      "exemple": true,
+      "enseignement": "Chaque problème autour de toi cache un besoin, et chaque besoin une possibilité de servir. Regarde les difficultés avec les yeux de la foi.",
+      "sujet": "Demande à Dieu d'ouvrir tes yeux sur les opportunités cachées dans les problèmes."
     },
     {
       "id": "creativite",
@@ -55,5 +73,6 @@
       "enseignement": "« Soyez transformés par le renouvellement de l'intelligence » (Romains 12:2). Change tes pensées, tu changeras tes résultats.",
       "sujet": "Demande à Dieu de renouveler ta mentalité et de remplacer toute pensée de pauvreté."
     }
-  ]
+  ],
+  "titre": "Hommes et femmes d'affaires"
 }

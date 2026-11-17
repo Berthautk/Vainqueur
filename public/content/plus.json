@@ -1,0 +1,124 @@
+{
+  "rubriques": [
+    {
+      "titre": "La Bible",
+      "sous": "Louis Segond 1910 · à lire et à écouter, même sans internet.",
+      "image": "i5_01",
+      "action": "route",
+      "valeur": "#/bible"
+    },
+    {
+      "titre": "Évangélisation",
+      "sous": "Jésus t'aime encore : croisades, interviews, prière du salut.",
+      "image": "q3_06",
+      "action": "route",
+      "valeur": "#/evangelisation"
+    },
+    {
+      "titre": "Hommes et femmes d'affaires",
+      "sous": "Coaching : vision, finances, créativité…",
+      "image": "p1_11",
+      "action": "route",
+      "valeur": "#/affaires"
+    },
+    {
+      "titre": "Témoignages",
+      "sous": "Ce que Dieu a fait pour eux.",
+      "image": "p3_08",
+      "action": "route",
+      "valeur": "#/temoignages"
+    },
+    {
+      "titre": "Émissions de radio",
+      "sous": "Les thèmes de la semaine, à réécouter.",
+      "image": "i5_08",
+      "action": "route",
+      "valeur": "#/radio"
+    }
+  ],
+  "services": [
+    {
+      "titre": "Rejoindre le groupe de prière (Telegram)",
+      "sous": "Unis pour prier, s'encourager et grandir.",
+      "image": "i8_06",
+      "action": "telegram",
+      "rythme": true
+    },
+    {
+      "titre": "Demander un sujet de prière",
+      "sous": "Confie-nous ton besoin, nous prierons pour toi.",
+      "image": "p4_02",
+      "action": "whatsapp",
+      "valeur": "sujet"
+    },
+    {
+      "titre": "Demander un appel personnel",
+      "sous": "Pour les situations difficiles : échange confidentiel.",
+      "image": "q1_11",
+      "action": "whatsapp",
+      "valeur": "appel"
+    },
+    {
+      "titre": "Consulter le Médecin des cœurs",
+      "sous": "Écoute, conseil et accompagnement pour guérir les blessures du cœur.",
+      "image": "i8_07",
+      "action": "whatsapp",
+      "valeur": "consultation"
+    },
+    {
+      "titre": "Inviter l'homme de Dieu",
+      "sous": "Pour une réunion, une croisade ou un séminaire.",
+      "image": "q1_08",
+      "action": "whatsapp",
+      "valeur": "inviter"
+    },
+    {
+      "titre": "Soutenir l'œuvre (faire un don)",
+      "sous": "Participe à l'avancement de cette mission.",
+      "image": "p3_06",
+      "action": "don"
+    },
+    {
+      "titre": "Acheter les livres",
+      "sous": "Livres de vie, de foi et de croissance.",
+      "image": "i8_08",
+      "action": "livres"
+    }
+  ],
+  "autres": [
+    {
+      "titre": "Docteur Sophonie",
+      "sous": "L'homme de Dieu et ses pages.",
+      "image": "assets/logo/blason_web.webp",
+      "action": "route",
+      "valeur": "#/sophonie"
+    },
+    {
+      "titre": "Suivre sur les réseaux",
+      "sous": "",
+      "image": "i8_12",
+      "action": "reseaux"
+    },
+    {
+      "titre": "Mes téléchargements hors connexion",
+      "sous": "Tes audios gardés pour les écouter sans internet.",
+      "image": "i8_09",
+      "action": "route",
+      "valeur": "#/telechargements"
+    },
+    {
+      "titre": "Réglages",
+      "sous": "Couleur du mot lu, vitesse de la voix, taille du texte.",
+      "image": "i8_11",
+      "action": "route",
+      "valeur": "#/reglages"
+    },
+    {
+      "titre": "À propos",
+      "sous": "LAJC — Les Amoureux de Jésus-Christ",
+      "image": "assets/logo/blason_web.webp",
+      "action": "route",
+      "valeur": "#/apropos"
+    }
+  ]
+}
