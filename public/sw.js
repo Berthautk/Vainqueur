@@ -2,12 +2,12 @@
    - Précache : application, polices, logos, contenus JSON, et toutes les images/audios cités dans les JSON.
    - Les audios téléchargés par l'utilisateur vivent dans le cache « vainqueur-audio » (jamais purgé ici).
    Changer VERSION pour forcer la mise à jour de l'application chez tous les utilisateurs. */
-const VERSION = 'v3';
+const VERSION = 'v4';
 const APP = `vainqueur-app-${VERSION}`;
 const AUDIO = 'vainqueur-audio';
 
 const STATIQUE = [
-  './', 'index.html', 'manifest.webmanifest', 'css/app.css',
+  './', 'manifest.webmanifest', 'css/app.css',
   'js/main.js', 'js/util.js', 'js/player.js', 'js/downloads.js',
   'js/views/commun.js', 'js/views/accueil.js', 'js/views/priere.js', 'js/views/fiche.js', 'js/views/nayla.js', 'js/views/lecteur.js',
   'js/views/coeurs.js', 'js/views/article.js', 'js/views/affaires.js', 'js/views/evangelisation.js', 'js/views/salut.js',
@@ -34,6 +34,13 @@ function extraire(valeur, sortie) {
   else if (valeur && typeof valeur === 'object') Object.values(valeur).forEach(v => extraire(v, sortie));
 }
 
+// Cloudflare Pages redirige /index.html vers / : une réponse « redirigée » ne peut pas servir une page,
+// on en garde donc toujours une copie propre.
+async function propre(r) {
+  if (!r || !r.redirected) return r;
+  return new Response(await r.blob(), { status: r.status, statusText: r.statusText, headers: r.headers });
+}
+
 self.addEventListener('install', e => {
   e.waitUntil((async () => {
     const cache = await caches.open(APP);
@@ -52,7 +59,11 @@ self.addEventListener('install', e => {
     }
     // Les fichiers essentiels sont obligatoires ; les images/audios sont enregistrés au mieux
     const essentiels = STATIQUE.filter(u => !u.startsWith('assets/'));
-    await cache.addAll(essentiels);
+    await Promise.all(essentiels.map(async u => {
+      const r = await fetch(u, { cache: 'reload' });
+      if (!r.ok) throw new Error('précache ' + u);
+      await cache.put(u, await propre(r));
+    }));
     await Promise.all([...urls].filter(u => !essentiels.includes(u)).map(u => cache.add(u).catch(() => {})));
     self.skipWaiting();
   })());
@@ -98,11 +109,11 @@ self.addEventListener('fetch', e => {
   const reseauD = req.mode === 'navigate' || url.pathname.endsWith('.json') || url.pathname.endsWith('.js') || url.pathname.endsWith('.css');
   e.respondWith((async () => {
     const cache = await caches.open(APP);
-    const cle = req.mode === 'navigate' ? 'index.html' : req;
+    const cle = req.mode === 'navigate' ? './' : req;
     if (reseauD) {
       try {
         const r = await fetch(req);
-        if (r.ok) cache.put(cle, r.clone());
+        if (r.ok) cache.put(cle, await propre(r.clone()));
         return r;
       } catch {
         return (await cache.match(cle, { ignoreSearch: true })) || (await cache.match('./')) || Response.error();
@@ -110,6 +121,6 @@ self.addEventListener('fetch', e => {
     }
     const trouve = await cache.match(req, { ignoreSearch: true });
     if (trouve) return trouve;
-    try { const r = await fetch(req); if (r.ok) cache.put(req, r.clone()); return r; } catch { return Response.error(); }
+    try { const r = await fetch(req); if (r.ok) cache.put(req, await propre(r.clone())); return r; } catch { return Response.error(); }
   })());
 });
