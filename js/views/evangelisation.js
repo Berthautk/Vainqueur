@@ -22,7 +22,7 @@ export default async function () {
       h('button', { class: 'nav-carr d', 'aria-label': 'Suivant', onclick: () => va(1) }, ico('suivant'))),
     dots,
     h('div', { class: 'titre-bande' }, ico('video'), 'Interviews des hommes de Dieu'),
-    h('div', { class: 'interviews' }, d.interviews.map(v => h('a', { class: 'interview', href: v.lien, target: '_blank', rel: 'noopener', 'aria-label': v.titre }, img(v.image, v.titre, '', true), h('span', { class: 'play' }, ico('play')), ex(v)))),
+    h('div', { class: 'interviews' }, d.interviews.map(v => h('a', { class: 'interview', href: v.lien, target: '_blank', rel: 'noopener', 'aria-label': v.titre, onclick: ev => { ev.preventDefault(); ouvrirLien(v.lien); } }, img(v.image, v.titre, '', true), h('span', { class: 'play' }, ico('play')), ex(v)))),
     h('button', { class: 'btn btn-vert btn-bloc', onclick: () => ouvrirWhatsApp('inviter') }, ico('calendrier'), 'Inviter l\'homme de Dieu chez moi ›'));
   return enveloppe(noeud);
 }

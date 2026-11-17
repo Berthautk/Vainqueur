@@ -4,7 +4,7 @@ import { hero, enveloppe } from './commun.js';
 export default async function () {
   const c = await getConfig();
   const r = c.reseaux || {};
-  const lien = (href, bg, txt, nom) => h('a', { href, target: '_blank', rel: 'noopener', style: `background:${bg}`, 'aria-label': nom, onclick: e => e.stopPropagation() }, txt);
+  const lien = (href, bg, txt, nom) => h('button', { style: `background:${bg}`, 'aria-label': nom, onclick: e => { e.stopPropagation(); ouvrirLien(href); } }, txt);
   const item = (image, titre, sous, action, extra) => {
     const l = h('div', { class: 'ligne ligne-plus', role: 'button', tabindex: 0 },
       img(image, '', 'ligne-img'),
@@ -28,6 +28,7 @@ export default async function () {
       item('p2_08', 'Consultation et accompagnement', 'Psychologue, médecin : écoute, conseil et suivi.', () => ouvrirWhatsApp('consultation')),
       item('q1_08', 'Inviter l\'homme de Dieu', 'Pour une réunion, une croisade ou un séminaire.', () => ouvrirWhatsApp('inviter')),
       item('p3_06', 'Soutenir l\'œuvre (faire un don)', 'Participe à l\'avancement de cette mission.', don),
+      ...(window.vqInstall ? [item('icons/icon-192.png', 'Installer l\'application', 'Sur ton écran d\'accueil, même sans internet.', async () => { const e = window.vqInstall; e.prompt(); try { await e.userChoice; } catch { /* ignoré */ } window.vqInstall = null; })] : []),
       item('i8_08', 'Acheter les livres', 'Découvrez nos livres de vie, de foi et de croissance.', () => (c.livres_lien ? ouvrirLien(c.livres_lien) : ouvrirWhatsApp('livres'))),
       item('i8_12', 'Suivre sur les réseaux', '', () => {}, h('div', { class: 'reseaux' },
         lien(r.youtube, '#E62117', '▶', 'YouTube'), lien(r.tiktok, '#111', '♪', 'TikTok'), lien(r.facebook, '#1877F2', 'f', 'Facebook'),

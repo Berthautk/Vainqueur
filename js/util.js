@@ -119,11 +119,12 @@ export async function ouvrirWhatsApp(cle, suffixe = '') {
   const c = await getConfig();
   const msg = (c.messages[cle] || '') + suffixe;
   const num = String(c.whatsapp || '').replace(/\D/g, '');
-  if (!num) return toast('Numéro WhatsApp à renseigner dans content/config.json');
+  if (!num) return toast('Contact WhatsApp pas encore configuré — bientôt disponible');
   window.open(`https://wa.me/${num}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
 }
+export const lienPret = url => !!url && !/A_COMPLETER/i.test(url);
 export async function ouvrirLien(url) {
-  if (!url) return toast('Lien à renseigner dans content/config.json');
+  if (!lienPret(url)) return toast('Lien pas encore disponible — bientôt');
   window.open(url, '_blank', 'noopener');
 }
 
@@ -149,6 +150,7 @@ export const tts = {
     const v = speechSynthesis.getVoices().find(v => v.lang && v.lang.toLowerCase().startsWith('fr'));
     if (v) u.voice = v;
     u.onend = u.onerror = () => { this.actif = false; fin && fin(); };
+    window.dispatchEvent(new Event('vq-tts'));
     this.actif = true; speechSynthesis.speak(u);
     return true;
   },
@@ -162,3 +164,18 @@ export const mmss = s => {
 };
 export const badgeEx = o => (o && o.exemple) ? h('span', { class: 'badge-ex' }, 'Exemple') : null;
 export const octets = n => n > 1048576 ? (n / 1048576).toFixed(1).replace('.', ',') + ' Mo' : Math.max(1, Math.round(n / 1024)) + ' Ko';
+
+// ---- Prière : jour du thème et fiche du jour ----
+export const aujourdhui = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+export function jourTheme(t) {
+  if (t && t.debut) {
+    const n = Math.floor((new Date(aujourdhui() + 'T00:00:00') - new Date(t.debut + 'T00:00:00')) / 864e5) + 1;
+    return Math.min(Math.max(n, 1), t.total || 7);
+  }
+  return (t && t.jour) || 1;
+}
+export function ficheDuJour(d) {
+  if (d.du_jour && d.du_jour !== 'auto') return d.fiches.find(f => f.id === d.du_jour) || d.fiches[0];
+  return d.fiches[(jourTheme(d.theme) - 1) % d.fiches.length];
+}
+export const prieAujourdhui = id => ['matin', 'soir'].some(p => store.get(`prie:${id}:${p}`, '') === aujourdhui());

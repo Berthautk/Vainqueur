@@ -42,6 +42,7 @@ async function aller() {
   vue.replaceChildren(h('div', { class: 'chargement', role: 'status', 'aria-label': 'Chargement' }, h('i')));
   const enLecteur = /^nayla\/[\w-]+$/.test(chemin);
   document.body.dataset.lecteur = enLecteur ? '1' : '';
+  document.body.dataset.ecoute = '';
   majMini();
   try {
     const mod = await trouve.charge();
@@ -49,6 +50,9 @@ async function aller() {
     if (mon !== jeton) return;
     courant = resultat;
     vue.replaceChildren(resultat.noeud);
+    majMini();
+    const t = vue.querySelector('h1');
+    document.title = t && chemin ? `${t.textContent.replace('Exemple', '').trim()} — Vainqueur` : 'Vainqueur — Les Vainqueurs de Dieu';
     window.scrollTo(0, 0);
     vue.focus({ preventScroll: true });
   } catch (e) {
@@ -62,7 +66,7 @@ async function aller() {
 function majMini() {
   const m = $('#mini'); const v = $('#vue');
   const p = player.etat.piste;
-  const visible = p && document.body.dataset.lecteur !== '1';
+  const visible = p && document.body.dataset.lecteur !== '1' && document.body.dataset.ecoute !== p.id;
   m.hidden = !visible; v.classList.toggle('avec-mini', !!visible);
   if (!p) return;
   if (m.dataset.id !== p.id || !m.firstChild) {
@@ -119,6 +123,12 @@ async function demarrer() {
   const reste = Math.max(0, 1500 - (performance.now() - debut));
   setTimeout(() => { splash.classList.add('fin'); setTimeout(() => splash.remove(), 450); }, reste);
 }
+
+// Installation de l'application (Android / Chrome)
+window.vqInstall = null;
+addEventListener('beforeinstallprompt', e => { e.preventDefault(); window.vqInstall = e; window.dispatchEvent(new Event('vq-installable')); });
+addEventListener('appinstalled', () => { window.vqInstall = null; toast('Vainqueur est installée ✔'); window.dispatchEvent(new Event('vq-installable')); });
+export { majMini };
 
 if ('serviceWorker' in navigator) {
   addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));

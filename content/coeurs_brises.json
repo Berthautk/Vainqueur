@@ -23,7 +23,8 @@
             "**Crois** que Dieu peut restaurer ce qui a été brisé."
           ]
         }
-      ]
+      ],
+      "priere": "Seigneur, je te remets cette déception. Guéris mon cœur, rends-moi l'espérance et apprends-moi à espérer en toi. Au nom de Jésus, amen."
     },
     {
       "id": "trahison",
@@ -48,7 +49,8 @@
             "**Reconstruis** la confiance pas à pas."
           ]
         }
-      ]
+      ],
+      "priere": "Seigneur, tu connais cette trahison. Je choisis de pardonner, même si j'ai mal. Guéris ma confiance et garde mon cœur. Au nom de Jésus, amen."
     },
     {
       "id": "deuil",
@@ -87,7 +89,8 @@
             "**Crois** que Dieu peut consoler ton cœur et te donner une nouvelle force."
           ]
         }
-      ]
+      ],
+      "priere": "Seigneur, console-moi dans ce deuil. Merci pour la vie de celui ou celle que j'ai aimé(e). Donne-moi ta paix et une force nouvelle chaque jour. Au nom de Jésus, amen."
     },
     {
       "id": "depression",
@@ -112,7 +115,8 @@
             "**Bouge** et prends soin de ton corps."
           ]
         }
-      ]
+      ],
+      "priere": "Seigneur, je suis fatigué(e) et je te le dis. Relève mon âme, entoure-moi de bonnes personnes et guide-moi vers l'aide dont j'ai besoin. Au nom de Jésus, amen."
     },
     {
       "id": "aimer",
@@ -136,7 +140,8 @@
             "**Évite** de te comparer aux autres."
           ]
         }
-      ]
+      ],
+      "priere": "Seigneur, apprends-moi à me voir comme tu me vois. Je reçois ton amour et je refuse les paroles qui me détruisent. Au nom de Jésus, amen."
     },
     {
       "id": "pardon",
@@ -160,7 +165,8 @@
             "**Demande** la force de Dieu pour persévérer."
           ]
         }
-      ]
+      ],
+      "priere": "Seigneur, je décide de pardonner. Libère mon cœur de l'amertume et donne-moi la force de persévérer dans ce choix. Au nom de Jésus, amen."
     },
     {
       "id": "mariage",
@@ -184,7 +190,8 @@
             "**Demandez** conseil à un couple mûr dans la foi."
           ]
         }
-      ]
+      ],
+      "priere": "Seigneur, bénis notre couple. Donne-nous l'écoute, la patience et l'amour qui viennent de toi. Au nom de Jésus, amen."
     },
     {
       "id": "enfants",
@@ -208,7 +215,8 @@
             "**Corrige** avec amour et patience."
           ]
         }
-      ]
+      ],
+      "priere": "Seigneur, je te confie mes enfants. Donne-moi la sagesse pour les éduquer et garde-les sur ton chemin. Au nom de Jésus, amen."
     }
   ]
 }

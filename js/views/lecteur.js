@@ -27,8 +27,9 @@ export default async function (id) {
   const majFav = () => { const on = favs().includes(id); fav.replaceChildren(h('span', { style: `color:${on ? 'var(--rouge)' : 'var(--gris)'};display:flex` }, ico(on ? 'coeur' : 'coeurV')), 'Favori'); fav.setAttribute('aria-pressed', on); };
   fav.onclick = () => { const f = favs(); const n = f.includes(id) ? f.filter(x => x !== id) : [...f, id]; store.set('favoris', n); majFav(); toast(n.includes(id) ? 'Ajouté aux favoris' : 'Retiré des favoris'); };
   majFav();
-  dl.estGarde(a.audio).then(ok => { if (ok) down.lastChild.textContent = 'Téléchargé ✔'; });
-  down.onclick = async () => { if (await dl.telecharger(a.audio, a.titre)) down.lastChild.textContent = 'Téléchargé ✔'; };
+  const marqueDl = () => { down.classList.add('fait'); down.replaceChildren(h('span', { style: 'color:var(--vert);display:flex' }, ico('coche')), 'Téléchargé'); };
+  dl.estGarde(a.audio).then(ok => { if (ok) marqueDl(); });
+  down.onclick = async () => { if (down.classList.contains('fait')) { location.hash = '#/telechargements'; return; } if (await dl.telecharger(a.audio, a.titre)) marqueDl(); };
 
   const maj = () => {
     const p = player.etat.piste; if (!p) return;

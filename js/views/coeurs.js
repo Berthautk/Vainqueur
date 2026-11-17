@@ -5,7 +5,8 @@ import { ecouterTheme } from './article.js';
 
 export default async function () {
   const d = await contenu('coeurs_brises');
-  const noeud = h('div', {},
+  let noeud = null;
+  noeud = h('div', {},
     h('section', { class: 'hero', style: 'min-height:260px' }, img('p1_02', '', 'hero-img', false),
       h('div', { class: 'hero-ligne' }, h('span', { style: 'font-size:46px;line-height:1' }, '❤️'),
         h('h1', {}, 'Médecin des ', h('em', {}, 'cœurs brisés'))),
@@ -15,7 +16,18 @@ export default async function () {
         h('h3', {}, t.titre, ex(t)),
         h('div', { class: 'theme-cb-btns' },
           h('a', { class: 'btn btn-clair', href: `#/coeurs/${t.id}` }, ico('livre'), 'Lire'),
-          h('button', { class: 'btn btn-vert', onclick: () => ecouterTheme(t) }, ico('casque'), 'Écouter'))))),
+          boutonEcouter(t))))),
     h('button', { class: 'btn btn-vert btn-bloc', onclick: () => ouvrirWhatsApp('conseil') }, ico('chat'), 'Écrire pour demander conseil ›'));
+  function boutonEcouter(t) {
+    const b = h('button', { class: 'btn btn-vert' }, ico('casque'), h('span', {}, 'Écouter'));
+    b.onclick = () => {
+      const enCours = b.dataset.on === '1';
+      noeud && noeud.querySelectorAll('.theme-cb .btn-vert').forEach(x => { x.dataset.on = ''; x.lastChild.textContent = 'Écouter'; });
+      if (enCours && !t.audio) { tts.stop(); return; }
+      const ok = ecouterTheme(t, () => { b.dataset.on = ''; b.lastChild.textContent = 'Écouter'; });
+      if (ok && !t.audio) { b.dataset.on = '1'; b.lastChild.textContent = 'Arrêter'; }
+    };
+    return b;
+  }
   return enveloppe(noeud, () => tts.stop());
 }

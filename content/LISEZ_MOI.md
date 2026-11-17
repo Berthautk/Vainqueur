@@ -11,7 +11,8 @@ Dans les fichiers, une image s'écrit avec son code de la planche du catalogue, 
 ## Ajouter une fiche de prière — `fiches.json`
 Copier une fiche complète (de `{ "id": ...` jusqu'à son `}`), la coller à la suite, et changer :
 `id` (unique, ex. `"f5"`), `titre`, `duree` (en minutes), `image`, `audio` (chemin du MP3, ex. `"audio/ma-fiche.mp3"`), puis le texte `matin` et `soir` (un enseignement et exactement 5 `sujets`).
-Pour choisir la fiche « Prière du jour » de l'accueil : changer `"du_jour"`. Le thème de la semaine et le « Jour X sur 7 » se changent dans `"theme"`.
+**Thème de la semaine** (dans `"theme"`) : écrire la date du jour 1 dans `"debut"` (ex. `"2026-11-15"`). Le « Jour X sur 7 » avance alors tout seul chaque jour, et la « Prière du jour » de l'accueil change avec lui (jour 1 = 1re fiche, jour 2 = 2e fiche…).
+Pour imposer une fiche précise sur l'accueil, remplacer `"du_jour": "auto"` par son `id` (ex. `"f2"`).
 
 ## Ajouter une adoration — `nayla.json`
 Copier une adoration et changer `id` (unique), `titre`, `duree` (ex. `"6:24"`), `image` (pochette), `audio`, `paroles` (utiliser `\n` pour passer à la ligne et `\n\n` pour une ligne vide) et `enseignement`.
@@ -21,9 +22,9 @@ Copier un élément de `items` et changer `prenom`, `ville`, `categorie` (Déliv
 Avant publication, remplacer ou supprimer tous les témoignages d'exemple.
 
 ## Les autres fichiers
-- `config.json` : numéro WhatsApp (chiffres seulement, avec l'indicatif du pays, ex. `237600000000`), lien Telegram, réseaux sociaux, moyens de don, texte « À propos », messages pré-remplis de WhatsApp.
+- `config.json` : numéro WhatsApp (chiffres seulement, avec l'indicatif du pays, ex. `2376XXXXXXXX` ; tant qu'il est vide, les boutons affichent « bientôt disponible »), lien Telegram, réseaux sociaux, moyens de don, texte « À propos », messages pré-remplis de WhatsApp.
 - `accueil.json` : accroches et paroles du jour (une nouvelle chaque jour), tuiles de l'accueil.
-- `coeurs_brises.json` : thèmes et articles ; ajouter `"audio": "audio/xxx.mp3"` pour un article lu par une voix enregistrée (sinon la voix du téléphone lit l'article).
+- `coeurs_brises.json` : thèmes et articles ; `"priere"` = la courte prière affichée par le bouton « Prier pour ce sujet » ; ajouter `"audio": "audio/xxx.mp3"` pour un article lu par une voix enregistrée (sinon la voix du téléphone lit l'article).
 - `affaires.json`, `evangelisation.json` (croisades, liens des interviews YouTube, prière du salut), `nouveautes.json` (liste de la cloche).
 
 ## Les audios

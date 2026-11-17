@@ -1,5 +1,5 @@
 // Lecteur audio GLOBAL : un seul <audio> pour toute l'application.
-import { store, toast, imgSrc } from './util.js';
+import { store, toast, imgSrc, tts } from './util.js';
 
 const audio = new Audio();
 audio.preload = 'metadata';
@@ -39,6 +39,7 @@ function charger(piste, auto) {
 }
 export function lire() {
   if (!etat.piste) return;
+  tts.stop();
   audio.play().catch(() => toast('Lecture impossible (hors connexion ?)'));
 }
 export const pause = () => audio.pause();
@@ -62,6 +63,7 @@ export const basculerRepeter = () => { etat.repeter = !etat.repeter; emettre('mo
 export function arreter() { audio.pause(); audio.removeAttribute('src'); etat.piste = null; emettre('piste'); }
 
 audio.addEventListener('play', () => emettre('etat'));
+window.addEventListener('vq-tts', () => audio.pause());
 audio.addEventListener('pause', () => emettre('etat'));
 audio.addEventListener('timeupdate', () => {
   emettre('temps');

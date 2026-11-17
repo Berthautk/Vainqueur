@@ -1,4 +1,4 @@
-import { h, img, ico, contenu, ouvrirWhatsApp, tts, gras, toast } from '../util.js';
+import { h, img, ico, contenu, ouvrirWhatsApp, tts, gras, toast, feuille } from '../util.js';
 import * as player from '../player.js';
 import { retour, enveloppe, ex, vide } from './commun.js';
 
@@ -12,11 +12,21 @@ export function ecouterTheme(t, fin) {
   return tts.parler(texteTheme(t), fin);
 }
 
+function prier(t) {
+  if (!t.priere) { location.hash = '#/priere'; return; }
+  const f = feuille(h('div', {}, h('h2', {}, 'Prier pour ce sujet'),
+    h('p', {}, 'Lis cette prière lentement, à voix haute si tu peux :'),
+    h('blockquote', { class: 'priere-salut' }, t.priere),
+    h('button', { class: 'btn btn-or', onclick: () => { f(); toast('Amen 🙏 — Dieu t\'entend'); } }, ico('coche'), 'Amen'),
+    h('button', { class: 'btn btn-vert', onclick: () => { f(); ouvrirWhatsApp('sujet', t.titre); } }, ico('chat'), 'Demander qu\'on prie avec moi'),
+    h('button', { class: 'btn btn-clair', onclick: () => f() }, 'Fermer')));
+}
+
 export default async function (id) {
   const d = await contenu('coeurs_brises');
   const t = d.themes.find(x => x.id === id);
   if (!t) return enveloppe(vide('Article introuvable', 'Ce thème n\'existe pas.'));
-  const btn = h('button', { class: 'btn btn-or' }, ico('casque'), h('span', {}, 'Écouter l\'article'), ico('play'));
+  const btn = h('button', { class: 'btn btn-or' }, ico('casque'), h('span', {}, 'Écouter l\'article'));
   const label = btn.children[1];
   btn.onclick = () => {
     const ok = ecouterTheme(t, () => { label.textContent = 'Écouter l\'article'; });
@@ -31,11 +41,11 @@ export default async function (id) {
       h('div', { class: 'hero-ligne' }, retour('#/coeurs'), h('span', { style: 'font-size:34px' }, '❤️'),
         h('h1', { style: 'font-size:20px;max-width:55%' }, 'Médecin des ', h('em', {}, 'cœurs brisés')))),
     h('div', { class: 'art-titre' }, h('h1', {}, t.titre, ex(t))),
-    h('div', { class: 'art-barre' }, h('span', { class: 'art-temps' }, ico('horloge', ''), `${t.duree} min de lecture`), btn),
+    h('div', { class: 'art-barre' }, h('span', { class: 'art-temps', 'aria-label': `${t.duree} minutes de lecture`, title: 'Temps de lecture' }, ico('horloge', ''), `${t.duree} min`), btn),
     corps,
     h('div', { class: 'art-actions' },
       h('button', { class: 'btn btn-vert', onclick: () => ouvrirWhatsApp('conseil', ` (sujet : ${t.titre})`) }, ico('chat'), 'Demander conseil'),
-      h('a', { class: 'btn btn-or', href: '#/priere' }, ico('mains'), 'Prier pour ce sujet')));
+      h('button', { class: 'btn btn-or', onclick: () => prier(t) }, ico('mains'), 'Prier pour ce sujet')));
   noeud.querySelectorAll('.art-temps svg').forEach(s => { s.style.width = '20px'; s.style.height = '20px'; });
   return enveloppe(noeud, () => tts.stop());
 }

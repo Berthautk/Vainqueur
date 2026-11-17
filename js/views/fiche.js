@@ -1,4 +1,4 @@
-import { h, img, ico, contenu, store, partager, toast, mmss, ouvrirWhatsApp } from '../util.js';
+import { h, img, ico, contenu, store, partager, toast, mmss, ouvrirWhatsApp, aujourdhui } from '../util.js';
 import * as player from '../player.js';
 import { retour, enveloppe, ex, vide } from './commun.js';
 
@@ -6,7 +6,7 @@ export default async function (id) {
   const d = await contenu('fiches');
   const f = d.fiches.find(x => x.id === id);
   if (!f) return enveloppe(vide('Fiche introuvable', 'Cette prière n\'existe pas.'));
-  const jour = new Date().toISOString().slice(0, 10);
+  const jour = aujourdhui();
   let periode = new Date().getHours() >= 17 ? 'soir' : 'matin';
 
   const zone = h('div'); const nettoyeurs = [];
@@ -57,7 +57,7 @@ export default async function (id) {
     zone.replaceChildren(
       h('section', { class: 'bloc' }, h('div', { class: 'bloc-titre' }, ico('livre'), 'Enseignement'),
         h('div', { class: 'bloc-corps' },
-          h('div', { class: 'lecteur-mini' }, img(f.bandeau && 'p1_12' || 'p1_12', '', ''),
+          h('div', { class: 'lecteur-mini' }, img('p1_12', '', ''),
             h('div', { class: 'piste' }, h('b', {}, piste.titre), pp, h('div', { class: 'curseur' }, curs, tps))),
           texte, suite)),
       h('section', { class: 'bloc' }, h('div', { class: 'bloc-titre' }, ico('mains'), 'Tes 5 sujets de prière'), liste),
@@ -70,5 +70,6 @@ export default async function (id) {
       h('div', { class: 'hero-ligne' }, retour('#/priere'), h('h1', {}, f.titre, ex(f)))),
     bascule, zone);
   dessiner();
-  return enveloppe(noeud, () => nettoyeurs.splice(0).forEach(n => n()));
+  document.body.dataset.ecoute = f.id;
+  return enveloppe(noeud, () => { nettoyeurs.splice(0).forEach(n => n()); document.body.dataset.ecoute = ''; });
 }

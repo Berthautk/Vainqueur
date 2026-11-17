@@ -1,21 +1,25 @@
 {
-  "_note": "Remplacer les valeurs « A_COMPLETER » et les numéros d'exemple par les vrais avant publication.",
+  "_note": "Remplacer les valeurs « A_COMPLETER » et renseigner « whatsapp » (chiffres avec indicatif, ex. 2376XXXXXXXX). Tant qu'ils sont vides, les boutons affichent « bientôt disponible ».",
   "nom": "Vainqueur",
   "groupe": "Les Vainqueurs de Dieu",
   "ministere": "LAJC — Les Amoureux de Jésus-Christ",
   "evangeliste": "Docteur Sophonie",
-  "whatsapp": "237600000000",
+  "whatsapp": "",
   "telegram": "https://t.me/A_COMPLETER",
   "reseaux": {
     "youtube": "https://www.youtube.com/@A_COMPLETER",
     "tiktok": "https://www.tiktok.com/@A_COMPLETER",
     "facebook": "https://www.facebook.com/A_COMPLETER",
     "instagram": "https://www.instagram.com/A_COMPLETER",
-    "whatsapp": "https://wa.me/237600000000"
+    "whatsapp": ""
   },
   "dons": {
     "texte": "Ton soutien permet de poursuivre l'œuvre : croisades, enseignements, accompagnement.",
-    "moyens": ["Mobile Money : A_COMPLETER", "Orange Money : A_COMPLETER", "Virement : A_COMPLETER"]
+    "moyens": [
+      "Mobile Money : A_COMPLETER",
+      "Orange Money : A_COMPLETER",
+      "Virement : A_COMPLETER"
+    ]
   },
   "livres_lien": "",
   "a_propos": {
