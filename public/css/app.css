@@ -556,3 +556,68 @@ h2.groupe{font-family:var(--t-texte);font-size:13px;font-weight:700;text-transfo
 .bible-nav .btn svg{width:18px;height:18px}
 .mention{text-align:center;color:var(--gris);font-size:12px;margin:6px 0 10px}
 .recherche-priere{margin:0 12px 6px}
+
+/* ===== Bible : navigation, recherche, plans ===== */
+.titre-choix{display:inline-flex;align-items:center;gap:4px;color:inherit;font:inherit;padding:2px 4px;border-radius:8px}
+.titre-choix svg{width:16px;height:16px;opacity:.85;flex:none}
+.titre-choix:active{background:rgba(255,255,255,.15)}
+.hero-bible .titre-choix h1{margin:0}
+.bible-titre{display:flex;align-items:center;gap:2px;min-width:0}
+.bible-titre .titre-choix{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.choix-passage .bascule{margin:4px 0 10px}
+.choix-passage .chips{padding:0 0 10px}
+.livres-feuille,.chapitres-feuille{padding:0;max-height:52vh;overflow:auto}
+.livres-feuille{grid-template-columns:repeat(2,1fr)}
+.livres-feuille .livre{font-size:14px;padding:10px 6px}
+.livre.courant,.chap.courant{background:#FFF1C4;box-shadow:0 0 0 2px var(--or)}
+.feuille .lien-partage{margin:10px auto 0}
+.resultat{display:block;background:#fff;border-radius:14px;box-shadow:var(--ombre);padding:10px 12px;font-family:var(--t-titre);font-size:16px;line-height:1.5;color:#1E2140}
+.resultat b{display:block;font-family:var(--t-texte);font-size:13px;color:var(--bleu);margin-bottom:2px}
+.resultat mark{background:#FFE58A;color:inherit;border-radius:3px;padding:0 1px}
+.carte-plan-jour{display:flex;align-items:center;gap:12px;margin:0 12px 10px;padding:12px 14px;border-radius:var(--rayon);background:var(--grad-bleu);color:#fff;box-shadow:var(--ombre)}
+.carte-plan-jour>svg{width:26px;height:26px;flex:none;color:var(--or-clair)}
+.carte-plan-jour span{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+.carte-plan-jour small{font-size:12px;opacity:.9}
+.carte-plan-jour b{font-family:var(--t-titre);font-size:16px}
+.carte-plan-jour.lu{background:linear-gradient(160deg,#177A2B,#22A33C)}
+.carte-plan{display:flex;gap:12px;background:#fff;border-radius:var(--rayon);box-shadow:var(--ombre);padding:12px}
+.carte-plan.en-cours{box-shadow:0 0 0 2px var(--vert),var(--ombre)}
+.carte-plan-img{flex:none;width:84px;height:84px;border-radius:14px;object-fit:cover}
+.carte-plan-txt{flex:1;min-width:0}
+.carte-plan-txt h3{font-size:18px;color:var(--nuit)}
+.carte-plan-txt p{font-size:13px;margin:4px 0 8px;color:var(--texte)}
+.mois-apercu{list-style:none;font-size:12px;color:var(--gris);margin:0 0 10px;columns:1}
+.mois-apercu b{color:var(--nuit)}
+.progres-plan{margin:12px;padding:12px 14px;background:#fff;border-radius:var(--rayon);box-shadow:var(--ombre);font-size:14px}
+.progres-plan b{color:var(--nuit);font-size:16px}
+.progres-plan .progres{margin:8px 0 0;border:0;background:#E1E6F5}
+.jour-plan{margin:12px;padding:14px;background:#fff;border-radius:var(--rayon);box-shadow:var(--ombre);border-top:4px solid var(--or)}
+.jour-plan.lu{border-top-color:var(--vert)}
+.jour-plan-tete{display:flex;flex-direction:column;gap:4px;margin-bottom:8px}
+.jour-plan-tete small{color:var(--gris)}
+.theme-mois{background:#F4F1FF;border-radius:12px;padding:10px 12px;margin-bottom:10px}
+.theme-mois b{font-family:var(--t-titre);font-size:16px;color:var(--nuit)}
+.theme-mois p{font-size:13px;margin:4px 0}
+.theme-mois blockquote{font-family:var(--t-titre);font-style:italic;font-size:14px;color:var(--nuit)}
+.lecture-jour{display:flex;align-items:center;gap:10px;font-family:var(--t-titre);font-weight:700;font-size:19px;color:var(--nuit);margin-bottom:12px}
+.lecture-jour svg{width:24px;height:24px;color:var(--or-fonce);flex:none}
+.jour-plan .parole-btns .btn{flex:1;padding:8px 6px}
+.retard,.mois-plan{margin:8px 12px;background:#fff;border-radius:14px;box-shadow:var(--ombre);padding:4px 12px}
+.retard summary,.mois-plan summary{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;font-weight:600;color:var(--nuit);cursor:pointer;text-transform:capitalize}
+.retard summary{color:#9A6B00;text-transform:none}
+.mois-plan summary span{display:flex;flex-direction:column}
+.mois-plan summary small{font-weight:500;color:var(--gris);font-size:12px;text-transform:none}
+.mois-plan summary em{font-style:normal;color:var(--gris);font-size:13px}
+.ligne-jour{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #EEF0F7}
+.ligne-jour.auj{background:#FFF6DD;margin:0 -12px;padding:8px 12px}
+.ligne-jour a{flex:1;display:flex;flex-direction:column;min-width:0;color:var(--texte)}
+.ligne-jour small{color:var(--gris);font-size:11px}
+.ligne-jour span{font-size:14px}
+.ligne-jour .case{width:28px;height:28px}
+.bande-plan{display:flex;flex-direction:column;align-items:center;gap:8px;margin:4px 12px 10px;padding:12px;background:#FFF6DD;border-radius:var(--rayon);border:1px solid #EBD9A8}
+.bande-plan small{color:var(--nuit);font-weight:600}
+.bande-plan .btn{width:100%}
+.jour-plan-tete .etiquette{align-self:flex-start}
+.choix-passage .chips{flex-wrap:wrap}
+.carte-plan-jour.accueil{margin:12px 12px 0}
+.chips{flex-wrap:wrap}

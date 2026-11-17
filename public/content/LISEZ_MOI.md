@@ -43,6 +43,10 @@ Toujours sur **YouTube** (publiques ou « non répertoriées »). Dans le conten
 Elles se regardent dans l'application, avec le lecteur officiel de YouTube (connexion nécessaire).
 - Nayla : `"video"` dans une adoration. · Évangélisation : `interviews` et `enseignements`. · Accueil : `messages_du_jour`.
 
+## Plans de lecture de la Bible — `plans.json`
+Trois plans d'un an : « Toute la Bible en un an » (Genèse → Apocalypse), « Nouveau Testament d'abord », et « Un thème par mois » (12 thèmes au rythme de l'année).
+Pour un plan par thème, chaque mois indique son titre, son texte, son verset clé et ses livres (`"psaumes:1-72"` pour une partie d'un livre). L'application répartit les chapitres sur les jours du mois, à temps de lecture égal.
+
 ## Références bibliques
 Écrire les références normalement, avec deux-points : « Jean 3:16 », « Psaume 4:9 », « 1 Corinthiens 15:57 », « Lamentations 3:22-23 ».
 Elles deviennent automatiquement des liens vers la Bible intégrée (Louis Segond 1910). Pour une citation, recopier le texte exact de la LSG 1910.

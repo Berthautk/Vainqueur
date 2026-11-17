@@ -1,0 +1,235 @@
+{
+  "_note": "Plans de lecture de la Bible. « suite » : lecture continue sur 365 jours dans l'ordre des testaments indiqué. « mensuel » : un thème par mois de l'année (livres ou « livre:début-fin »).",
+  "plans": [
+    {
+      "id": "bible-annee",
+      "titre": "Toute la Bible en un an",
+      "sous": "De la Genèse à l'Apocalypse, dans l'ordre.",
+      "type": "suite",
+      "ordre": [
+        "AT",
+        "NT"
+      ],
+      "image": "q1_10"
+    },
+    {
+      "id": "nt-puis-at",
+      "titre": "Nouveau Testament d'abord",
+      "sous": "Commencer par Jésus et l'Église, puis lire tout l'Ancien Testament.",
+      "type": "suite",
+      "ordre": [
+        "NT",
+        "AT"
+      ],
+      "image": "p1_10"
+    },
+    {
+      "id": "thematique",
+      "titre": "Un thème par mois",
+      "sous": "Les grands thèmes bibliques, au rythme de l'année : Carême en mars, Pâques en avril, Pentecôte en mai, Noël en décembre.",
+      "type": "mensuel",
+      "image": "p1_12",
+      "mois": [
+        {
+          "mois": "Janvier",
+          "titre": "Les commencements",
+          "texte": "Dieu crée le monde, appelle Abraham et délivre son peuple d'Égypte.",
+          "livres": [
+            "genese",
+            "exode"
+          ],
+          "verset": {
+            "texte": "Au commencement, Dieu créa les cieux et la terre.",
+            "ref": "Genèse 1:1"
+          }
+        },
+        {
+          "mois": "Février",
+          "titre": "La sainteté et l'amour de Dieu",
+          "texte": "Un Dieu saint qui marche avec son peuple et l'aime d'un amour fidèle.",
+          "livres": [
+            "levitique",
+            "nombres",
+            "ruth",
+            "cantique"
+          ],
+          "verset": {
+            "texte": "Soyez saints, car je suis saint, moi, l'Éternel, votre Dieu.",
+            "ref": "Lévitique 19:2"
+          }
+        },
+        {
+          "mois": "Mars",
+          "titre": "Repentance et espérance",
+          "texte": "Temps du Carême : revenir à Dieu de tout son cœur.",
+          "livres": [
+            "deuteronome",
+            "esaie",
+            "osee",
+            "joel",
+            "jonas",
+            "lamentations"
+          ],
+          "verset": {
+            "texte": "Déchirez vos cœurs et non vos vêtements, Et revenez à l'Éternel, votre Dieu.",
+            "ref": "Joël 2:13"
+          }
+        },
+        {
+          "mois": "Avril",
+          "titre": "La croix et la résurrection",
+          "texte": "Temps de Pâques : la vie, la mort et la victoire de Jésus.",
+          "livres": [
+            "matthieu",
+            "marc",
+            "luc"
+          ],
+          "verset": {
+            "texte": "Il n'est point ici, mais il est ressuscité.",
+            "ref": "Luc 24:6"
+          }
+        },
+        {
+          "mois": "Mai",
+          "titre": "Le Saint-Esprit et l'Église",
+          "texte": "Temps de la Pentecôte : la puissance de l'Esprit et la naissance de l'Église.",
+          "livres": [
+            "jean",
+            "actes",
+            "romains",
+            "galates"
+          ],
+          "verset": {
+            "texte": "Mais vous recevrez une puissance, le Saint-Esprit survenant sur vous, et vous serez mes témoins.",
+            "ref": "Actes 1:8"
+          }
+        },
+        {
+          "mois": "Juin",
+          "titre": "Vivre en vainqueur",
+          "texte": "Entrer dans la promesse et marcher chaque jour dans la victoire du Christ.",
+          "livres": [
+            "josue",
+            "1-corinthiens",
+            "2-corinthiens",
+            "ephesiens",
+            "philippiens",
+            "colossiens",
+            "1-thessaloniciens",
+            "2-thessaloniciens",
+            "1-timothee",
+            "2-timothee",
+            "tite",
+            "philemon",
+            "hebreux",
+            "jacques",
+            "1-pierre",
+            "2-pierre",
+            "1-jean",
+            "2-jean",
+            "3-jean",
+            "jude"
+          ],
+          "verset": {
+            "texte": "Mais grâces soient rendues à Dieu, qui nous donne la victoire par notre Seigneur Jésus-Christ!",
+            "ref": "1 Corinthiens 15:57"
+          }
+        },
+        {
+          "mois": "Juillet",
+          "titre": "Juges, rois et serviteurs",
+          "texte": "Ce que Dieu regarde chez ceux qu'il appelle à conduire.",
+          "livres": [
+            "juges",
+            "1-samuel",
+            "2-samuel",
+            "1-rois"
+          ],
+          "verset": {
+            "texte": "L'homme regarde à ce qui frappe les yeux, mais l'Éternel regarde au cœur.",
+            "ref": "1 Samuel 16:7"
+          }
+        },
+        {
+          "mois": "Août",
+          "titre": "Fidèles dans l'épreuve",
+          "texte": "Job, Esther, Daniel : tenir ferme quand tout vacille.",
+          "livres": [
+            "2-rois",
+            "job",
+            "esther",
+            "daniel",
+            "habacuc",
+            "nahum",
+            "abdias"
+          ],
+          "verset": {
+            "texte": "Mais je sais que mon rédempteur est vivant.",
+            "ref": "Job 19:25"
+          }
+        },
+        {
+          "mois": "Septembre",
+          "titre": "Restaurer et rebâtir",
+          "texte": "Temps de la rentrée : reconstruire ce qui était tombé.",
+          "livres": [
+            "1-chroniques",
+            "2-chroniques",
+            "esdras",
+            "nehemie",
+            "aggee",
+            "zacharie"
+          ],
+          "verset": {
+            "texte": "Levons-nous, et bâtissons!",
+            "ref": "Néhémie 2:18"
+          }
+        },
+        {
+          "mois": "Octobre",
+          "titre": "La voix des prophètes",
+          "texte": "Jérémie et Ézéchiel : Dieu parle, avertit et promet un cœur nouveau.",
+          "livres": [
+            "jeremie",
+            "ezechiel"
+          ],
+          "verset": {
+            "texte": "Invoque-moi, et je te répondrai; Je t'annoncerai de grandes choses.",
+            "ref": "Jérémie 33:3"
+          }
+        },
+        {
+          "mois": "Novembre",
+          "titre": "Sagesse et reconnaissance",
+          "texte": "Proverbes, Ecclésiaste et Psaumes : apprendre la sagesse et dire merci.",
+          "livres": [
+            "proverbes",
+            "ecclesiaste",
+            "psaumes:1-72"
+          ],
+          "verset": {
+            "texte": "Confie-toi en l'Éternel de tout ton cœur, Et ne t'appuie pas sur ta sagesse.",
+            "ref": "Proverbes 3:5"
+          }
+        },
+        {
+          "mois": "Décembre",
+          "titre": "Le Roi qui vient",
+          "texte": "Temps de l'Avent et de Noël : la promesse du Messie et son retour.",
+          "livres": [
+            "psaumes:73-150",
+            "amos",
+            "michee",
+            "sophonie",
+            "malachie",
+            "apocalypse"
+          ],
+          "verset": {
+            "texte": "Et toi, Bethléhem Éphrata, Petite entre les milliers de Juda, De toi sortira pour moi Celui qui dominera sur Israël.",
+            "ref": "Michée 5:1"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import { boutonEcoute, ouvrirVideo } from './commun.js';
 import * as player from '../player.js';
 import { imageParole, partagerImage } from '../partage.js';
 import { enveloppe, ex } from './commun.js';
+import * as Plans from '../plans.js';
 
 const jourDeAnnee = () => Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 864e5);
 
@@ -22,6 +23,17 @@ export default async function () {
   const msg = msgs.find(m => m.date === new Date().toISOString().slice(0, 10)) || msgs.filter(m => !m.date)[j % Math.max(1, msgs.filter(m => !m.date).length)];
   const nv = acc.nouveau_venu;
   const nouveau = nv && !store.get('salut_vu', false);
+  // Plan de lecture de la Bible en cours : la lecture du jour
+  let cartePlan = null;
+  try {
+    const pa2 = Plans.actif(); const plan = pa2 && (await Plans.plans()).find(p => p.id === pa2.id);
+    if (plan) {
+      const liste = Plans.journees(plan, pa2.debut); const i = Plans.indexDuJour(plan, liste);
+      if (i >= 0) { const jj = liste[i]; const lu = Plans.estLu(jj.cle);
+        cartePlan = h('a', { class: 'carte-plan-jour accueil' + (lu ? ' lu' : ''), href: '#/bible/plan' }, ico('calendrier'),
+          h('span', {}, h('small', {}, lu ? 'Lecture biblique du jour ✔' : 'Lecture biblique du jour'), h('b', {}, Plans.libelle(jj.chapitres))), ico('suivant')); }
+    }
+  } catch { /* pas de plan */ }
 
   const btnEcouter = boutonEcoute(pisteParole(pa), null, { cls: 'btn btn-bleu btn-petit', off: 'Écouter', on: 'Pause' });
 
@@ -62,6 +74,7 @@ export default async function () {
       h('p', { 'data-lu': `msg-${msg.id}:t`, class: 'lecture-texte' }, msg.texte),
       h('div', { class: 'parole-btns' }, boutonEcoute(pisteMessage(msg), null, { cls: 'btn btn-bleu btn-petit', off: 'Écouter', on: 'Pause' }),
         msg.video ? h('button', { class: 'btn btn-clair btn-petit', onclick: () => ouvrirVideo(msg.video, msg.titre) }, ico('video'), 'Regarder') : null)) : null,
+    cartePlan,
     h('section', { class: 'parole' },
       img('p1_12', '', ''),
       h('div', { class: 'parole-txt' },
