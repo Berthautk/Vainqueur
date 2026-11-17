@@ -2,20 +2,20 @@
    - Précache : application, polices, logos, contenus JSON, et toutes les images/audios cités dans les JSON.
    - Les audios téléchargés par l'utilisateur vivent dans le cache « vainqueur-audio » (jamais purgé ici).
    Changer VERSION pour forcer la mise à jour de l'application chez tous les utilisateurs. */
-const VERSION = 'v4';
+const VERSION = 'v5';
 const APP = `vainqueur-app-${VERSION}`;
 const AUDIO = 'vainqueur-audio';
 
 const STATIQUE = [
   './', 'manifest.webmanifest', 'css/app.css',
-  'js/main.js', 'js/util.js', 'js/player.js', 'js/downloads.js',
+  'js/main.js', 'js/util.js', 'js/player.js', 'js/downloads.js', 'js/partage.js',
   'js/views/commun.js', 'js/views/accueil.js', 'js/views/priere.js', 'js/views/fiche.js', 'js/views/nayla.js', 'js/views/lecteur.js',
   'js/views/coeurs.js', 'js/views/article.js', 'js/views/affaires.js', 'js/views/evangelisation.js', 'js/views/salut.js',
   'js/views/temoignages.js', 'js/views/plus.js', 'js/views/telechargements.js', 'js/views/apropos.js', 'js/views/nouveautes.js',
   'fonts/playfair-display-latin-600-normal.woff2', 'fonts/playfair-display-latin-700-normal.woff2', 'fonts/playfair-display-latin-800-normal.woff2',
   'fonts/playfair-display-latin-600-italic.woff2', 'fonts/playfair-display-latin-700-italic.woff2',
   'fonts/poppins-latin-400-normal.woff2', 'fonts/poppins-latin-500-normal.woff2', 'fonts/poppins-latin-600-normal.woff2', 'fonts/poppins-latin-700-normal.woff2',
-  'assets/logo/blason_web.webp', 'assets/logo/banniere_web.webp', 'assets/fonds/fond_splash_web.webp',
+  'assets/logo/blason_web.webp', 'assets/logo/banniere_web.webp', 'assets/fonds/fond_splash_web.webp', 'assets/fonds/fond_parole.webp',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png',
   'assets/illustrations/personnages/p1_12.webp'
 ];

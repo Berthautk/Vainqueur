@@ -3,59 +3,283 @@
     {
       "titre": "Rien que ton existence prouve que tu es un vainqueur.",
       "sous": "L'échec n'existe que pour ceux qui ne recommencent plus.",
-      "image": "p5_03",
-      "exemple": true
+      "image": "p5_03"
     },
     {
       "titre": "Dieu n'a pas fini avec toi, relève-toi.",
       "sous": "Ce qu'il a commencé, il le mènera à son terme.",
-      "image": "p1_04",
-      "exemple": true
+      "image": "p1_04"
     },
     {
       "titre": "Ta victoire commence à genoux.",
       "sous": "La prière change ce que l'effort seul ne peut pas changer.",
-      "image": "p4_07",
-      "exemple": true
+      "image": "p4_07"
     },
     {
       "titre": "Tu es plus qu'un survivant : tu es un vainqueur.",
       "sous": "Avance, le Seigneur marche devant toi.",
-      "image": "p3_08",
-      "exemple": true
+      "image": "p3_08"
     },
     {
       "titre": "Aujourd'hui est un jour de grâce.",
       "sous": "Reçois-le avec foi et reconnaissance.",
-      "image": "p1_01",
-      "exemple": true
+      "image": "p1_01"
+    },
+    {
+      "titre": "Ce qui t'a blessé ne te définit pas.",
+      "sous": "Dieu écrit la suite de ton histoire.",
+      "image": "p2_05"
+    },
+    {
+      "titre": "Un nouveau matin, de nouvelles compassions.",
+      "sous": "Laisse hier derrière toi et marche avec Dieu.",
+      "image": "p3_03"
+    },
+    {
+      "titre": "Ton combat a déjà un vainqueur : Jésus.",
+      "sous": "Tiens ferme, la victoire est au bout du chemin.",
+      "image": "q1_03"
+    },
+    {
+      "titre": "Tu n'es pas seul dans ta tempête.",
+      "sous": "Celui qui calme la mer est dans ta barque.",
+      "image": "p4_02"
+    },
+    {
+      "titre": "Petit pas après petit pas, tu avances.",
+      "sous": "La fidélité dans les petites choses ouvre les grandes portes.",
+      "image": "p1_08"
+    },
+    {
+      "titre": "Dieu voit ce que les autres ne voient pas.",
+      "sous": "Ta prière secrète a une réponse publique.",
+      "image": "q3_01"
+    },
+    {
+      "titre": "Tes larmes ne sont pas perdues.",
+      "sous": "Dieu les recueille et les transforme en joie.",
+      "image": "p3_10"
+    },
+    {
+      "titre": "Lève les yeux, ton secours vient de l'Éternel.",
+      "sous": "Il ne sommeille pas, il veille sur toi.",
+      "image": "q1_04"
+    },
+    {
+      "titre": "Tu as été créé pour porter du fruit.",
+      "sous": "Ce que tu sèmes aujourd'hui, tu le récolteras demain.",
+      "image": "p4_08"
+    },
+    {
+      "titre": "La peur parle fort, la foi parle juste.",
+      "sous": "Choisis d'écouter la voix de Dieu.",
+      "image": "p2_10"
+    },
+    {
+      "titre": "Aucune porte n'est trop lourde pour Dieu.",
+      "sous": "Ce qui était fermé hier peut s'ouvrir aujourd'hui.",
+      "image": "q3_03"
+    },
+    {
+      "titre": "Ta valeur ne dépend pas de ton passé.",
+      "sous": "Tu es aimé, pardonné et appelé.",
+      "image": "p2_01"
+    },
+    {
+      "titre": "Le meilleur reste à venir.",
+      "sous": "Dieu prépare plus que ce que tu imagines.",
+      "image": "p4_12"
+    },
+    {
+      "titre": "Ne lâche rien, tu es plus près que tu ne crois.",
+      "sous": "La persévérance est la porte de la victoire.",
+      "image": "q2_03"
+    },
+    {
+      "titre": "Dieu combat pour toi.",
+      "sous": "Garde la paix, il agit déjà.",
+      "image": "p1_11"
+    },
+    {
+      "titre": "Ta famille est un champ de bénédiction.",
+      "sous": "Prie pour elle : tes prières construisent des murailles.",
+      "image": "q3_09"
+    },
+    {
+      "titre": "Sois fort et courageux.",
+      "sous": "L'Éternel ton Dieu est avec toi partout où tu vas.",
+      "image": "p3_04"
+    },
+    {
+      "titre": "Ton cœur brisé peut être guéri.",
+      "sous": "Le Médecin des cœurs est à l'œuvre.",
+      "image": "p1_02"
+    },
+    {
+      "titre": "Chaque jour avec Dieu est une victoire.",
+      "sous": "Commence ta journée dans sa présence.",
+      "image": "p5_06"
+    },
+    {
+      "titre": "Tu portes une semence de grandeur.",
+      "sous": "Dieu ne fait rien de petit.",
+      "image": "p3_06"
+    },
+    {
+      "titre": "La joie de l'Éternel est ta force.",
+      "sous": "Souris : le ciel est de ton côté.",
+      "image": "q1_09"
+    },
+    {
+      "titre": "Ce que Dieu a promis, il l'accomplira.",
+      "sous": "Son retard n'est jamais un refus.",
+      "image": "q2_12"
+    },
+    {
+      "titre": "Tu n'es pas en retard, tu es en préparation.",
+      "sous": "Dieu ajuste chaque détail de ton chemin.",
+      "image": "p2_11"
+    },
+    {
+      "titre": "Pardonner, c'est te libérer.",
+      "sous": "Ne laisse pas l'amertume voler ta victoire.",
+      "image": "p3_01"
+    },
+    {
+      "titre": "Relève la tête, enfant de Dieu.",
+      "sous": "Tu es né pour régner avec Christ.",
+      "image": "q1_12"
+    },
+    {
+      "titre": "Merci, Seigneur, pour ce jour.",
+      "sous": "Un cœur reconnaissant attire la bénédiction.",
+      "image": "p2_04"
     }
   ],
   "paroles": [
     {
-      "texte": "Je peux tout par celui qui me fortifie.",
-      "ref": "Philippiens 4:13",
-      "exemple": true
+      "texte": "Je puis tout par celui qui me fortifie.",
+      "ref": "Philippiens 4:13"
     },
     {
       "texte": "L'Éternel est mon berger : je ne manquerai de rien.",
-      "ref": "Psaume 23:1",
-      "exemple": true
+      "ref": "Psaume 23:1"
     },
     {
-      "texte": "Fortifie-toi et prends courage ; ne crains point.",
-      "ref": "Josué 1:9",
-      "exemple": true
-    },
-    {
-      "texte": "Nous sommes plus que vainqueurs par celui qui nous a aimés.",
-      "ref": "Romains 8:37",
-      "exemple": true
+      "texte": "Mais dans toutes ces choses nous sommes plus que vainqueurs par celui qui nous a aimés.",
+      "ref": "Romains 8:37"
     },
     {
       "texte": "Tout est possible à celui qui croit.",
-      "ref": "Marc 9:23",
-      "exemple": true
+      "ref": "Marc 9:23"
+    },
+    {
+      "texte": "Ne crains rien, car je suis avec toi ; ne promène pas des regards inquiets, car je suis ton Dieu.",
+      "ref": "Ésaïe 41:10"
+    },
+    {
+      "texte": "Car je connais les projets que j'ai formés sur vous, dit l'Éternel, projets de paix et non de malheur, afin de vous donner un avenir et de l'espérance.",
+      "ref": "Jérémie 29:11"
+    },
+    {
+      "texte": "Confie-toi en l'Éternel de tout ton cœur, et ne t'appuie pas sur ta sagesse.",
+      "ref": "Proverbes 3:5"
+    },
+    {
+      "texte": "Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos.",
+      "ref": "Matthieu 11:28"
+    },
+    {
+      "texte": "Dieu est pour nous un refuge et un appui, un secours qui ne manque jamais dans la détresse.",
+      "ref": "Psaume 46:2"
+    },
+    {
+      "texte": "La victoire qui triomphe du monde, c'est notre foi.",
+      "ref": "1 Jean 5:4"
+    },
+    {
+      "texte": "Mais grâces soient rendues à Dieu, qui nous donne la victoire par notre Seigneur Jésus-Christ !",
+      "ref": "1 Corinthiens 15:57"
+    },
+    {
+      "texte": "Mais ceux qui se confient en l'Éternel renouvellent leur force. Ils prennent le vol comme les aigles.",
+      "ref": "Ésaïe 40:31"
+    },
+    {
+      "texte": "L'Éternel est ma lumière et mon salut : de qui aurais-je crainte ?",
+      "ref": "Psaume 27:1"
+    },
+    {
+      "texte": "Nous savons, du reste, que toutes choses concourent au bien de ceux qui aiment Dieu.",
+      "ref": "Romains 8:28"
+    },
+    {
+      "texte": "Ne vous inquiétez de rien ; mais en toute chose faites connaître vos besoins à Dieu par des prières et des supplications, avec des actions de grâces.",
+      "ref": "Philippiens 4:6"
+    },
+    {
+      "texte": "Je vous laisse la paix, je vous donne ma paix.",
+      "ref": "Jean 14:27"
+    },
+    {
+      "texte": "Car ce n'est pas un esprit de timidité que Dieu nous a donné, mais un esprit de force, d'amour et de sagesse.",
+      "ref": "2 Timothée 1:7"
+    },
+    {
+      "texte": "Les bontés de l'Éternel ne sont pas épuisées, ses compassions ne sont pas à leur terme ; elles se renouvellent chaque matin.",
+      "ref": "Lamentations 3:22-23"
+    },
+    {
+      "texte": "Le secours me vient de l'Éternel, qui a fait les cieux et la terre.",
+      "ref": "Psaume 121:2"
+    },
+    {
+      "texte": "L'Éternel marchera lui-même devant toi, il sera lui-même avec toi, il ne te délaissera point, il ne t'abandonnera point.",
+      "ref": "Deutéronome 31:8"
+    },
+    {
+      "texte": "Cherchez premièrement le royaume et la justice de Dieu ; et toutes ces choses vous seront données par-dessus.",
+      "ref": "Matthieu 6:33"
+    },
+    {
+      "texte": "Ne vous affligez pas ; car la joie de l'Éternel sera votre force.",
+      "ref": "Néhémie 8:10"
+    },
+    {
+      "texte": "Recommande ton sort à l'Éternel, mets en lui ta confiance, et il agira.",
+      "ref": "Psaume 37:5"
+    },
+    {
+      "texte": "Je ne te délaisserai point, et je ne t'abandonnerai point.",
+      "ref": "Hébreux 13:5"
+    },
+    {
+      "texte": "Si tu traverses les eaux, je serai avec toi ; et les fleuves, ils ne te submergeront point.",
+      "ref": "Ésaïe 43:2"
+    },
+    {
+      "texte": "L'Éternel est près de ceux qui ont le cœur brisé, et il sauve ceux qui ont l'esprit dans l'abattement.",
+      "ref": "Psaume 34:19"
+    },
+    {
+      "texte": "Soumettez-vous donc à Dieu ; résistez au diable, et il fuira loin de vous.",
+      "ref": "Jacques 4:7"
+    },
+    {
+      "texte": "Si quelqu'un est en Christ, il est une nouvelle créature.",
+      "ref": "2 Corinthiens 5:17"
+    },
+    {
+      "texte": "L'Éternel combattra pour vous ; et vous, gardez le silence.",
+      "ref": "Exode 14:14"
+    },
+    {
+      "texte": "C'est ici la journée que l'Éternel a faite : qu'elle soit pour nous un sujet d'allégresse et de joie !",
+      "ref": "Psaume 118:24"
+    },
+    {
+      "texte": "Fortifie-toi et prends courage ; car l'Éternel, ton Dieu, est avec toi dans tout ce que tu entreprendras.",
+      "ref": "Josué 1:9"
     }
   ],
   "tuiles": [
@@ -95,5 +319,6 @@
       "icone": "i8_06",
       "route": "#/temoignages"
     }
-  ]
+  ],
+  "_note": "Une accroche et une parole différentes chaque jour (elles tournent dans l'ordre de la liste). On peut en ajouter autant qu'on veut."
 }

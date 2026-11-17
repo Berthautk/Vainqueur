@@ -25,7 +25,7 @@ export default async function () {
       item('i8_06', 'Rejoindre le groupe de prière (Telegram)', 'Unis pour prier, s\'encourager et grandir.', () => ouvrirLien(c.telegram)),
       item('p4_02', 'Demander un sujet de prière', 'Confie-nous ton besoin, nous prierons pour toi.', () => ouvrirWhatsApp('sujet')),
       item('q1_11', 'Demander un appel personnel', 'Échange confidentiel et accompagnement spirituel.', () => ouvrirWhatsApp('appel')),
-      item('p2_08', 'Consultation et accompagnement', 'Psychologue, médecin : écoute, conseil et suivi.', () => ouvrirWhatsApp('consultation')),
+      item('i8_07', 'Consulter le Médecin des cœurs', 'Écoute, conseil et accompagnement pour guérir les blessures du cœur.', () => ouvrirWhatsApp('consultation')),
       item('q1_08', 'Inviter l\'homme de Dieu', 'Pour une réunion, une croisade ou un séminaire.', () => ouvrirWhatsApp('inviter')),
       item('p3_06', 'Soutenir l\'œuvre (faire un don)', 'Participe à l\'avancement de cette mission.', don),
       ...(window.vqInstall ? [item('icons/icon-192.png', 'Installer l\'application', 'Sur ton écran d\'accueil, même sans internet.', async () => { const e = window.vqInstall; e.prompt(); try { await e.userChoice; } catch { /* ignoré */ } window.vqInstall = null; })] : []),

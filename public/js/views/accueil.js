@@ -1,5 +1,6 @@
 import { h, img, ico, contenu, tts, partager, toast, store, ficheDuJour, prieAujourdhui } from '../util.js';
 import * as player from '../player.js';
+import { imageParole, partagerImage } from '../partage.js';
 import { enveloppe } from './commun.js';
 
 const jourDeAnnee = () => Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 864e5);
@@ -18,10 +19,19 @@ export default async function () {
     if (tts.parler(`${pa.texte}. ${pa.ref.replace(/(\d+):(\d+)/, '$1, verset $2')}`, () => { btnEcouter.lastChild.textContent = 'Écouter'; })) btnEcouter.lastChild.textContent = 'Arrêter';
   };
 
+  // L'image est préparée à l'avance : le partage part tout de suite au toucher (exigé par Android).
+  let image = null;
+  const prete = imageParole(pa).then(b => (image = b)).catch(() => null);
+  const btnPartager = h('button', { class: 'btn btn-clair btn-petit' }, ico('partager'), 'Partager');
+  const texteParole = `« ${pa.texte} » — ${pa.ref}\nParole du jour · Vainqueur, Les Vainqueurs de Dieu\n${location.origin}${location.pathname}`;
+  btnPartager.onclick = async () => {
+    if (!image) { toast('Préparation de l\'image…'); await prete; }
+    if (image) partagerImage(image, texteParole); else partager('Parole du jour', texteParole);
+  };
   const noeud = h('div', {},
     h('section', { class: 'salut' },
       img(ac.image, '', 'salut-img', false),
-      h('div', { class: 'salut-bonjour' }, 'Bonjour,', h('b', {}, 'champion !')),
+      h('div', { class: 'salut-bonjour' }, new Date().getHours() >= 18 ? 'Bonsoir,' : 'Bonjour,', h('b', {}, 'champion !')),
       h('h2', {}, ac.titre),
       h('p', {}, ac.sous)),
     h('section', { class: 'parole' },
@@ -30,7 +40,7 @@ export default async function () {
         h('span', { class: 'etiquette' }, ico('livre'), 'Parole du jour'),
         h('q', {}, pa.texte), h('small', {}, pa.ref)),
       h('div', { class: 'parole-btns' }, btnEcouter,
-        h('button', { class: 'btn btn-clair btn-petit', onclick: () => partager('Parole du jour', `« ${pa.texte} » — ${pa.ref}`) }, ico('partager'), 'Partager'))),
+        btnPartager)),
     h('section', { class: 'priere-jour' },
       img(fiche.image, '', '', false),
       h('div', {},
