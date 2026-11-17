@@ -1,4 +1,4 @@
-import { h, ico, img, badgeEx } from '../util.js';
+import { h, ico, img, badgeEx, toast, feuille } from '../util.js';
 import * as player from '../player.js';
 
 // Bouton « Écouter » relié au lecteur global ; se met à jour tout seul (voir main.js)
@@ -30,3 +30,19 @@ export function hero(o) {
 export function vide(titre, texte) { return h('div', { class: 'vide' }, h('strong', {}, titre), texte); }
 export const ex = badgeEx;
 export function enveloppe(noeud, nettoyer) { return { noeud, nettoyer }; }
+
+// Vidéo YouTube jouée dans l'application (lecteur intégré officiel, taille minimale respectée)
+export const idYoutube = v => { const s = String(v || '').trim(); if (/^[\w-]{11}$/.test(s)) return s; return (s.match(/(?:youtu\.be\/|[?&]v=|embed\/|shorts\/|live\/)([\w-]{11})/) || [])[1] || ''; };
+export function cadreVideo(id, titre) {
+  return h('div', { class: 'cadre-video' }, h('iframe', {
+    src: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`, title: titre || 'Vidéo',
+    allow: 'autoplay; encrypted-media; picture-in-picture; fullscreen', allowfullscreen: true, referrerpolicy: 'strict-origin-when-cross-origin'
+  }));
+}
+export function ouvrirVideo(v, titre) {
+  const id = idYoutube(v);
+  if (!id) { toast('Vidéo bientôt disponible'); return; }
+  if (!navigator.onLine) { toast('Cette vidéo demande une connexion'); return; }
+  player.pause();
+  const f = feuille(h('div', { class: 'feuille-video' }, h('h2', {}, titre || 'Vidéo'), cadreVideo(id, titre), h('button', { class: 'btn btn-clair', onclick: () => f() }, 'Fermer')));
+}

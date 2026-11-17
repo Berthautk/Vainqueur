@@ -15,7 +15,7 @@ export async function telecharger(url, titre) {
   if (!navigator.onLine) return toast('Connexion nécessaire pour télécharger');
   try {
     toast('Téléchargement…');
-    const r = await fetch(url);
+    const r = await fetch(url, { mode: 'cors' });
     if (!r.ok) throw new Error('http ' + r.status);
     const blob = await r.blob();
     const c = await caches.open(NOM);
@@ -54,4 +54,11 @@ export async function enregistrerSurTelephone(url, titre) {
     document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 5000);
     toast('Enregistré dans les Téléchargements du téléphone');
   } catch { toast('Enregistrement impossible'); }
+}
+
+// Copie gardée d'un audio (ou null)
+export async function blobGarde(url) {
+  if (!dispo() || !url) return null;
+  const r = await (await caches.open(NOM)).match(abs(url));
+  return r ? await r.blob() : null;
 }

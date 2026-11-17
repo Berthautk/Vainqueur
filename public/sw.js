@@ -2,16 +2,17 @@
    - Précache : application, polices, logos, contenus JSON, et toutes les images/audios cités dans les JSON.
    - Les audios téléchargés par l'utilisateur vivent dans le cache « vainqueur-audio » (jamais purgé ici).
    Changer VERSION pour forcer la mise à jour de l'application chez tous les utilisateurs. */
-const VERSION = 'v6';
+const VERSION = 'v7';
 const APP = `vainqueur-app-${VERSION}`;
 const AUDIO = 'vainqueur-audio';
+const BIBLE = 'vainqueur-bible-lsg'; // texte de la Bible : gardé d'une version à l'autre
 
 const STATIQUE = [
   './', 'manifest.webmanifest', 'css/app.css',
-  'js/main.js', 'js/util.js', 'js/player.js', 'js/downloads.js', 'js/partage.js', 'js/pistes.js',
+  'js/main.js', 'js/util.js', 'js/player.js', 'js/downloads.js', 'js/partage.js', 'js/pistes.js', 'js/bible-refs.js', 'js/bible-data.js', 'js/reglages.js', 'js/surlignage.js',
   'js/views/commun.js', 'js/views/accueil.js', 'js/views/priere.js', 'js/views/fiche.js', 'js/views/nayla.js', 'js/views/lecteur.js',
   'js/views/coeurs.js', 'js/views/article.js', 'js/views/affaires.js', 'js/views/evangelisation.js', 'js/views/salut.js',
-  'js/views/temoignages.js', 'js/views/plus.js', 'js/views/telechargements.js', 'js/views/apropos.js', 'js/views/nouveautes.js',
+  'js/views/temoignages.js', 'js/views/plus.js', 'js/views/telechargements.js', 'js/views/apropos.js', 'js/views/nouveautes.js', 'js/views/bible.js', 'js/views/reglages.js', 'js/views/radio.js', 'js/views/sophonie.js', 'bible/livres.json',
   'fonts/playfair-display-latin-600-normal.woff2', 'fonts/playfair-display-latin-700-normal.woff2', 'fonts/playfair-display-latin-800-normal.woff2',
   'fonts/playfair-display-latin-600-italic.woff2', 'fonts/playfair-display-latin-700-italic.woff2',
   'fonts/poppins-latin-400-normal.woff2', 'fonts/poppins-latin-500-normal.woff2', 'fonts/poppins-latin-600-normal.woff2', 'fonts/poppins-latin-700-normal.woff2',
@@ -19,7 +20,7 @@ const STATIQUE = [
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png',
   'assets/illustrations/personnages/p1_12.webp'
 ];
-const CONTENUS = ['config', 'accueil', 'fiches', 'nayla', 'coeurs_brises', 'affaires', 'evangelisation', 'temoignages', 'nouveautes'];
+const CONTENUS = ['config', 'accueil', 'fiches', 'nayla', 'coeurs_brises', 'affaires', 'evangelisation', 'temoignages', 'nouveautes', 'radio', 'plus'];
 
 function imgChemin(id) {
   if (/^i\d/.test(id)) return `assets/illustrations/icones/${id}.webp`;
@@ -71,7 +72,7 @@ self.addEventListener('install', e => {
 
 self.addEventListener('activate', e => {
   e.waitUntil((async () => {
-    for (const k of await caches.keys()) if (k !== APP && k !== AUDIO) await caches.delete(k);
+    for (const k of await caches.keys()) if (k !== APP && k !== AUDIO && k !== BIBLE) await caches.delete(k);
     await self.clients.claim();
   })());
 });
@@ -94,6 +95,16 @@ self.addEventListener('fetch', e => {
   const url = new URL(req.url);
   if (url.origin !== location.origin) return; // YouTube, WhatsApp, etc. : réseau direct
 
+  // Bible : d'abord la copie gardée, sinon internet (et on la garde)
+  if (url.pathname.includes('/bible/lsg/')) {
+    e.respondWith((async () => {
+      const c = await caches.open(BIBLE);
+      const t = await c.match(url.href);
+      if (t) return t;
+      try { const r = await fetch(req); if (r.ok) c.put(url.href, await propre(r.clone())); return r; } catch { return Response.error(); }
+    })());
+    return;
+  }
   const estAudio = req.destination === 'audio' || req.destination === 'video' || /\.(mp3|m4a|ogg)$/i.test(url.pathname);
   if (estAudio) {
     e.respondWith((async () => {
