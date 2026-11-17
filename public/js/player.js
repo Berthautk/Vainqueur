@@ -2,6 +2,7 @@
 // Une piste joue soit un fichier audio (MP3), soit, sans MP3, son texte lu par la voix du téléphone.
 // piste = { id, titre, audio, texte, image, type, lien }
 import { store, toast, imgSrc, mmss } from './util.js';
+import { blobGarde } from './downloads.js';
 
 const audio = new Audio();
 audio.preload = 'metadata';
@@ -22,31 +23,83 @@ function choisirVoix() {
 }
 if (synth) { choisirVoix(); try { synth.addEventListener('voiceschanged', choisirVoix); } catch { synth.onvoiceschanged = choisirVoix; } }
 
-function decouper(texte) {
-  const phrases = String(texte).replace(/\*\*/g, '').replace(/\s+/g, ' ').match(/[^.!?;:]+[.!?;:]*\s*/g) || [texte];
-  const out = []; let c = '';
-  for (const p of phrases) { if ((c + p).length > 180 && c) { out.push(c.trim()); c = p; } else c += p; }
-  if (c.trim()) out.push(c.trim());
+// Une piste « voix » est une suite de segments { t: texte, lu: clé de l'élément affiché (facultatif) }.
+// Chaque segment est coupé en morceaux d'une ou deux phrases ; mot0 = rang du premier mot du morceau dans le segment.
+const mots = s => s.split(/\s+/).filter(Boolean);
+// Ce qui est dit peut différer de ce qui est affiché (« 4:9 » est dit « 4, verset 9 ») :
+// carte[k] = rang, dans le texte affiché, du mot dit n° k.
+const dire = tok => tok.replace(/(\d+):(\d+)\s*[-–]\s*(\d+)/, '$1, versets $2 à $3').replace(/(\d+):(\d+)/, '$1, verset $2');
+function decouper(segments) {
+  const out = [];
+  for (const seg of segments) {
+    const t = String(seg.t || '').replace(/\*\*/g, '').replace(/\s+/g, ' ').trim();
+    if (!t) continue;
+    const phrases = t.match(/[^.!?;]+(?:[.!?;»)]+|$)\s*|[.!?;»)]+\s*/g) || [t];
+    let c = '', mot0 = 0;
+    const pousser = () => {
+      const aff = mots(c); c = '';
+      if (!aff.length) return;
+      const dits = [], carte = [];
+      aff.forEach((tok, k) => mots(dire(tok)).forEach(d => { dits.push(d); carte.push(k); }));
+      out.push({ t: dits.join(' '), lu: seg.lu || null, mot0, carte });
+      mot0 += aff.length;
+    };
+    for (const p of phrases) { if ((c + p).length > 180 && c) pousser(); c += p; }
+    pousser();
+  }
   return out;
 }
-export const estVoix = p => !!p && !p.audio && !!p.texte;
+export const estVoix = p => !!p && !p.audio && !!(p.texte || p.segments);
+async function segmentsDe(p) {
+  if (typeof p.segments === 'function') return await p.segments();
+  return p.segments || [{ t: p.texte }];
+}
+
+// Mot prononcé : on écoute le téléphone (événement « boundary ») ; s'il ne dit rien, on estime le rythme.
+let estim = null;
+const motEcouteurs = new Set();
+export const surMot = f => { motEcouteurs.add(f); return () => motEcouteurs.delete(f); };
+const annoncer = (lu, k) => motEcouteurs.forEach(f => { try { f(lu, k); } catch (e) { console.error(e); } });
+function estimer(m, j) {
+  const liste = mots(m.t); let k = 0;
+  const pas = () => {
+    if (j !== voix.jeton) return;
+    annoncer(m.lu, m.mot0 + (m.carte[k] ?? k));
+    const ms = (liste[k].length + 1) * 68 / (vitesseVoix() || 1);
+    k++; if (k < liste.length) estim = setTimeout(pas, ms);
+  };
+  pas();
+}
+let vitesseVoix = () => 0.95;
+export const regleVitesse = f => { vitesseVoix = f; };
 
 function parler() {
   if (!synth) { voix.joue = false; emettre('etat'); toast('La lecture vocale n\'est pas disponible sur ce téléphone'); return; }
   const j = ++voix.jeton;
+  clearTimeout(estim);
   synth.cancel();
-  if (voix.i >= voix.morceaux.length) { voix.joue = false; voix.i = 0; emettre('etat'); suivant(true); return; }
-  const u = new SpeechSynthesisUtterance(voix.morceaux[voix.i]);
-  u.lang = 'fr-FR'; u.rate = 0.95;
+  if (voix.i >= voix.morceaux.length) { voix.joue = false; voix.i = 0; annoncer(null, 0); emettre('etat'); suivant(true); return; }
+  const m = voix.morceaux[voix.i];
+  const u = new SpeechSynthesisUtterance(m.t);
+  u.lang = 'fr-FR'; u.rate = vitesseVoix();
   if (voixFr) u.voice = voixFr;
-  u.onend = () => { if (j !== voix.jeton) return; voix.i++; emettre('temps'); parler(); };
+  let recu = false;
+  u.onstart = () => { if (j !== voix.jeton) return; annoncer(m.lu, m.mot0); estim = setTimeout(() => { if (!recu && j === voix.jeton) estimer(m, j); }, 500); };
+  u.onboundary = e => {
+    if (j !== voix.jeton || (e.name && e.name !== 'word')) return;
+    if (!recu) { recu = true; clearTimeout(estim); }
+    const k = mots(m.t.slice(0, e.charIndex)).length;
+    annoncer(m.lu, m.mot0 + (m.carte[k] ?? k));
+  };
+  u.onend = () => { if (j !== voix.jeton) return; clearTimeout(estim); voix.i++; emettre('temps'); parler(); };
   u.onerror = e => {
     if (j !== voix.jeton || e.error === 'interrupted' || e.error === 'canceled') return;
+    clearTimeout(estim);
     voix.joue = false; emettre('etat'); toast('La voix du téléphone n\'a pas pu lire ce texte. Vérifie « Synthèse vocale » (voix française) dans les réglages du téléphone.');
   };
   voix.joue = true; synth.speak(u); emettre('etat');
 }
-function stopVoix() { voix.jeton++; voix.joue = false; if (synth) synth.cancel(); }
+function stopVoix() { voix.jeton++; voix.joue = false; clearTimeout(estim); if (synth) synth.cancel(); }
 
 // ---------- État ----------
 export const lit = () => (estVoix(etat.piste) ? voix.joue : !audio.paused);
@@ -80,17 +133,36 @@ export function jouer(piste, file = [piste]) {
   if (etat.index < 0) { etat.file = [piste, ...etat.file]; etat.index = 0; }
   charger(etat.file[etat.index], true);
 }
-function charger(p, auto) {
+let jetonCharge = 0;
+let srcActuel = '', blobUrl = '';
+async function sourceAudio(url) {
+  try {
+    const b = await blobGarde(url);
+    if (b) { if (blobUrl) URL.revokeObjectURL(blobUrl); blobUrl = URL.createObjectURL(b); return blobUrl; }
+  } catch { /* on lit en ligne */ }
+  return url;
+}
+async function charger(p, auto) {
   const change = !etat.piste || etat.piste.id !== p.id;
+  const jc = ++jetonCharge;
   stopVoix();
   etat.piste = p;
   if (estVoix(p)) {
     audio.pause();
-    if (change || !voix.morceaux.length) { voix.morceaux = decouper(p.texte); voix.i = 0; }
+    if (change || !voix.morceaux.length) {
+      voix.morceaux = []; voix.i = 0; annoncer(null, 0);
+      emettre('piste');
+      try { const segs = await segmentsDe(p); if (jc !== jetonCharge) return; voix.morceaux = decouper(segs); }
+      catch { if (jc === jetonCharge) toast('Texte indisponible hors connexion'); return; }
+    }
   } else {
-    const url = new URL(p.audio, document.baseURI).href;
-    if (audio.src !== url) audio.src = p.audio;
-    else if (change) { try { audio.currentTime = 0; } catch { /* ignoré */ } }
+    if (srcActuel !== p.audio) {
+      // Audio téléchargé (même hébergé ailleurs) : on lit la copie gardée sur le téléphone
+      srcActuel = p.audio;
+      const src = await sourceAudio(p.audio);
+      if (jc !== jetonCharge) return;
+      audio.src = src;
+    } else if (change) { try { audio.currentTime = 0; } catch { /* ignoré */ } }
   }
   media();
   emettre('piste');
@@ -120,7 +192,7 @@ function redemarrer() {
   else { audio.currentTime = 0; lire(); }
 }
 function finir() {
-  if (estVoix(etat.piste)) { stopVoix(); voix.i = 0; }
+  if (estVoix(etat.piste)) { stopVoix(); voix.i = 0; annoncer(null, 0); }
   else { audio.pause(); try { audio.currentTime = 0; } catch { /* ignoré */ } }
   emettre('etat'); emettre('temps');
 }
@@ -144,7 +216,7 @@ export const basculerAleatoire = () => { etat.aleatoire = !etat.aleatoire; emett
 export const basculerRepeter = () => { etat.repeter = !etat.repeter; emettre('mode'); };
 // Ferme le lecteur (croix du mini-lecteur)
 export function arreter() {
-  stopVoix(); audio.pause(); audio.removeAttribute('src'); audio.load();
+  stopVoix(); annoncer(null, 0); audio.pause(); audio.removeAttribute('src'); audio.load(); srcActuel = '';
   etat.piste = null; etat.file = []; etat.index = -1;
   store.set('derniere', null);
   emettre('piste');
@@ -168,7 +240,8 @@ export function restaurer(pistes) {
   const p = pistes.find(x => x.id === d.id && x.audio);
   if (!p) return;
   etat.file = pistes; etat.index = pistes.indexOf(p); etat.piste = p;
-  audio.src = p.audio;
+  srcActuel = p.audio;
+  sourceAudio(p.audio).then(s => { if (srcActuel === p.audio) audio.src = s; });
   audio.addEventListener('loadedmetadata', function f() { try { audio.currentTime = d.t || 0; } catch { /* ignoré */ } audio.removeEventListener('loadedmetadata', f); });
   media();
   emettre('piste');
