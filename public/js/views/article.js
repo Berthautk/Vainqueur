@@ -1,16 +1,7 @@
-import { h, img, ico, contenu, ouvrirWhatsApp, tts, gras, toast, feuille } from '../util.js';
+import { h, img, ico, contenu, ouvrirWhatsApp, gras, toast, feuille } from '../util.js';
 import * as player from '../player.js';
-import { retour, enveloppe, ex, vide } from './commun.js';
-
-export function texteTheme(t) {
-  return [t.titre, ...t.sections.map(s => [s.titre, s.texte || '', ...(s.liste || [])].join('. ').replace(/\*\*/g, ''))].join('. ');
-}
-// MP3 si fourni, sinon synthèse vocale du téléphone
-export function ecouterTheme(t, fin) {
-  if (t.audio) { player.jouer({ id: 'cb-' + t.id, titre: t.titre, audio: t.audio, image: t.image, type: 'article' }); return true; }
-  if (tts.actif) { tts.stop(); fin && fin(); return false; }
-  return tts.parler(texteTheme(t), fin);
-}
+import { retour, enveloppe, ex, vide, boutonEcoute } from './commun.js';
+import { pisteTheme, pistesThemes } from '../pistes.js';
 
 function prier(t) {
   if (!t.priere) { location.hash = '#/priere'; return; }
@@ -26,12 +17,7 @@ export default async function (id) {
   const d = await contenu('coeurs_brises');
   const t = d.themes.find(x => x.id === id);
   if (!t) return enveloppe(vide('Article introuvable', 'Ce thème n\'existe pas.'));
-  const btn = h('button', { class: 'btn btn-or' }, ico('casque'), h('span', {}, 'Écouter l\'article'));
-  const label = btn.children[1];
-  btn.onclick = () => {
-    const ok = ecouterTheme(t, () => { label.textContent = 'Écouter l\'article'; });
-    label.textContent = ok && !t.audio ? 'Arrêter la lecture' : 'Écouter l\'article';
-  };
+  const btn = boutonEcoute(pisteTheme(t), pistesThemes(d), { cls: 'btn btn-or', off: 'Écouter l\'article', on: 'Pause' });
   const corps = h('div', { class: 'article' }, t.sections.map(s => [
     h('h2', {}, h('span', {}, s.icone || ''), s.titre),
     s.texte ? h('p', {}, s.texte) : null,
@@ -47,5 +33,5 @@ export default async function (id) {
       h('button', { class: 'btn btn-vert', onclick: () => ouvrirWhatsApp('conseil', ` (sujet : ${t.titre})`) }, ico('chat'), 'Demander conseil'),
       h('button', { class: 'btn btn-or', onclick: () => prier(t) }, ico('mains'), 'Prier pour ce sujet')));
   noeud.querySelectorAll('.art-temps svg').forEach(s => { s.style.width = '20px'; s.style.height = '20px'; });
-  return enveloppe(noeud, () => tts.stop());
+  return enveloppe(noeud);
 }

@@ -2,13 +2,13 @@
    - Précache : application, polices, logos, contenus JSON, et toutes les images/audios cités dans les JSON.
    - Les audios téléchargés par l'utilisateur vivent dans le cache « vainqueur-audio » (jamais purgé ici).
    Changer VERSION pour forcer la mise à jour de l'application chez tous les utilisateurs. */
-const VERSION = 'v5';
+const VERSION = 'v6';
 const APP = `vainqueur-app-${VERSION}`;
 const AUDIO = 'vainqueur-audio';
 
 const STATIQUE = [
   './', 'manifest.webmanifest', 'css/app.css',
-  'js/main.js', 'js/util.js', 'js/player.js', 'js/downloads.js', 'js/partage.js',
+  'js/main.js', 'js/util.js', 'js/player.js', 'js/downloads.js', 'js/partage.js', 'js/pistes.js',
   'js/views/commun.js', 'js/views/accueil.js', 'js/views/priere.js', 'js/views/fiche.js', 'js/views/nayla.js', 'js/views/lecteur.js',
   'js/views/coeurs.js', 'js/views/article.js', 'js/views/affaires.js', 'js/views/evangelisation.js', 'js/views/salut.js',
   'js/views/temoignages.js', 'js/views/plus.js', 'js/views/telechargements.js', 'js/views/apropos.js', 'js/views/nouveautes.js',
@@ -29,7 +29,7 @@ function imgChemin(id) {
 function extraire(valeur, sortie) {
   if (typeof valeur === 'string') {
     if (/^[pqil]\d_\d\d$/.test(valeur)) sortie.add(imgChemin(valeur));
-    else if (/^(audio|assets)\/[\w\-./]+\.(mp3|webp|png|jpg|m4a|ogg)$/i.test(valeur)) sortie.add(valeur);
+    else if (/^assets\/[\w\-./]+\.(webp|png|jpg)$/i.test(valeur)) sortie.add(valeur); // les audios ne sont gardés que sur « Télécharger »
   } else if (Array.isArray(valeur)) valeur.forEach(v => extraire(v, sortie));
   else if (valeur && typeof valeur === 'object') Object.values(valeur).forEach(v => extraire(v, sortie));
 }

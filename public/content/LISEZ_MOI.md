@@ -28,5 +28,14 @@ Avant publication, remplacer ou supprimer tous les témoignages d'exemple.
 - `affaires.json`, `evangelisation.json` (croisades, liens des interviews YouTube, prière du salut), `nouveautes.json` (liste de la cloche).
 
 ## Les audios
-Déposer les MP3 dans le dossier `audio/`, puis écrire leur chemin dans le fichier (`"audio": "audio/nom.mp3"`). On peut aussi donner l'adresse complète d'un MP3 hébergé ailleurs. Retirer `"exemple": true` pour enlever le badge « Exemple ».
-Conseil : MP3 mono, 64 kbit/s, pour des fichiers légers.
+- **Avec un MP3** : déposer le fichier dans `public/audio/`, puis écrire son chemin : `"audio": "audio/nom.mp3"`. On peut aussi mettre l'adresse complète d'un MP3 hébergé ailleurs.
+- **Sans MP3** (fiches, Cœurs brisés, Affaires, témoignages) : le texte est lu par la voix du téléphone. Rien à faire.
+- Taille : MP3 mono 64 kbit/s (environ 0,5 Mo par minute). Limite de Cloudflare : 25 Mo par fichier.
+- Le bouton « Télécharger » garde l'audio dans l'application pour l'écouter sans internet (liste dans Plus › Mes téléchargements, avec « Enregistrer » pour en garder aussi une copie dans le téléphone).
+
+## Les vidéos (Nayla)
+Les vidéos ne se mettent **pas** dans le dépôt : les publier sur **YouTube** (publiques ou « non répertoriées »), puis coller le lien dans l'adoration : `"video": "https://youtu.be/XXXXXXXXXXX"`.
+L'adoration affiche alors un badge « Vidéo » et le bouton « Regarder la vidéo », qui la joue dans l'application. Une adoration peut avoir un audio, une vidéo, ou les deux.
+
+## NAYLA
+Les deux significations (« Nouvelle Adoration à Yahweh, l'Éternel des Armées » et « Nous Adorons Yeshua, l'Éternel des Armées ») alternent à chaque ouverture de l'application, et changent aussi en douceur sur la page Nayla. Elles se modifient dans `public/js/util.js` (liste `NAYLA`).

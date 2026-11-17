@@ -1,7 +1,7 @@
-import { h, img, ico, contenu, ouvrirWhatsApp, tts } from '../util.js';
+import { h, img, ico, contenu, ouvrirWhatsApp } from '../util.js';
 import * as player from '../player.js';
-import { enveloppe, ex } from './commun.js';
-import { ecouterTheme } from './article.js';
+import { enveloppe, ex, boutonEcoute } from './commun.js';
+import { pisteTheme, pistesThemes } from '../pistes.js';
 
 export default async function () {
   const d = await contenu('coeurs_brises');
@@ -16,18 +16,7 @@ export default async function () {
         h('h3', {}, t.titre, ex(t)),
         h('div', { class: 'theme-cb-btns' },
           h('a', { class: 'btn btn-clair', href: `#/coeurs/${t.id}` }, ico('livre'), 'Lire'),
-          boutonEcouter(t))))),
+          boutonEcoute(pisteTheme(t), pistesThemes(d), { cls: 'btn btn-vert', off: 'Écouter', on: 'Pause' }))))),
     h('button', { class: 'btn btn-vert btn-bloc', onclick: () => ouvrirWhatsApp('conseil') }, ico('chat'), 'Écrire pour demander conseil ›'));
-  function boutonEcouter(t) {
-    const b = h('button', { class: 'btn btn-vert' }, ico('casque'), h('span', {}, 'Écouter'));
-    b.onclick = () => {
-      const enCours = b.dataset.on === '1';
-      noeud && noeud.querySelectorAll('.theme-cb .btn-vert').forEach(x => { x.dataset.on = ''; x.lastChild.textContent = 'Écouter'; });
-      if (enCours && !t.audio) { tts.stop(); return; }
-      const ok = ecouterTheme(t, () => { b.dataset.on = ''; b.lastChild.textContent = 'Écouter'; });
-      if (ok && !t.audio) { b.dataset.on = '1'; b.lastChild.textContent = 'Arrêter'; }
-    };
-    return b;
-  }
-  return enveloppe(noeud, () => tts.stop());
+  return enveloppe(noeud);
 }

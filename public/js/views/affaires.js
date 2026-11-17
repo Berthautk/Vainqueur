@@ -1,6 +1,7 @@
 import { h, img, ico, contenu, ouvrirWhatsApp } from '../util.js';
 import * as player from '../player.js';
-import { retour, enveloppe, ex } from './commun.js';
+import { retour, enveloppe, ex, boutonEcoute } from './commun.js';
+import { pisteModule } from '../pistes.js';
 
 export default async function () {
   const d = await contenu('affaires');
@@ -18,7 +19,7 @@ export default async function () {
     const detail = h('div', { class: 'detail', hidden: true },
       h('p', {}, mo.enseignement),
       h('p', {}, h('strong', {}, 'Sujet de prière : '), mo.sujet),
-      mo.audio ? h('button', { class: 'btn btn-bleu btn-petit', onclick: () => player.jouer({ id: 'aff-' + mo.id, titre: mo.titre, audio: mo.audio, image: mo.image, type: 'enseignement' }) }, ico('casque'), 'Écouter l\'enseignement') : null);
+      boutonEcoute(pisteModule(mo), d.modules.map(pisteModule), { cls: 'btn btn-bleu btn-petit', off: 'Écouter l\'enseignement', on: 'Pause' }));
     const l = h('div', { class: 'ligne ligne-aff', role: 'button', tabindex: 0, 'aria-expanded': 'false' },
       img(mo.image, '', 'ligne-img'),
       h('div', { class: 'ligne-txt' }, h('h3', {}, img(mo.icone, '', ''), h('span', {}, mo.titre, ex(mo))), h('div', { class: 'ligne-meta' }, ico('livre'), 'Enseignement + sujet de prière')),

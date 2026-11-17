@@ -21,7 +21,7 @@ export async function telecharger(url, titre) {
     const c = await caches.open(NOM);
     await c.put(abs(url), new Response(blob, { headers: { 'Content-Type': blob.type || 'audio/mpeg', 'Content-Length': blob.size } }));
     const m = meta(); m[abs(url)] = { titre, taille: blob.size, date: Date.now() }; setMeta(m);
-    toast('Téléchargé ✔');
+    toast('Téléchargé ✔ — gardé dans l\'application', { label: 'Voir', href: '#/telechargements' });
     return true;
   } catch { toast('Échec du téléchargement'); return false; }
 }
@@ -41,3 +41,17 @@ export async function lister() {
   } catch { return []; }
 }
 export { octets };
+
+// Copie le fichier gardé dans le dossier « Téléchargements » du téléphone
+export async function enregistrerSurTelephone(url, titre) {
+  try {
+    const c = await caches.open(NOM);
+    const r = await c.match(abs(url));
+    if (!r) return toast('Fichier introuvable');
+    const blob = await r.blob();
+    const nom = (titre || 'audio').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w-]+/g, '-').replace(/^-|-$/g, '') + '.mp3';
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = nom;
+    document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+    toast('Enregistré dans les Téléchargements du téléphone');
+  } catch { toast('Enregistrement impossible'); }
+}

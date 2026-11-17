@@ -1,6 +1,7 @@
 import { h, img, ico, contenu, ouvrirWhatsApp, mmss } from '../util.js';
 import * as player from '../player.js';
-import { retour, enveloppe, ex, vide } from './commun.js';
+import { retour, enveloppe, ex, vide, boutonEcoute } from './commun.js';
+import { pisteTemoignage } from '../pistes.js';
 
 const ICONES = { 'Délivrance': '🔗', 'Guérison': '❤️', 'Famille': '👨‍👩‍👧', 'Affaires': '📈' };
 function onde(seed) { const e = h('div', { class: 'onde', 'aria-hidden': 'true' }); for (let i = 0; i < 34; i++) e.append(h('i', { style: `height:${20 + Math.abs(Math.sin((i + seed) * 1.7)) * 80}%` })); return e; }
@@ -16,13 +17,13 @@ export default async function () {
     liste.replaceChildren(...(items.length ? items.map((t, i) => carte(t, i)) : [vide('Aucun témoignage', 'Il n\'y en a pas encore dans cette catégorie.')]));
   }
   function carte(t, i) {
-    const pp = h('button', { class: 'btn-lire', 'aria-label': `Écouter le témoignage de ${t.prenom}` }, ico('play'));
-    pp.onclick = () => { const p = { id: 'tem-' + t.id, titre: `Témoignage — ${t.prenom}`, audio: t.audio, image: t.image, type: 'temoignage' }; if (player.etat.piste && player.etat.piste.id === p.id) player.basculer(); else player.jouer(p); };
+    const file = d.items.filter(x => filtre === 'Tous' || x.categorie === filtre).map(pisteTemoignage);
+    const pp = boutonEcoute(pisteTemoignage(t), file, { cls: 'btn-lire', icone: 'play', aria: `Écouter le témoignage de ${t.prenom}` });
     return h('article', { class: 'temo' }, img(t.image, '', ''),
       h('div', { class: 'temo-corps' },
         h('div', { class: 'temo-tete' }, h('div', {}, h('h3', {}, t.prenom, ex(t)), h('small', {}, '📍 ' + t.ville)), h('span', { class: `cat cat-${t.categorie}` }, `${ICONES[t.categorie] || ''} ${t.categorie}`)),
         h('p', {}, `« ${t.extrait} »`),
-        t.audio ? h('div', { class: 'audio-temo' }, pp, onde(i * 3), h('time', {}, t.duree)) : null));
+        h('div', { class: 'audio-temo' }, pp, onde(i * 3), h('time', {}, t.audio ? t.duree : 'Voix'))));
   }
   const menu = h('div', { class: 'menu-temo', hidden: true },
     [['micro', 'Message vocal', 'temoigner_vocal', '#1BA34A'], ['texte', 'Texte', 'temoigner_texte', '#2D6BE0'], ['photo', 'Photo', 'temoigner_photo', '#7A3CC8']].map(([ic, lab, cle, col]) =>

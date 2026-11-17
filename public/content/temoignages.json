@@ -1,9 +1,46 @@
 {
-  "categories": ["Délivrance", "Guérison", "Famille", "Affaires"],
+  "categories": [
+    "Délivrance",
+    "Guérison",
+    "Famille",
+    "Affaires"
+  ],
   "items": [
-    { "id": "t1", "prenom": "Exemple A.", "ville": "Ville", "categorie": "Délivrance", "image": "p2_02", "extrait": "Pendant des années, j'étais tourmentée par des rêves étranges. Après les prières de délivrance, je dors enfin en paix…", "audio": "audio/exemple_adoration.mp3", "duree": "3:28", "exemple": true },
-    { "id": "t2", "prenom": "Exemple B.", "ville": "Ville", "categorie": "Guérison", "image": "p5_10", "extrait": "Les médecins ne trouvaient pas la cause de ma maladie. J'ai remis ma vie entre les mains de Jésus et aujourd'hui je suis totalement guéri…", "audio": "audio/exemple_adoration.mp3", "duree": "4:12", "exemple": true },
-    { "id": "t3", "prenom": "Exemple C.", "ville": "Ville", "categorie": "Famille", "image": "p4_04", "extrait": "Mon mariage était au bord de la rupture. Dieu a restauré l'amour et l'unité dans notre foyer. Aujourd'hui, ma famille sert le Seigneur…", "audio": "audio/exemple_adoration.mp3", "duree": "3:56", "exemple": true },
-    { "id": "t4", "prenom": "Exemple D.", "ville": "Ville", "categorie": "Affaires", "image": "q2_05", "extrait": "Mon commerce était en faillite. Après avoir appliqué les enseignements et prié, Dieu a ouvert de nouvelles portes. Mon activité prospère…", "audio": "audio/exemple_adoration.mp3", "duree": "4:27", "exemple": true }
+    {
+      "id": "t1",
+      "prenom": "Exemple A.",
+      "ville": "Ville",
+      "categorie": "Délivrance",
+      "image": "p2_02",
+      "extrait": "Pendant des années, j'étais tourmentée par des rêves étranges. Après les prières de délivrance, je dors enfin en paix…",
+      "exemple": true
+    },
+    {
+      "id": "t2",
+      "prenom": "Exemple B.",
+      "ville": "Ville",
+      "categorie": "Guérison",
+      "image": "p5_10",
+      "extrait": "Les médecins ne trouvaient pas la cause de ma maladie. J'ai remis ma vie entre les mains de Jésus et aujourd'hui je suis totalement guéri…",
+      "exemple": true
+    },
+    {
+      "id": "t3",
+      "prenom": "Exemple C.",
+      "ville": "Ville",
+      "categorie": "Famille",
+      "image": "p4_04",
+      "extrait": "Mon mariage était au bord de la rupture. Dieu a restauré l'amour et l'unité dans notre foyer. Aujourd'hui, ma famille sert le Seigneur…",
+      "exemple": true
+    },
+    {
+      "id": "t4",
+      "prenom": "Exemple D.",
+      "ville": "Ville",
+      "categorie": "Affaires",
+      "image": "q2_05",
+      "extrait": "Mon commerce était en faillite. Après avoir appliqué les enseignements et prié, Dieu a ouvert de nouvelles portes. Mon activité prospère…",
+      "exemple": true
+    }
   ]
 }

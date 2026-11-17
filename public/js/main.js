@@ -1,4 +1,6 @@
-import { $, $$, h, ico, store, contenu, imgSrc, toast } from './util.js';
+import { $, $$, h, ico, eq, store, contenu, imgSrc, toast } from './util.js';
+import { pisteAdoration } from './pistes.js';
+import { majBouton } from './views/commun.js';
 import * as player from './player.js';
 
 const routes = [
@@ -66,32 +68,35 @@ async function aller() {
 function majMini() {
   const m = $('#mini'); const v = $('#vue');
   const p = player.etat.piste;
-  const visible = p && document.body.dataset.lecteur !== '1' && document.body.dataset.ecoute !== p.id;
-  m.hidden = !visible; v.classList.toggle('avec-mini', !!visible);
-  if (!p) return;
-  if (m.dataset.id !== p.id || !m.firstChild) {
-    m.dataset.id = p.id;
-    m.replaceChildren(
-      h('a', { href: `#/nayla/${p.id}`, 'aria-label': 'Ouvrir le lecteur' },
-        h('img', { src: imgSrc(p.image), alt: '' }),
-        h('div', { class: 'mini-txt' }, h('b', {}, p.titre), h('small', { id: 'mini-t' }, '0:00'))),
-      h('button', { class: 'ic-btn', 'aria-label': 'Précédent', onclick: () => player.precedent() }, ico('prec', 'ic')),
+  const visible = !!p && document.body.dataset.lecteur !== '1' && document.body.dataset.ecoute !== p.id;
+  m.hidden = !visible; v.classList.toggle('avec-mini', visible);
+  if (!p) { m.dataset.id = ''; return; }
+  const plusieurs = player.etat.file.length > 1;
+  if (m.dataset.id !== p.id || m.dataset.n !== String(plusieurs)) {
+    m.dataset.id = p.id; m.dataset.n = String(plusieurs);
+    m.replaceChildren(...[
+      h('a', { class: 'mini-lien', href: p.lien || null, 'aria-label': `Ouvrir : ${p.titre}` },
+        h('span', { class: 'mini-pochette' }, h('img', { src: imgSrc(p.image), alt: '' }), eq(4)),
+        h('span', { class: 'mini-txt' }, h('b', {}, p.titre), h('small', { id: 'mini-t' }, ''))),
+      plusieurs ? h('button', { class: 'ic-btn', 'aria-label': 'Précédent', onclick: () => player.precedent() }, ico('prec', 'ic')) : null,
       h('button', { class: 'btn-lire', id: 'mini-pp', onclick: () => player.basculer() }),
-      h('button', { class: 'ic-btn', 'aria-label': 'Suivant', onclick: () => player.suivant() }, ico('suiv', 'ic')),
-      h('div', { class: 'mini-barre' }, h('i', { id: 'mini-b' })));
-    if (p.type === 'adoration') m.querySelector('a').href = `#/nayla/${p.id}`; else m.querySelector('a').removeAttribute('href');
+      plusieurs ? h('button', { class: 'ic-btn', 'aria-label': 'Suivant', onclick: () => player.suivant() }, ico('suiv', 'ic')) : null,
+      h('button', { class: 'mini-fermer', 'aria-label': 'Fermer le lecteur', onclick: () => { player.arreter(); } }, ico('fermer')),
+      h('div', { class: 'mini-barre' }, h('i', { id: 'mini-b' }))].filter(Boolean));
   }
+  const on = player.lit();
+  m.classList.toggle('joue', on);
   const pp = $('#mini-pp');
-  pp.replaceChildren(ico(player.lit() ? 'pause' : 'play')); pp.setAttribute('aria-label', player.lit() ? 'Pause' : 'Lecture');
+  pp.replaceChildren(ico(on ? 'pause' : 'play')); pp.setAttribute('aria-label', on ? 'Pause' : 'Lecture');
 }
+window.addEventListener('vq-mini', () => majMini());
 function majMiniTemps() {
   const { t, d } = player.temps();
   const a = $('#mini-t'), b = $('#mini-b');
-  if (a) a.textContent = `${fmt(t)} / ${fmt(d)}`;
-  if (b) b.style.width = d ? `${(t / d) * 100}%` : '0';
+  if (a) a.textContent = player.libelleTemps();
+  if (b) b.style.width = d ? `${Math.min(100, (t / d) * 100)}%` : '0';
 }
-const fmt = s => { s = Math.floor(s || 0); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
-player.sur(t => { if (t === 'temps') majMiniTemps(); else { majMini(); majMiniTemps(); } });
+player.sur(t => { if (t !== 'temps') { majMini(); document.querySelectorAll('[data-piste]').forEach(majBouton); } majMiniTemps(); });
 
 // ---- Cloche / nouveautés ----
 async function pastille() {
@@ -110,6 +115,7 @@ addEventListener('online', majReseau); addEventListener('offline', majReseau);
 
 // ---- Démarrage ----
 async function demarrer() {
+  store.set('ouvertures', store.get('ouvertures', 0) + 1);
   const splash = $('#splash'), app = $('#app');
   const debut = performance.now();
   app.hidden = false;
@@ -117,7 +123,7 @@ async function demarrer() {
   addEventListener('hashchange', aller);
   const prete = aller();
   // Restaure la dernière écoute
-  contenu('nayla').then(c => player.restaurer(c.adorations.map(a => ({ id: a.id, titre: a.titre, audio: a.audio, image: a.image, type: 'adoration' })))).catch(() => {});
+  contenu('nayla').then(c => player.restaurer(c.adorations.filter(a => a.audio).map(pisteAdoration))).catch(() => {});
   pastille();
   await prete;
   const reste = Math.max(0, 1500 - (performance.now() - debut));

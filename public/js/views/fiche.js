@@ -1,6 +1,7 @@
 import { h, img, ico, contenu, store, partager, toast, mmss, ouvrirWhatsApp, aujourdhui } from '../util.js';
 import * as player from '../player.js';
 import { retour, enveloppe, ex, vide } from './commun.js';
+import { pisteFiche, pistesFiches } from '../pistes.js';
 
 export default async function (id) {
   const d = await contenu('fiches');
@@ -22,19 +23,25 @@ export default async function (id) {
     const prieDeja = store.get(`prie:${f.id}:${periode}`, '') === jour;
 
     // --- Lecteur de l'enseignement (lecteur audio global) ---
-    const piste = { id: f.id, titre: `Enseignement – ${f.titre}`, audio: f.audio, image: f.image, type: 'fiche' };
+    const piste = pisteFiche(f, periode); const file = pistesFiches(d, periode);
+    document.body.dataset.ecoute = piste.id; window.dispatchEvent(new Event('vq-mini'));
     const pp = h('button', { class: 'btn-lire', 'aria-label': 'Lecture' });
     const curs = h('input', { type: 'range', min: 0, max: 1000, value: 0, 'aria-label': 'Position' });
     const tps = h('span', {}, '0:00 / 0:00');
     const maj = () => {
-      const mien = player.etat.piste && player.etat.piste.id === f.id;
+      const p = player.etat.piste;
+      // « Suivant » dans le lecteur : on suit la fiche qui joue
+      if (p && p.type === 'fiche' && p.id !== piste.id && p.id.endsWith('-' + periode) && d.fiches.some(x => p.id === `f-${x.id}-${periode}`)) { location.replace(p.lien); return; }
+      const mien = p && p.id === piste.id;
       pp.replaceChildren(ico(mien && player.lit() ? 'pause' : 'play'));
       const { t, d: du } = mien ? player.temps() : { t: 0, d: 0 };
       curs.value = du ? (t / du) * 1000 : 0; curs.style.setProperty('--p', `${du ? (t / du) * 100 : 0}%`);
-      tps.textContent = `${mmss(t)} / ${du ? mmss(du) : `${f.duree}:00`}`;
+      tps.textContent = mien ? player.libelleTemps() : (f.audio ? `0:00 / ${f.duree}:00` : 'Lu par la voix du téléphone');
     };
-    pp.onclick = () => { if (player.etat.piste && player.etat.piste.id === f.id) player.basculer(); else player.jouer(piste); };
-    curs.oninput = () => { const { d: du } = player.temps(); if (player.etat.piste && player.etat.piste.id === f.id) player.aller((curs.value / 1000) * du); };
+    pp.onclick = () => { if (player.etat.piste && player.etat.piste.id === piste.id) player.basculer(); else player.jouer(piste, file); };
+    curs.oninput = () => { const { d: du } = player.temps(); if (player.etat.piste && player.etat.piste.id === piste.id) player.aller((curs.value / 1000) * du); };
+    const prec = h('button', { class: 'ic-mini', 'aria-label': 'Fiche précédente', onclick: () => { if (player.etat.piste && player.etat.piste.id === piste.id) player.precedent(); else player.jouer(file[(file.findIndex(x => x.id === piste.id) - 1 + file.length) % file.length], file); } }, ico('prec'));
+    const suiv = h('button', { class: 'ic-mini', 'aria-label': 'Fiche suivante', onclick: () => { if (player.etat.piste && player.etat.piste.id === piste.id) player.suivant(); else player.jouer(file[(file.findIndex(x => x.id === piste.id) + 1) % file.length], file); } }, ico('suiv'));
     nettoyeurs.push(player.sur(maj)); maj();
 
     const paras = bloc.enseignement.split('\n\n');
@@ -58,7 +65,7 @@ export default async function (id) {
       h('section', { class: 'bloc' }, h('div', { class: 'bloc-titre' }, ico('livre'), 'Enseignement'),
         h('div', { class: 'bloc-corps' },
           h('div', { class: 'lecteur-mini' }, img('p1_12', '', ''),
-            h('div', { class: 'piste' }, h('b', {}, piste.titre), pp, h('div', { class: 'curseur' }, curs, tps))),
+            h('div', { class: 'piste' }, h('b', {}, `Enseignement du ${periode} – ${f.titre}`), h('div', { class: 'piste-cmds' }, prec, pp, suiv), h('div', { class: 'curseur' }, curs, tps))),
           texte, suite)),
       h('section', { class: 'bloc' }, h('div', { class: 'bloc-titre' }, ico('mains'), 'Tes 5 sujets de prière'), liste),
       btnPrie, merci,
@@ -70,6 +77,5 @@ export default async function (id) {
       h('div', { class: 'hero-ligne' }, retour('#/priere'), h('h1', {}, f.titre, ex(f)))),
     bascule, zone);
   dessiner();
-  document.body.dataset.ecoute = f.id;
-  return enveloppe(noeud, () => { nettoyeurs.splice(0).forEach(n => n()); document.body.dataset.ecoute = ''; });
+    return enveloppe(noeud, () => { nettoyeurs.splice(0).forEach(n => n()); document.body.dataset.ecoute = ''; });
 }

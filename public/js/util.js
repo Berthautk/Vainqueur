@@ -84,6 +84,8 @@ const P = {
   video: '<rect x="2" y="6" width="14" height="12" rx="2" fill="currentColor"/><path d="M17 10l5-3v10l-5-3z" fill="currentColor"/>',
   porte: '<path d="M10 4v16M4 12h16M7 7h6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>',
   croix: '<path d="M12 2v20M5 8h14" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/>',
+  fermer: '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>',
+  telephone: '<rect x="6" y="2.5" width="12" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v7m0 0l-3-3m3 3l3-3M10 18.5h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
   calendrier: '<rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7 14h2M11 14h2M15 14h2M7 17h2M11 17h2" stroke="currentColor" stroke-width="2.2"/>'
 };
 export function ico(nom, cls = '') {
@@ -96,10 +98,27 @@ export function ico(nom, cls = '') {
 
 // ---- Toast ----
 let tToast;
-export function toast(msg) {
+// action facultative : { label, href }
+export function toast(msg, action) {
   const t = $('#toast'); if (!t) return;
-  t.textContent = msg; t.hidden = false;
-  clearTimeout(tToast); tToast = setTimeout(() => { t.hidden = true; }, 2600);
+  t.replaceChildren(...[h('span', {}, msg), action ? h('a', { class: 'toast-action', href: action.href, onclick: () => { t.hidden = true; } }, action.label) : null].filter(Boolean));
+  t.hidden = false;
+  clearTimeout(tToast); tToast = setTimeout(() => { t.hidden = true; }, action ? 5000 : 2600);
+}
+
+// Petit égaliseur animé « en cours de lecture »
+export const eq = (n = 4, cls = 'eq') => h('span', { class: cls, 'aria-hidden': 'true' }, Array.from({ length: n }, (_, i) => h('i', { style: `--d:${(-((i * 37) % 11) / 10).toFixed(1)}s;--v:${(0.7 + ((i * 53) % 7) / 10).toFixed(1)}s` })));
+
+// ---- NAYLA : deux significations qui alternent d'une ouverture à l'autre ----
+export const NAYLA = [
+  [['N', 'ouvelle '], ['A', 'doration à '], ['Y', 'ahweh,'], ['L', '\'Éternel des '], ['A', 'rmées']],
+  [['N', 'ous '], ['A', 'dorons '], ['Y', 'eshua,'], ['L', '\'Éternel des '], ['A', 'rmées']]
+];
+export const naylaIndex = () => (store.get('ouvertures', 1) - 1) % NAYLA.length;
+export const naylaTexte = i => NAYLA[i].map(([a, b]) => a + b).join(' ').replace(/ ' /g, ' ').replace(/  +/g, ' ').replace(/ ,/g, ',');
+export function naylaSens(i, cls = 'nayla-sens') {
+  return h('p', { class: cls, 'aria-label': naylaTexte(i).replace(/\s+/g, ' ') },
+    NAYLA[i].map(([a, b], k) => [h('b', { 'aria-hidden': 'true' }, a), h('span', { 'aria-hidden': 'true' }, b), k === 2 ? h('br') : (b.endsWith(' ') ? null : ' ')]));
 }
 
 // ---- Feuille modale ----

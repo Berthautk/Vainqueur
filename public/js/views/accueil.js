@@ -1,4 +1,6 @@
-import { h, img, ico, contenu, tts, partager, toast, store, ficheDuJour, prieAujourdhui } from '../util.js';
+import { h, img, ico, contenu, partager, toast, store, ficheDuJour, prieAujourdhui } from '../util.js';
+import { pisteParole } from '../pistes.js';
+import { boutonEcoute } from './commun.js';
 import * as player from '../player.js';
 import { imageParole, partagerImage } from '../partage.js';
 import { enveloppe } from './commun.js';
@@ -13,11 +15,7 @@ export default async function () {
   const fiche = ficheDuJour(fiches);
   const fait = prieAujourdhui(fiche.id);
 
-  const btnEcouter = h('button', { class: 'btn btn-bleu btn-petit' }, ico('casque'), 'Écouter');
-  btnEcouter.onclick = () => {
-    if (tts.actif) { tts.stop(); btnEcouter.lastChild.textContent = 'Écouter'; return; }
-    if (tts.parler(`${pa.texte}. ${pa.ref.replace(/(\d+):(\d+)/, '$1, verset $2')}`, () => { btnEcouter.lastChild.textContent = 'Écouter'; })) btnEcouter.lastChild.textContent = 'Arrêter';
-  };
+  const btnEcouter = boutonEcoute(pisteParole(pa), null, { cls: 'btn btn-bleu btn-petit', off: 'Écouter', on: 'Pause' });
 
   // L'image est préparée à l'avance : le partage part tout de suite au toucher (exigé par Android).
   let image = null;
@@ -58,7 +56,7 @@ export default async function () {
     h('div', { class: 'hors-ligne' }, h('span', { class: 'pilule-vert' }, ico('wifi'), 'Disponible hors connexion')));
   const majInst = () => { const z = noeud.querySelector('.installer'); if (z) z.hidden = !window.vqInstall; };
   window.addEventListener('vq-installable', majInst);
-  return enveloppe(noeud, () => { tts.stop(); window.removeEventListener('vq-installable', majInst); });
+  return enveloppe(noeud, () => { window.removeEventListener('vq-installable', majInst); });
 }
 
 export function installer() {

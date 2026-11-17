@@ -1,10 +1,71 @@
 {
   "adorations": [
-    { "id": "n1", "titre": "Je t'aime, Jésus", "duree": "6:24", "image": "p5_03", "audio": "audio/exemple_adoration.mp3", "paroles": "Je t'aime, Jésus,\nTu es mon premier amour,\nMon cœur te cherche chaque jour.\n\nTu m'as aimé le premier,\nTu m'as relevé et pardonné,\nJe lève mes mains vers toi.", "enseignement": "Aimer Jésus n'est pas d'abord un effort : c'est une réponse à son amour. Laisse cette adoration ouvrir ton cœur.", "exemple": true },
-    { "id": "n2", "titre": "Le mystère du sang de Jésus", "duree": "8:17", "image": "p3_02", "audio": "audio/exemple_adoration.mp3", "paroles": "Le sang de Jésus parle,\nIl parle de pardon,\nIl parle de victoire,\nIl parle de liberté.", "enseignement": "Le sang de Jésus a été versé pour notre pardon et notre délivrance (Hébreux 9:14).", "exemple": true },
-    { "id": "n3", "titre": "Agneau immolé", "duree": "5:38", "image": "p2_03", "audio": "audio/exemple_adoration.mp3", "paroles": "Agneau immolé,\nToi qui as porté mes péchés,\nJe t'adore, je t'exalte,\nTu es digne de toute gloire.\n\nTon sang m'a lavé,\nTa mort m'a donné la vie,\nAujourd'hui je marche victorieux,\nPar la puissance de ta croix.\n\nJésus, Agneau immolé,\nReçois mon adoration,\nÀ toi l'honneur, à toi la gloire,\nPour les siècles des siècles. Amen !", "enseignement": "« Voici l'Agneau de Dieu, qui ôte le péché du monde » (Jean 1:29). Contemple ce que Jésus a fait pour toi.", "exemple": true },
-    { "id": "n4", "titre": "Je me prosterne devant toi", "duree": "7:02", "image": "q3_05", "audio": "audio/exemple_adoration.mp3", "paroles": "Je me prosterne devant toi,\nSeigneur, tu es mon roi,\nTout mon cœur est à toi.", "enseignement": "La vraie adoration commence par l'humilité du cœur.", "exemple": true },
-    { "id": "n5", "titre": "Jésus a vaincu la mort", "duree": "6:59", "image": "q3_02", "audio": "audio/exemple_adoration.mp3", "paroles": "Jésus a vaincu la mort,\nLe tombeau est vide,\nIl est vivant, alléluia !", "enseignement": "La résurrection est le fondement de notre victoire (1 Corinthiens 15:57).", "exemple": true },
-    { "id": "n6", "titre": "Tu es mon refuge", "duree": "5:46", "image": "q1_04", "audio": "audio/exemple_adoration.mp3", "paroles": "Tu es mon refuge,\nMon rocher, ma forteresse,\nEn toi je me confie.", "enseignement": "« Dieu est pour nous un refuge et un appui » (Psaume 46:2).", "exemple": true }
-  ]
+    {
+      "id": "n1",
+      "titre": "Je t'aime, Jésus",
+      "duree": "0:41",
+      "image": "p5_03",
+      "audio": "audio/exemple_nayla_1.mp3",
+      "paroles": "Je t'aime, Jésus,\nTu es mon premier amour,\nMon cœur te cherche chaque jour.\n\nTu m'as aimé le premier,\nTu m'as relevé et pardonné,\nJe lève mes mains vers toi.",
+      "enseignement": "Aimer Jésus n'est pas d'abord un effort : c'est une réponse à son amour. Laisse cette adoration ouvrir ton cœur.",
+      "exemple": true,
+      "video": ""
+    },
+    {
+      "id": "n2",
+      "titre": "Le mystère du sang de Jésus",
+      "duree": "0:41",
+      "image": "p3_02",
+      "audio": "audio/exemple_nayla_2.mp3",
+      "paroles": "Le sang de Jésus parle,\nIl parle de pardon,\nIl parle de victoire,\nIl parle de liberté.",
+      "enseignement": "Le sang de Jésus a été versé pour notre pardon et notre délivrance (Hébreux 9:14).",
+      "exemple": true,
+      "video": ""
+    },
+    {
+      "id": "n3",
+      "titre": "Agneau immolé",
+      "duree": "0:41",
+      "image": "p2_03",
+      "audio": "audio/exemple_nayla_3.mp3",
+      "paroles": "Agneau immolé,\nToi qui as porté mes péchés,\nJe t'adore, je t'exalte,\nTu es digne de toute gloire.\n\nTon sang m'a lavé,\nTa mort m'a donné la vie,\nAujourd'hui je marche victorieux,\nPar la puissance de ta croix.\n\nJésus, Agneau immolé,\nReçois mon adoration,\nÀ toi l'honneur, à toi la gloire,\nPour les siècles des siècles. Amen !",
+      "enseignement": "« Voici l'Agneau de Dieu, qui ôte le péché du monde » (Jean 1:29). Contemple ce que Jésus a fait pour toi.",
+      "exemple": true,
+      "video": ""
+    },
+    {
+      "id": "n4",
+      "titre": "Je me prosterne devant toi",
+      "duree": "0:41",
+      "image": "q3_05",
+      "audio": "audio/exemple_nayla_4.mp3",
+      "paroles": "Je me prosterne devant toi,\nSeigneur, tu es mon roi,\nTout mon cœur est à toi.",
+      "enseignement": "La vraie adoration commence par l'humilité du cœur.",
+      "exemple": true,
+      "video": ""
+    },
+    {
+      "id": "n5",
+      "titre": "Jésus a vaincu la mort",
+      "duree": "0:41",
+      "image": "q3_02",
+      "audio": "audio/exemple_nayla_5.mp3",
+      "paroles": "Jésus a vaincu la mort,\nLe tombeau est vide,\nIl est vivant, alléluia !",
+      "enseignement": "La résurrection est le fondement de notre victoire (1 Corinthiens 15:57).",
+      "exemple": true,
+      "video": ""
+    },
+    {
+      "id": "n6",
+      "titre": "Tu es mon refuge",
+      "duree": "0:41",
+      "image": "q1_04",
+      "audio": "audio/exemple_nayla_6.mp3",
+      "paroles": "Tu es mon refuge,\nMon rocher, ma forteresse,\nEn toi je me confie.",
+      "enseignement": "« Dieu est pour nous un refuge et un appui » (Psaume 46:2).",
+      "exemple": true,
+      "video": ""
+    }
+  ],
+  "_note": "audio = MP3 (dossier audio/ ou adresse complète). video = lien YouTube (facultatif) : la vidéo se regarde dans l'application. Une adoration peut avoir l'un, l'autre ou les deux."
 }

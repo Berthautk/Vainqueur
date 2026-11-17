@@ -19,7 +19,6 @@
       "duree": 6,
       "image": "p2_02",
       "bandeau": "p3_03",
-      "audio": "audio/exemple_adoration.mp3",
       "exemple": true,
       "matin": {
         "enseignement": "Les rêves peuvent être un canal de communication spirituelle. Mais quand ils sont pollués par l'ennemi, ils deviennent une porte d'attaque dans ta vie : fatigue, blocage, maladie, échec, peur.\n\nDans cet enseignement, tu apprends à fermer ces portes par la prière et par la Parole. Dieu donne le sommeil à ceux qu'il aime (Psaume 127:2). Tu peux te coucher en paix et te réveiller en victoire.\n\nChaque matin, remets ta nuit entre les mains de Dieu, renonce à toute influence qui n'est pas de lui, et déclare la protection du Seigneur sur ta journée.",
@@ -48,7 +47,6 @@
       "duree": 8,
       "image": "p5_01",
       "bandeau": "p5_01",
-      "audio": "audio/exemple_adoration.mp3",
       "exemple": true,
       "matin": {
         "enseignement": "Certaines alliances secrètes freinent la vie d'un couple ou d'un célibataire. En Christ, toute alliance qui n'est pas de Dieu peut être rompue.\n\nProclame la liberté que Jésus a acquise à la croix et marche dans la place que Dieu t'a réservée.",
@@ -77,7 +75,6 @@
       "duree": 5,
       "image": "l7_02",
       "bandeau": "l7_02",
-      "audio": "audio/exemple_adoration.mp3",
       "exemple": true,
       "matin": {
         "enseignement": "Ta maison peut devenir un sanctuaire. Josué a déclaré : « Moi et ma maison, nous servirons l'Éternel » (Josué 24:15).\n\nParcours chaque pièce en priant, en remerciant et en déclarant que Jésus en est le Seigneur.",
@@ -106,7 +103,6 @@
       "duree": 7,
       "image": "p5_07",
       "bandeau": "p5_07",
-      "audio": "audio/exemple_adoration.mp3",
       "exemple": true,
       "matin": {
         "enseignement": "Disputes répétées, manque, maladies, découragement : certains « parasites » rongent le foyer. Par la prière et l'unité, tu peux les chasser et rétablir la paix.",
@@ -129,5 +125,6 @@
         ]
       }
     }
-  ]
+  ],
+  "_note_audio": "Sans « audio », l'enseignement et les 5 sujets sont lus par la voix du téléphone. Ajouter \"audio\": \"audio/ma-fiche.mp3\" pour une voix enregistrée."
 }

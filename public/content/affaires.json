@@ -1,23 +1,59 @@
 {
   "accroche": "Si tu ne sais pas faire de 50 francs 100 francs, tu ne sauras jamais faire d'un million deux millions.",
   "modules": [
-    { "id": "vision", "titre": "Connaître sa vision", "image": "p4_07", "icone": "i6_01", "audio": "audio/exemple_adoration.mp3", "exemple": true,
+    {
+      "id": "vision",
+      "titre": "Connaître sa vision",
+      "image": "p4_07",
+      "icone": "i6_01",
+      "exemple": true,
       "enseignement": "Sans vision, le peuple est sans frein (Proverbes 29:18). Écris ce que Dieu met sur ton cœur et avance étape par étape.",
-      "sujet": "Demande à Dieu de te révéler la vision de ton activité et la sagesse pour la réaliser." },
-    { "id": "finances", "titre": "Gérer ses finances", "image": "q2_06", "icone": "i5_03", "audio": "audio/exemple_adoration.mp3", "exemple": true,
+      "sujet": "Demande à Dieu de te révéler la vision de ton activité et la sagesse pour la réaliser."
+    },
+    {
+      "id": "finances",
+      "titre": "Gérer ses finances",
+      "image": "q2_06",
+      "icone": "i5_03",
+      "exemple": true,
       "enseignement": "Sois fidèle dans les petites choses. Sépare tes dépenses personnelles et professionnelles, épargne et donne.",
-      "sujet": "Prie pour la sagesse dans la gestion de tes revenus et pour la délivrance de l'endettement." },
-    { "id": "planifier", "titre": "Planifier ses affaires", "image": "p2_11", "icone": "i4_05", "audio": "audio/exemple_adoration.mp3", "exemple": true,
+      "sujet": "Prie pour la sagesse dans la gestion de tes revenus et pour la délivrance de l'endettement."
+    },
+    {
+      "id": "planifier",
+      "titre": "Planifier ses affaires",
+      "image": "p2_11",
+      "icone": "i4_05",
+      "exemple": true,
       "enseignement": "Les projets bien pensés réussissent (Proverbes 21:5). Fixe des objectifs, des échéances, et révise chaque semaine.",
-      "sujet": "Demande à Dieu l'ordre, la discipline et de bons plans pour ton activité." },
-    { "id": "creativite", "titre": "Développer sa créativité", "image": "p4_08", "icone": "i6_07", "audio": "audio/exemple_adoration.mp3", "exemple": true,
+      "sujet": "Demande à Dieu l'ordre, la discipline et de bons plans pour ton activité."
+    },
+    {
+      "id": "creativite",
+      "titre": "Développer sa créativité",
+      "image": "p4_08",
+      "icone": "i6_07",
+      "exemple": true,
       "enseignement": "Dieu est créatif et t'a fait à son image. Observe les besoins autour de toi : ils sont des opportunités.",
-      "sujet": "Demande à Dieu des idées nouvelles et le courage de les mettre en œuvre." },
-    { "id": "public", "titre": "Parler en public", "image": "q1_08", "icone": "i8_06", "audio": "audio/exemple_adoration.mp3", "exemple": true,
+      "sujet": "Demande à Dieu des idées nouvelles et le courage de les mettre en œuvre."
+    },
+    {
+      "id": "public",
+      "titre": "Parler en public",
+      "image": "q1_08",
+      "icone": "i8_06",
+      "exemple": true,
       "enseignement": "Préparer, respirer, parler avec conviction et simplicité. La confiance se construit avec la pratique.",
-      "sujet": "Prie pour vaincre la peur et pour que ta parole serve ceux qui t'écoutent." },
-    { "id": "mentalite", "titre": "Reprogrammer sa mentalité", "image": "p1_08", "icone": "i5_06", "audio": "audio/exemple_adoration.mp3", "exemple": true,
+      "sujet": "Prie pour vaincre la peur et pour que ta parole serve ceux qui t'écoutent."
+    },
+    {
+      "id": "mentalite",
+      "titre": "Reprogrammer sa mentalité",
+      "image": "p1_08",
+      "icone": "i5_06",
+      "exemple": true,
       "enseignement": "« Soyez transformés par le renouvellement de l'intelligence » (Romains 12:2). Change tes pensées, tu changeras tes résultats.",
-      "sujet": "Demande à Dieu de renouveler ta mentalité et de remplacer toute pensée de pauvreté." }
+      "sujet": "Demande à Dieu de renouveler ta mentalité et de remplacer toute pensée de pauvreté."
+    }
   ]
 }
