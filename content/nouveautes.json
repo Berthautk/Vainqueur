@@ -1,0 +1,7 @@
+{
+  "items": [
+    { "id": "n3", "date": "2026-11-15", "titre": "Nouvelle adoration : « Tu es mon refuge »", "texte": "Écoute-la dans la rubrique Nayla.", "lien": "#/nayla", "exemple": true },
+    { "id": "n2", "date": "2026-11-12", "titre": "Thème de la semaine : Bombarder les autels maléfiques", "texte": "Un nouveau jour de prière t'attend chaque matin.", "lien": "#/priere", "exemple": true },
+    { "id": "n1", "date": "2026-11-08", "titre": "Bienvenue dans Vainqueur", "texte": "Prières, adorations, enseignements : tout est maintenant disponible hors connexion.", "lien": "#/", "exemple": true }
+  ]
+}

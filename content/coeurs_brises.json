@@ -1,0 +1,214 @@
+{
+  "themes": [
+    {
+      "id": "deception",
+      "titre": "Guérir d'une déception",
+      "image": "p1_02",
+      "duree": 5,
+      "audio": "",
+      "exemple": true,
+      "sections": [
+        {
+          "titre": "Pourquoi ça fait si mal",
+          "icone": "💔",
+          "texte": "Une déception touche nos attentes et notre confiance. Elle fait mal parce qu'on avait espéré, donné, cru."
+        },
+        {
+          "titre": "Comment te relever",
+          "icone": "🌱",
+          "liste": [
+            "**Exprime ta douleur** devant Dieu, sans te cacher.",
+            "**Pardonne** pour ne pas rester prisonnier(ère) du passé.",
+            "**Appuie-toi** sur la Parole et sur des frères et sœurs de confiance.",
+            "**Crois** que Dieu peut restaurer ce qui a été brisé."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trahison",
+      "titre": "Guérir d'une trahison",
+      "image": "q1_05",
+      "duree": 6,
+      "audio": "",
+      "exemple": true,
+      "sections": [
+        {
+          "titre": "Pourquoi ça fait si mal",
+          "icone": "💔",
+          "texte": "La trahison vient souvent de quelqu'un en qui nous avions confiance. La blessure est profonde, mais elle n'a pas le dernier mot."
+        },
+        {
+          "titre": "Comment te relever",
+          "icone": "🌱",
+          "liste": [
+            "**Reconnais** ta blessure sans la minimiser.",
+            "**Confie-la** à Dieu dans la prière.",
+            "**Choisis** le pardon, même si les sentiments suivent plus tard.",
+            "**Reconstruis** la confiance pas à pas."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deuil",
+      "titre": "Accepter le départ d'un être cher",
+      "image": "q3_01",
+      "duree": 6,
+      "audio": "",
+      "exemple": true,
+      "sections": [
+        {
+          "titre": "Pourquoi ça fait si mal",
+          "icone": "💔",
+          "texte": "Perdre un être cher, c'est vivre une séparation réelle et douloureuse. Cela fait mal parce qu'on perd une présence, une voix, un soutien, une histoire partagée. Notre cœur a besoin de temps pour accepter cette nouvelle réalité."
+        },
+        {
+          "titre": "Ce que le deuil peut causer",
+          "icone": "⚠️",
+          "texte": "Le deuil peut toucher tout ton être :",
+          "liste": [
+            "**Sur le plan émotionnel** : tristesse profonde, pleurs, solitude.",
+            "**Sur le plan physique** : fatigue, manque d'appétit, troubles du sommeil.",
+            "**Sur le plan spirituel** : questions, colère, sentiment d'injustice, écartement de Dieu.",
+            "**Sur le plan social** : isolement, baisse de motivation."
+          ],
+          "puces": true
+        },
+        {
+          "titre": "Comment te relever",
+          "icone": "🌱",
+          "texte": "La guérison est possible, avec l'aide de Dieu et du temps. Voici quelques clés :",
+          "liste": [
+            "**Exprime ta douleur** devant Dieu, sans te cacher.",
+            "**Garde les bons souvenirs**, sans te laisser emprisonner par le passé.",
+            "**Appuie-toi** sur la Parole de Dieu et sur des frères et sœurs de confiance.",
+            "Reprends progressivement tes activités et tes projets.",
+            "**Crois** que Dieu peut consoler ton cœur et te donner une nouvelle force."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "depression",
+      "titre": "Vaincre la dépression",
+      "image": "q2_02",
+      "duree": 7,
+      "audio": "",
+      "exemple": true,
+      "sections": [
+        {
+          "titre": "Pourquoi ça fait si mal",
+          "icone": "💔",
+          "texte": "La dépression est une souffrance réelle, pas une faiblesse. Tu n'as pas à la porter seul(e)."
+        },
+        {
+          "titre": "Comment te relever",
+          "icone": "🌱",
+          "liste": [
+            "**Parle** à une personne de confiance.",
+            "**Consulte** un professionnel de santé si nécessaire.",
+            "**Prie** et lis la Parole par petites étapes.",
+            "**Bouge** et prends soin de ton corps."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aimer",
+      "titre": "S'aimer et s'accepter",
+      "image": "p4_02",
+      "duree": 5,
+      "audio": "",
+      "exemple": true,
+      "sections": [
+        {
+          "titre": "Pourquoi c'est difficile",
+          "icone": "💔",
+          "texte": "Beaucoup se jugent durement. Pourtant Dieu t'a créé(e) avec amour : « Je te loue de ce que je suis une créature si merveilleuse » (Psaume 139:14)."
+        },
+        {
+          "titre": "Comment avancer",
+          "icone": "🌱",
+          "liste": [
+            "**Remplace** les paroles dures par des paroles de vérité.",
+            "**Reçois** l'amour de Dieu tel que tu es.",
+            "**Évite** de te comparer aux autres."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pardon",
+      "titre": "Le secret du pardon",
+      "image": "p2_10",
+      "duree": 6,
+      "audio": "",
+      "exemple": true,
+      "sections": [
+        {
+          "titre": "Pourquoi pardonner",
+          "icone": "💔",
+          "texte": "Pardonner ne veut pas dire excuser. C'est se libérer d'un poids que Dieu ne veut pas que tu portes."
+        },
+        {
+          "titre": "Comment faire",
+          "icone": "🌱",
+          "liste": [
+            "**Nomme** la blessure devant Dieu.",
+            "**Décide** de pardonner par la foi.",
+            "**Demande** la force de Dieu pour persévérer."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mariage",
+      "titre": "Conseil matrimonial",
+      "image": "p3_11",
+      "duree": 6,
+      "audio": "",
+      "exemple": true,
+      "sections": [
+        {
+          "titre": "Les fondements",
+          "icone": "💍",
+          "texte": "Un mariage solide repose sur le dialogue, le respect et la prière commune."
+        },
+        {
+          "titre": "Pour avancer",
+          "icone": "🌱",
+          "liste": [
+            "**Prenez** un temps de prière à deux.",
+            "**Écoutez** avant de répondre.",
+            "**Demandez** conseil à un couple mûr dans la foi."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "enfants",
+      "titre": "Éducation des enfants",
+      "image": "q2_09",
+      "duree": 5,
+      "audio": "",
+      "exemple": true,
+      "sections": [
+        {
+          "titre": "Un héritage",
+          "icone": "👨‍👩‍👧",
+          "texte": "Les enfants sont un héritage de l'Éternel. Les éduquer, c'est semer pour l'avenir."
+        },
+        {
+          "titre": "Pour avancer",
+          "icone": "🌱",
+          "liste": [
+            "**Sois** un exemple par ta vie.",
+            "**Prie** avec eux chaque jour.",
+            "**Corrige** avec amour et patience."
+          ]
+        }
+      ]
+    }
+  ]
+}

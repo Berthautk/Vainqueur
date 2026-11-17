@@ -1,0 +1,20 @@
+{
+  "message": "Peu importe ce que tu as fait, Jésus t'aime encore.",
+  "sous_message": "Jésus ne cherche pas des gens parfaits, il cherche des gens honnêtes.",
+  "salut": {
+    "titre": "Je veux connaître Jésus",
+    "intro": "Dieu t'aime tel que tu es. Si tu veux donner ta vie à Jésus, lis cette prière à voix haute, avec sincérité :",
+    "priere": "Seigneur Jésus, je reconnais que je suis pécheur(se). Je crois que tu es mort sur la croix pour moi et que tu es ressuscité. Je te demande pardon. Entre dans ma vie, deviens mon Seigneur et mon Sauveur. Merci de m'avoir sauvé(e). Au nom de Jésus, amen.",
+    "suite": "Si tu as prié cette prière, écris-nous : nous voulons prier avec toi et t'accompagner."
+  },
+  "croisades": [
+    { "titre": "Grande croisade — exemple", "image": "q1_08", "exemple": true },
+    { "titre": "Croisade de louange — exemple", "image": "q2_08", "exemple": true },
+    { "titre": "Rassemblement — exemple", "image": "q1_04", "exemple": true }
+  ],
+  "interviews": [
+    { "titre": "Interview — exemple 1", "image": "q3_03", "lien": "https://www.youtube.com/@A_COMPLETER", "exemple": true },
+    { "titre": "Interview — exemple 2", "image": "q1_07", "lien": "https://www.youtube.com/@A_COMPLETER", "exemple": true },
+    { "titre": "Interview — exemple 3", "image": "q1_06", "lien": "https://www.youtube.com/@A_COMPLETER", "exemple": true }
+  ]
+}

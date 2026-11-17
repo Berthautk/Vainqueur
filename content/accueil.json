@@ -1,0 +1,99 @@
+{
+  "accroches": [
+    {
+      "titre": "Rien que ton existence prouve que tu es un vainqueur.",
+      "sous": "L'échec n'existe que pour ceux qui ne recommencent plus.",
+      "image": "p5_03",
+      "exemple": true
+    },
+    {
+      "titre": "Dieu n'a pas fini avec toi, relève-toi.",
+      "sous": "Ce qu'il a commencé, il le mènera à son terme.",
+      "image": "p1_04",
+      "exemple": true
+    },
+    {
+      "titre": "Ta victoire commence à genoux.",
+      "sous": "La prière change ce que l'effort seul ne peut pas changer.",
+      "image": "p4_07",
+      "exemple": true
+    },
+    {
+      "titre": "Tu es plus qu'un survivant : tu es un vainqueur.",
+      "sous": "Avance, le Seigneur marche devant toi.",
+      "image": "p3_08",
+      "exemple": true
+    },
+    {
+      "titre": "Aujourd'hui est un jour de grâce.",
+      "sous": "Reçois-le avec foi et reconnaissance.",
+      "image": "p1_01",
+      "exemple": true
+    }
+  ],
+  "paroles": [
+    {
+      "texte": "Je peux tout par celui qui me fortifie.",
+      "ref": "Philippiens 4:13",
+      "exemple": true
+    },
+    {
+      "texte": "L'Éternel est mon berger : je ne manquerai de rien.",
+      "ref": "Psaume 23:1",
+      "exemple": true
+    },
+    {
+      "texte": "Fortifie-toi et prends courage ; ne crains point.",
+      "ref": "Josué 1:9",
+      "exemple": true
+    },
+    {
+      "texte": "Nous sommes plus que vainqueurs par celui qui nous a aimés.",
+      "ref": "Romains 8:37",
+      "exemple": true
+    },
+    {
+      "texte": "Tout est possible à celui qui croit.",
+      "ref": "Marc 9:23",
+      "exemple": true
+    }
+  ],
+  "tuiles": [
+    {
+      "titre": "Prière de délivrance",
+      "image": "p4_05",
+      "icone": "i8_05",
+      "route": "#/priere"
+    },
+    {
+      "titre": "Nayla",
+      "image": "p3_09",
+      "icone": "i8_02",
+      "route": "#/nayla"
+    },
+    {
+      "titre": "Médecin des cœurs brisés",
+      "image": "p1_02",
+      "icone": "i6_05",
+      "route": "#/coeurs"
+    },
+    {
+      "titre": "Hommes et femmes d'affaires",
+      "image": "p1_11",
+      "icone": "i6_04",
+      "route": "#/affaires"
+    },
+    {
+      "titre": "Évangélisation",
+      "image": "q3_06",
+      "icone": "i5_07",
+      "route": "#/evangelisation"
+    },
+    {
+      "titre": "Témoignages",
+      "image": "p3_08",
+      "icone": "i8_06",
+      "route": "#/temoignages"
+    }
+  ]
+}

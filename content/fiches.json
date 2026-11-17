@@ -1,0 +1,111 @@
+{
+  "theme": {
+    "titre": "Bombarder les autels maléfiques",
+    "mot_or": "maléfiques",
+    "jour": 3,
+    "total": 7,
+    "image": "p4_05",
+    "exemple": true
+  },
+  "titre_page": "Prière de délivrance et de guérison",
+  "accroche_page": "Vous ne recevez pas parce que vous demandez mal. Apprends à prier avec stratégie.",
+  "du_jour": "f1",
+  "fiches": [
+    {
+      "id": "f1", "titre": "Purifier sa vie de rêve", "duree": 6, "image": "p2_02", "bandeau": "p3_03",
+      "audio": "audio/exemple_adoration.mp3", "exemple": true,
+      "matin": {
+        "enseignement": "Les rêves peuvent être un canal de communication spirituelle. Mais quand ils sont pollués par l'ennemi, ils deviennent une porte d'attaque dans ta vie : fatigue, blocage, maladie, échec, peur.\n\nDans cet enseignement, tu apprends à fermer ces portes par la prière et par la Parole. Dieu donne le sommeil à ceux qu'il aime (Psaume 127:2). Tu peux te coucher en paix et te réveiller en victoire.\n\nChaque matin, remets ta nuit entre les mains de Dieu, renonce à toute influence qui n'est pas de lui, et déclare la protection du Seigneur sur ta journée.",
+        "sujets": [
+          "Demande à Dieu de purifier ton sommeil et de fermer toute porte au diable.",
+          "Prie pour l'annulation de tout mauvais rêve qui t'a troublé(e) récemment.",
+          "Brise, au nom de Jésus, toute manipulation spirituelle à travers les rêves.",
+          "Demande la protection de Dieu sur tes nuits et sur tes pensées.",
+          "Remets tes projets, ta santé, ton foyer et ton avenir entre les mains de Dieu."
+        ]
+      },
+      "soir": {
+        "enseignement": "Avant de dormir, ferme la journée avec Dieu. Un cœur en paix prépare une nuit paisible.\n\nRemercie pour ce qui a été reçu, confesse ce qui doit l'être, et place ta nuit sous la garde du Seigneur. « Je me couche et je m'endors en paix » (Psaume 4:9).",
+        "sujets": [
+          "Remercie Dieu pour sa fidélité durant la journée.",
+          "Demande pardon pour tout ce qui a blessé ton cœur ou celui des autres.",
+          "Place ta chambre et ta maison sous la couverture du sang de Jésus.",
+          "Demande un sommeil paisible et des rêves qui viennent de Dieu.",
+          "Confie à Dieu les personnes que tu aimes."
+        ]
+      }
+    },
+    {
+      "id": "f2", "titre": "Briser les liens de mariage spirituel", "duree": 8, "image": "p5_01", "bandeau": "p5_01",
+      "audio": "audio/exemple_adoration.mp3", "exemple": true,
+      "matin": {
+        "enseignement": "Certaines alliances secrètes freinent la vie d'un couple ou d'un célibataire. En Christ, toute alliance qui n'est pas de Dieu peut être rompue.\n\nProclame la liberté que Jésus a acquise à la croix et marche dans la place que Dieu t'a réservée.",
+        "sujets": [
+          "Renonce à toute alliance contraire à la volonté de Dieu.",
+          "Demande à Dieu de briser tout lien spirituel illégitime.",
+          "Prie pour ta guérison intérieure et ta liberté affective.",
+          "Demande à Dieu de préparer le conjoint qu'il te destine.",
+          "Remercie Dieu pour la liberté en Jésus-Christ."
+        ]
+      },
+      "soir": {
+        "enseignement": "Le soir, confie ton cœur à Dieu et laisse-le guérir ce qui est blessé. Sa paix garde ton cœur et tes pensées.",
+        "sujets": [
+          "Remets tes blessures du cœur au Seigneur.",
+          "Pardonne à ceux qui t'ont fait du mal.",
+          "Prie pour ton foyer ou ton futur foyer.",
+          "Demande la paix de Dieu sur tes pensées.",
+          "Remercie pour la victoire déjà obtenue."
+        ]
+      }
+    },
+    {
+      "id": "f3", "titre": "Consacrer sa maison à Christ", "duree": 5, "image": "l7_02", "bandeau": "l7_02",
+      "audio": "audio/exemple_adoration.mp3", "exemple": true,
+      "matin": {
+        "enseignement": "Ta maison peut devenir un sanctuaire. Josué a déclaré : « Moi et ma maison, nous servirons l'Éternel » (Josué 24:15).\n\nParcours chaque pièce en priant, en remerciant et en déclarant que Jésus en est le Seigneur.",
+        "sujets": [
+          "Déclare que Jésus est le Seigneur de ta maison.",
+          "Prie pour chaque pièce de ta maison, une à une.",
+          "Demande à Dieu d'éloigner tout ce qui ne vient pas de lui.",
+          "Prie pour la paix et l'unité dans ta famille.",
+          "Bénis ceux qui entrent et sortent de chez toi."
+        ]
+      },
+      "soir": {
+        "enseignement": "Chaque soir, rassemble ta famille pour un court temps de prière. Un foyer qui prie est un foyer protégé.",
+        "sujets": [
+          "Remercie Dieu pour ton toit et ta famille.",
+          "Place chaque membre de la famille sous la protection de Dieu.",
+          "Demande une atmosphère de paix dans ta maison.",
+          "Prie pour la provision de ton foyer.",
+          "Termine par une bénédiction sur ta maison."
+        ]
+      }
+    },
+    {
+      "id": "f4", "titre": "Libérer son foyer des parasites", "duree": 7, "image": "p5_07", "bandeau": "p5_07",
+      "audio": "audio/exemple_adoration.mp3", "exemple": true,
+      "matin": {
+        "enseignement": "Disputes répétées, manque, maladies, découragement : certains « parasites » rongent le foyer. Par la prière et l'unité, tu peux les chasser et rétablir la paix.",
+        "sujets": [
+          "Demande à Dieu de révéler ce qui trouble ton foyer.",
+          "Renonce à toute dispute et à toute amertume.",
+          "Ordonne au nom de Jésus que tout esprit de division quitte ta maison.",
+          "Prie pour la restauration de l'amour dans ta famille.",
+          "Déclare la bénédiction de Dieu sur ton foyer."
+        ]
+      },
+      "soir": {
+        "enseignement": "Le soir, rétablis l'unité : pardonne, bénis et prie ensemble. La paix du Christ règne dans un foyer réconcilié.",
+        "sujets": [
+          "Pardonne aux membres de ta famille.",
+          "Prie pour les enfants et leur avenir.",
+          "Remercie Dieu pour la paix retrouvée.",
+          "Demande la sagesse pour les parents.",
+          "Scelle la journée par une prière de bénédiction."
+        ]
+      }
+    }
+  ]
+}
