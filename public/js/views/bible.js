@@ -1,4 +1,4 @@
-import { h, ico, toast, store, feuille } from '../util.js';
+import { h, ico, toast, store, feuille, demander, partager } from '../util.js';
 import { listeLivres, livre, livreDeNom, trouverRefs, lienRef } from '../bible-refs.js';
 import { chapitre, livreData, livresGardes, toutGarder } from '../bible-data.js';
 import { pisteChapitre } from '../pistes.js';
@@ -7,6 +7,7 @@ import * as P from '../plans.js';
 import { retour, enveloppe, vide, boutonEcoute } from './commun.js';
 import { imageParole, partagerImage } from '../partage.js';
 import { lienJour } from './plans.js';
+import * as M from '../marques.js';
 
 const nomChap = (l, c) => `${l.id === 'psaumes' ? 'Psaume' : l.nom} ${c}`;
 const enteteBible = (titre, sous, secours = '#/plus', titreClic) => h('section', { class: 'hero hero-bible' },
@@ -22,26 +23,47 @@ function voisin(l, c, sens) {
 }
 
 // Sélecteur : livres (Ancien / Nouveau Testament) puis chapitres, dans une même fenêtre
+// Sélecteur en 3 étapes : Livre → Chapitre → Verset, puis le texte s'ouvre sur ce verset
 export function choisirPassage(depart, etape = 'chapitres') {
-  let l = depart; let t = (depart && depart.t) || 'NT'; let vue = depart ? etape : 'livres';
+  let l = depart && livre(depart.id); let t = (l && l.t) || 'NT'; let vue = l ? etape : 'livres'; let ch = depart && depart.c ? +depart.c : 0;
   const corps = h('div', { class: 'choix-passage' });
   let fermer = null;
+  const ferme = () => fermer && fermer();
   function dessiner() {
-    const onglets = h('div', { class: 'bascule bascule-bible' },
-      h('button', { class: vue === 'livres' ? 'actif' : '', onclick: () => { vue = 'livres'; dessiner(); } }, 'Livres'),
-      h('button', { class: vue === 'chapitres' ? 'actif' : '', disabled: !l, onclick: () => { vue = 'chapitres'; dessiner(); } }, l ? `Chapitres · ${l.nom}` : 'Chapitres'));
+    const onglet = (k, txt, actif) => h('button', { class: vue === k ? 'actif' : '', disabled: !actif, onclick: () => { vue = k; dessiner(); } }, txt);
+    const onglets = h('div', { class: 'bascule bascule-bible etapes' }, onglet('livres', l ? l.nom : 'Livre', true), onglet('chapitres', ch ? `Chap. ${ch}` : 'Chapitre', !!l), onglet('versets', 'Verset', !!(l && ch)));
     let contenuVue;
     if (vue === 'livres') {
       contenuVue = [h('div', { class: 'chips' }, [['AT', 'Ancien Testament'], ['NT', 'Nouveau Testament']].map(([k, n]) => h('button', { class: 'filtre' + (t === k ? ' actif' : ''), onclick: () => { t = k; dessiner(); } }, n))),
-        h('div', { class: 'livres livres-feuille' }, listeLivres().filter(x => x.t === t).map(x => h('button', { class: 'livre' + (l && x.id === l.id ? ' courant' : ''), onclick: () => { l = x; vue = 'chapitres'; dessiner(); } }, x.nom)))];
+        h('div', { class: 'livres livres-feuille' }, listeLivres().filter(x => x.t === t).map(x => h('button', { class: 'livre' + (l && x.id === l.id ? ' courant' : ''), onclick: () => { if (!l || l.id !== x.id) ch = 0; l = x; vue = 'chapitres'; dessiner(); } }, x.nom)))];
+    } else if (vue === 'chapitres') {
+      contenuVue = [h('div', { class: 'chapitres chapitres-feuille' }, Array.from({ length: l.ch }, (_, i) => h('button', { class: 'chap' + (ch === i + 1 ? ' courant' : ''), onclick: () => { ch = i + 1; vue = 'versets'; dessiner(); } }, String(i + 1)))),
+        h('a', { class: 'lien-partage', href: `#/bible/${l.id}`, onclick: ferme }, 'Ouvrir la page du livre')];
     } else {
-      contenuVue = [h('div', { class: 'chapitres chapitres-feuille' }, Array.from({ length: l.ch }, (_, i) => h('a', { class: 'chap' + (depart && depart.id === l.id && +depart.c === i + 1 ? ' courant' : ''), href: `#/bible/${l.id}/${i + 1}`, onclick: () => fermer && fermer() }, String(i + 1)))),
-        h('a', { class: 'lien-partage', href: `#/bible/${l.id}`, onclick: () => fermer && fermer() }, 'Ouvrir la page du livre')];
+      const m = M.marques();
+      contenuVue = [h('div', { class: 'chapitres chapitres-feuille versets-grille' }, Array.from({ length: l.v[ch - 1] }, (_, i) => {
+        const x = m[M.cle(l.id, ch, i + 1)];
+        return h('a', { class: 'chap' + (x && x.couleur ? ' marque' : ''), style: x && x.couleur ? `--mc:${M.COULEURS_BIBLE[x.couleur]}` : null, href: `#/bible/${l.id}/${ch}?v=${i + 1}`, onclick: ferme }, String(i + 1));
+      })), h('a', { class: 'btn btn-or btn-petit', style: 'margin:10px auto 0;display:flex;width:fit-content', href: `#/bible/${l.id}/${ch}`, onclick: ferme }, ico('livre'), `Lire tout ${nomChap(l, ch)}`)];
     }
     corps.replaceChildren(onglets, ...contenuVue);
   }
   dessiner();
-  fermer = feuille(h('div', {}, h('h2', {}, 'Aller à…'), corps, h('button', { class: 'btn btn-clair', onclick: () => fermer() }, 'Fermer')));
+  fermer = feuille(h('div', {}, h('h2', {}, 'Aller à…'), corps, h('button', { class: 'btn btn-clair', onclick: ferme }, 'Fermer')));
+}
+
+// Page « versets » d'un chapitre : on choisit le verset, le texte s'ouvre dessus
+export async function versetsPage(id, cs) {
+  const l = livre(id); const c = +cs;
+  if (!l || c < 1 || c > l.ch) return enveloppe(vide('Passage introuvable', ''));
+  const m = M.marques();
+  return enveloppe(h('div', {}, enteteBible(nomChap(l, c), `${l.v[c - 1]} versets · choisis le verset`, `#/bible/${id}`, () => choisirPassage({ id, c }, 'livres')),
+    h('a', { class: 'btn btn-or btn-bloc', href: `#/bible/${id}/${c}` }, ico('livre'), `Lire tout le chapitre`),
+    h('p', { class: 'consigne' }, 'Aller directement au verset :'),
+    h('div', { class: 'chapitres versets-grille' }, Array.from({ length: l.v[c - 1] }, (_, i) => {
+      const x = m[M.cle(id, c, i + 1)];
+      return h('a', { class: 'chap' + (x && x.couleur ? ' marque' : ''), style: x && x.couleur ? `--mc:${M.COULEURS_BIBLE[x.couleur]}` : null, href: `#/bible/${id}/${c}?v=${i + 1}` }, String(i + 1));
+    }))));
 }
 
 // « Jean 3:16 » → passage ; « Jean 3 » → chapitre ; « Jean » → livre ; sinon recherche dans le texte
@@ -95,7 +117,10 @@ export default async function () {
     await toutGarder((f, tot) => { barre.style.width = `${(f / tot) * 100}%`; });
     majHL();
   }
-  const noeud = h('div', {}, enteteBible('La Sainte Bible', 'Louis Segond 1910 · Ancien et Nouveau Testament'), champRecherche(), cartePlan, reprise, etatHL, onglets, grille);
+  const nm = Object.keys(M.marques()).length, nn = M.notes().length, ne = M.etudes().length;
+  const carteMarques = h('a', { class: 'reprise', href: '#/bible/marques' + (ne ? '?onglet=etudes' : '') }, ico('marque'),
+    h('span', {}, h('b', {}, 'Mes versets et études'), h('br'), h('small', {}, nm + nn + ne ? `${nm} verset${nm > 1 ? "s" : ""} marqué${nm > 1 ? "s" : ""} · ${nn} note${nn > 1 ? 's' : ''} · ${ne} étude${ne > 1 ? 's' : ''}` : 'Touche un verset pour le surligner, le noter ou préparer une intervention.')), ico('suivant'));
+  const noeud = h('div', {}, enteteBible('La Sainte Bible', 'Louis Segond 1910 · Ancien et Nouveau Testament'), champRecherche(), cartePlan, carteMarques, reprise, etatHL, onglets, grille);
   dessiner(); majHL();
   return enveloppe(noeud);
 }
@@ -106,7 +131,7 @@ export async function livrePage(id) {
   const pr = voisin(l, 1, -1), sv = voisin(l, l.ch, 1);
   return enveloppe(h('div', {}, enteteBible(l.nom, `${l.ch} chapitre${l.ch > 1 ? 's' : ''} · ${l.t === 'AT' ? 'Ancien' : 'Nouveau'} Testament`, '#/bible', () => choisirPassage(l, 'livres')),
     h('p', { class: 'consigne' }, 'Choisis un chapitre :'),
-    h('div', { class: 'chapitres' }, Array.from({ length: l.ch }, (_, i) => h('a', { class: 'chap', href: `#/bible/${id}/${i + 1}` }, String(i + 1)))),
+    h('div', { class: 'chapitres' }, Array.from({ length: l.ch }, (_, i) => h('a', { class: 'chap', href: `#/bible/${id}/${i + 1}/versets` }, String(i + 1)))),
     h('div', { class: 'bible-nav' },
       pr ? h('a', { class: 'btn btn-clair btn-petit', href: `#/bible/${pr.l.id}` }, ico('gauche'), pr.l.nom) : h('span'),
       sv ? h('a', { class: 'btn btn-clair btn-petit', href: `#/bible/${sv.l.id}` }, sv.l.nom, ico('suivant')) : h('span'))));
@@ -125,8 +150,51 @@ export async function chapitrePage(id, cs, params) {
   const file = Array.from({ length: l.ch }, (_, i) => pisteChapitre(l, i + 1, chapitre));
   const ecoute = boutonEcoute(file[c - 1], file, { cls: 'btn btn-or btn-petit', off: 'Écouter', on: 'Pause', aria: `Écouter ${nomChap(l, c)}` });
 
-  const texte = h('div', { class: 'bible-texte lecture-texte' }, versets.map((v, i) => h('p', { class: 'verset' + (cible(i + 1) ? ' cible' : ''), id: `v${i + 1}`, onclick: () => actionsVerset(l, c, i + 1, v) },
-    h('sup', {}, String(i + 1)), h('span', { 'data-lu': `${pisteId}:${i + 1}` }, v))));
+  // ---- Versets : toucher pour sélectionner, puis surligner, souligner, noter, écouter, ajouter à une étude ----
+  const sel = new Set();
+  const texte = h('div', { class: 'bible-texte lecture-texte' }, versets.map((v, i) => {
+    const k = M.cle(id, c, i + 1);
+    return h('p', { class: 'verset' + (cible(i + 1) ? ' cible' : ''), id: `v${i + 1}`, 'data-k': k, onclick: e => {
+      if (e.target.closest('.ind')) return;
+      sel.has(k) ? sel.delete(k) : sel.add(k); majSelection();
+    } }, h('sup', {}, String(i + 1)), h('span', { 'data-lu': `${pisteId}:${i + 1}` }, v), h('span', { class: 'ind' }));
+  }));
+  const refSel = h('b');
+  const action = (icone, txt, f) => h('button', { class: 'bs-action', onclick: f }, ico(icone), h('span', {}, txt));
+  const barre = h('div', { class: 'barre-sel', hidden: true, role: 'toolbar', 'aria-label': 'Actions sur les versets choisis' },
+    h('div', { class: 'bs-tete' }, refSel, h('button', { class: 'bs-fermer', 'aria-label': 'Annuler la sélection', onclick: () => { sel.clear(); majSelection(); } }, ico('fermer'))),
+    h('div', { class: 'bs-couleurs' },
+      Object.entries(M.COULEURS_BIBLE).map(([nom, coul]) => h('button', { class: 'pastille-c', style: `background:${coul}`, 'aria-label': `Surligner en ${nom}`, onclick: () => { M.marquer([...sel], 'couleur', nom); fin('Surligné'); } })),
+      h('button', { class: 'bs-u', 'aria-label': 'Souligner', onclick: () => { const tous = [...sel].every(k => (M.marques()[k] || {}).souligne); M.marquer([...sel], 'souligne', tous ? null : true); fin(tous ? 'Soulignement retiré' : 'Souligné'); } }, 'S'),
+      h('button', { class: 'bs-gomme', 'aria-label': 'Effacer le surlignage', onclick: () => { M.marquer([...sel], 'couleur', null); M.marquer([...sel], 'souligne', null); fin('Marques effacées'); } }, ico('gomme'))),
+    h('div', { class: 'bs-actions' },
+      action('casque', 'Écouter', () => { const cles = M.trier([...sel]); player.jouer({ id: 'sel-' + cles.join('_'), titre: M.refDe(cles), audio: '', image: 'p1_12', type: 'bible-sel', lien: `#/bible/${id}/${c}`,
+        segments: [{ t: M.refDe(cles) + '.' }, ...cles.map(k => { const x = M.lireCle(k); return { t: versets[x.v - 1], lu: `${pisteId}:${x.v}` }; })] }); fin(); }),
+      action('play', 'Depuis ici', () => { const v0 = M.lireCle(M.trier([...sel])[0]).v; player.jouerDepuis(file[c - 1], file, `${pisteId}:${v0}`); sel.clear(); majSelection(); }),
+      action('texte', 'Note', async () => { const cles = M.trier([...sel]); const t = await demander(`Note · ${M.refDe(cles)}`, '', { long: true, placeholder: 'Ta réflexion, une idée pour ton intervention…' }); if (t) { M.ajouterNote(cles, t); fin('Note enregistrée'); } }),
+      action('dossier', 'Étude', () => ajouterEtude(M.trier([...sel]), () => fin())),
+      action('copie', 'Copier', async () => { try { await navigator.clipboard.writeText(await M.texteAPartager(M.trier([...sel]))); fin('Copié'); } catch { toast('Copie impossible'); } }),
+      action('partager', 'Partager', async () => { const cles = M.trier([...sel]); const t = await M.texteAPartager(cles, false);
+        if (t.length <= 420) { try { partagerImage(await imageParole({ texte: t, ref: M.refDe(cles), etiquette: 'La Bible' }), `« ${t} » — ${M.refDe(cles)} (Louis Segond 1910)`, 'versets.jpg'); } catch { toast('Partage impossible'); } }
+        else partager(M.refDe(cles), await M.texteAPartager(cles));
+        fin(); })));
+  function fin(msg) { sel.clear(); majSelection(); if (msg) toast(msg); }
+  function majSelection() {
+    const n = sel.size; barre.hidden = !n; document.body.classList.toggle('selection-bible', !!n);
+    if (n) refSel.textContent = `${M.refDe(M.trier([...sel]))} · ${n} verset${n > 1 ? 's' : ''}`;
+    rendreMarques();
+  }
+  function rendreMarques() {
+    const m = M.marques();
+    texte.querySelectorAll('.verset').forEach(p => {
+      const k = p.dataset.k, x = m[k] || {};
+      p.style.setProperty('--mc', x.couleur ? M.COULEURS_BIBLE[x.couleur] : 'transparent');
+      p.classList.toggle('surligne', !!x.couleur); p.classList.toggle('souligne', !!x.souligne); p.classList.toggle('choisi', sel.has(k));
+      const ns = M.notesDe(k).filter(n => n.cles[n.cles.length - 1] === k), et = M.dansUneEtude(k), ind = p.querySelector('.ind');
+      ind.replaceChildren(...[ns.length ? h('button', { class: 'ind-btn', 'aria-label': 'Voir la note', onclick: () => voirNotes(k, rendreMarques) }, '📝') : null,
+        et ? h('a', { class: 'ind-btn', href: '#/bible/marques?onglet=etudes', 'aria-label': 'Dans une étude' }, '📌') : null].filter(Boolean));
+    });
+  }
 
   // Lecture du plan (?plan=…) : avancer dans les chapitres du jour, puis « J'ai lu »
   const cleplan = params?.get?.('plan');
@@ -152,8 +220,8 @@ export async function chapitrePage(id, cs, params) {
     h('button', { class: 'titre-choix', onclick: () => choisirPassage({ ...l, c }, 'livres'), 'aria-label': `${l.nom} — changer de livre` }, l.id === 'psaumes' ? 'Psaume' : l.nom, ico('bas')),
     h('button', { class: 'titre-choix', onclick: () => choisirPassage({ ...l, c }, 'chapitres'), 'aria-label': `Chapitre ${c} — changer de chapitre` }, String(c), ico('bas')));
   const noeud = h('div', {},
-    h('div', { class: 'bible-barre' }, venuDUnLien ? h('button', { class: 'revenir', onclick: () => history.back(), 'aria-label': 'Revenir où j\'étais' }, ico('retour'), 'Revenir') : retour(`#/bible/${id}`), titre, ecoute),
-    texte, bandePlan,
+    h('div', { class: 'bible-barre' }, venuDUnLien ? h('button', { class: 'revenir', onclick: () => history.back(), 'aria-label': 'Revenir où j\'étais', title: 'Revenir où j\'étais' }, ico('retour')) : retour(`#/bible/${id}`), titre, ecoute),
+    texte, bandePlan, barre,
     h('div', { class: 'bible-nav' }, nav(pr, 'g'), nav(sv, 'd')),
     h('p', { class: 'mention' }, 'Glisse le doigt vers la gauche ou la droite pour changer de chapitre · Louis Segond 1910'));
 
@@ -170,7 +238,8 @@ export async function chapitrePage(id, cs, params) {
     if (p && p.type === 'bible' && p.id !== pisteId && p.id.startsWith(`b-${id}-`) && player.lit()) location.replace(p.lien);
   });
   if (a) setTimeout(() => { const el = noeud.querySelector(`#v${a}`); if (el) el.scrollIntoView({ block: 'center' }); }, 60);
-  return enveloppe(noeud, off);
+  rendreMarques();
+  return enveloppe(noeud, () => { off(); document.body.classList.remove('selection-bible'); });
 }
 
 // Recherche dans tout le texte (sans tenir compte des accents ni des majuscules)
@@ -219,10 +288,23 @@ export async function recherchePage(params) {
   return enveloppe(noeud, () => { annule = true; });
 }
 
-function actionsVerset(l, c, v, texte) {
-  const ref = `${nomChap(l, c)}:${v}`;
-  const f = feuille(h('div', {}, h('h2', {}, ref), h('blockquote', { class: 'priere-salut' }, texte),
-    h('button', { class: 'btn btn-or', onclick: async () => { f(); try { partagerImage(await imageParole({ texte, ref, etiquette: 'La Bible' }), `« ${texte} » — ${ref} (Louis Segond 1910)`, 'verset.jpg'); } catch { toast('Partage impossible'); } } }, ico('partager'), 'Partager en image'),
-    h('button', { class: 'btn btn-clair', onclick: async () => { f(); try { await navigator.clipboard.writeText(`« ${texte} » — ${ref}`); toast('Copié'); } catch { toast('Copie impossible'); } } }, 'Copier le verset'),
+// Notes d'un verset : lire, modifier, supprimer
+function voirNotes(k, apres) {
+  const liste = M.notesDe(k);
+  const f = feuille(h('div', {}, h('h2', {}, 'Notes'), ...liste.map(n => h('div', { class: 'note-carte' }, h('small', {}, M.refDe(n.cles)), h('p', {}, n.texte),
+    h('div', { style: 'display:flex;gap:8px' },
+      h('button', { class: 'btn btn-clair btn-petit', onclick: async () => { f(); const t = await demander('Modifier la note', n.texte, { long: true }); if (t !== null) { M.modifierNote(n.id, t); apres && apres(); } } }, 'Modifier'),
+      h('button', { class: 'btn btn-clair btn-petit', onclick: () => { M.modifierNote(n.id, ''); f(); apres && apres(); toast('Note supprimée'); } }, 'Supprimer')))),
     h('button', { class: 'btn btn-clair', onclick: () => f() }, 'Fermer')));
+}
+
+// Ajouter un passage à une étude (préparation d'une intervention)
+export function ajouterEtude(cles, apres) {
+  const courante = store.get('etude-courante');
+  const liste = M.etudes();
+  const f = feuille(h('div', {}, h('h2', {}, 'Ajouter à une étude'), h('p', { class: 'aide' }, M.refDe(cles)),
+    h('div', { class: 'liste-etudes' }, liste.map(e => h('button', { class: 'etude-choix' + (e.id === courante ? ' courant' : ''), onclick: () => { M.ajouterAEtude(e.id, cles); f(); apres && apres(); toast(`Ajouté à « ${e.titre} »`, { label: 'Voir', href: `#/bible/etude/${e.id}` }); } },
+      ico('dossier'), h('span', {}, h('b', {}, e.titre), h('small', {}, `${e.items.length} passage${e.items.length > 1 ? 's' : ''}`))))),
+    h('button', { class: 'btn btn-or', onclick: async () => { f(); const t = await demander('Nouvelle étude', '', { placeholder: 'Ex. Prédication de dimanche', bouton: 'Créer' }); if (t !== null) { const e = M.creerEtude(t); M.ajouterAEtude(e.id, cles); apres && apres(); toast(`Ajouté à « ${e.titre} »`, { label: 'Voir', href: `#/bible/etude/${e.id}` }); } } }, ico('ajout'), 'Nouvelle étude'),
+    h('button', { class: 'btn btn-clair', onclick: () => f() }, 'Annuler')));
 }

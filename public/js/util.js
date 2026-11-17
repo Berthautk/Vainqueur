@@ -84,6 +84,13 @@ const P = {
   video: '<rect x="2" y="6" width="14" height="12" rx="2" fill="currentColor"/><path d="M17 10l5-3v10l-5-3z" fill="currentColor"/>',
   porte: '<path d="M10 4v16M4 12h16M7 7h6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>',
   croix: '<path d="M12 2v20M5 8h14" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/>',
+  gomme: '<path d="M15.5 4.5l4 4L10 18H5.5l-2-2 12-11.5zM9 7l8 8M5.5 18H20" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>',
+  dossier: '<path d="M3 6.5A1.5 1.5 0 0 1 4.5 5H9l2 2h8.5A1.5 1.5 0 0 1 21 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
+  copie: '<rect x="8" y="8" width="12" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h2" fill="none" stroke="currentColor" stroke-width="2"/>',
+  ajout: '<path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>',
+  haut: '<path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>',
+  ecran: '<rect x="2.5" y="4" width="19" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 20h8M12 16v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+  marque: '<path d="M6 3h12v18l-6-4-6 4z" fill="currentColor"/>',
   bas: '<path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>',
   fermer: '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>',
   telephone: '<rect x="6" y="2.5" width="12" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v7m0 0l-3-3m3 3l3-3M10 18.5h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
@@ -206,3 +213,15 @@ export function ficheDuJour(d) {
   return liste[(jourTheme(d.theme) - 1) % liste.length];
 }
 export const prieAujourdhui = id => ['matin', 'soir'].some(p => store.get(`prie:${id}:${p}`, '') === aujourdhui());
+
+// Petite fenêtre de saisie (titre d'étude, note…) → Promise<string|null>
+export function demander(titre, valeur = '', { placeholder = '', long = false, bouton = 'Enregistrer' } = {}) {
+  return new Promise(ok => {
+    const champ = long ? h('textarea', { class: 'saisie', rows: 5, placeholder }) : h('input', { class: 'saisie', placeholder });
+    champ.value = valeur;
+    let fini = false; const fin = v => { if (fini) return; fini = true; f(); ok(v); };
+    const f = feuille(h('form', { onsubmit: e => { e.preventDefault(); fin(champ.value.trim()); } }, h('h2', {}, titre), champ,
+      h('button', { class: 'btn btn-or', type: 'submit' }, bouton), h('button', { class: 'btn btn-clair', type: 'button', onclick: () => fin(null) }, 'Annuler')));
+    setTimeout(() => champ.focus(), 50);
+  });
+}

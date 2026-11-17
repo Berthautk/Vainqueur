@@ -127,6 +127,8 @@ function media() {
 
 // ---------- Commandes ----------
 // file = la liste dans laquelle « précédent / suivant » se déplacent
+// Commence la lecture vocale à partir d'un segment précis (ex. un verset)
+export function jouerDepuis(piste, file, lu) { etat.depuis = lu; if (etat.piste && etat.piste.id === piste.id) { etat.file = file && file.length ? file : [piste]; charger(piste, true); } else jouer(piste, file); }
 export function jouer(piste, file = [piste]) {
   etat.file = file && file.length ? file : [piste];
   etat.index = etat.file.findIndex(p => p.id === piste.id);
@@ -155,6 +157,7 @@ async function charger(p, auto) {
       try { const segs = await segmentsDe(p); if (jc !== jetonCharge) return; voix.morceaux = decouper(segs); }
       catch { if (jc === jetonCharge) toast('Texte indisponible hors connexion'); return; }
     }
+    if (etat.depuis) { const k = voix.morceaux.findIndex(m => m.lu === etat.depuis); if (k >= 0) voix.i = k; etat.depuis = null; }
   } else {
     if (srcActuel !== p.audio) {
       // Audio téléchargé (même hébergé ailleurs) : on lit la copie gardée sur le téléphone

@@ -11,6 +11,7 @@ export async function chargerLivres() {
   if (livres.length) return livres;
   const r = await fetch('bible/livres.json');
   livres = (await r.json()).livres;
+  livres.forEach((l, i) => { l.ordre = i; });
   const noms = new Set();
   for (const l of livres) { table[cle(l.nom)] = l.id; noms.add(l.nom.replace(/^[123] /, '')); noms.add(sansAccent(l.nom.replace(/^[123] /, ''))); }
   for (const [a, id] of Object.entries(ALIAS)) { table[cle(a)] = id; noms.add(a); }
