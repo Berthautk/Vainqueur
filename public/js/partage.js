@@ -11,7 +11,7 @@ function lignes(ctx, texte, largeur) {
   return out;
 }
 
-export async function imageParole({ texte, ref }) {
+export async function imageParole({ texte, ref, etiquette = 'Parole du jour' }) {
   try { await Promise.all(['700 64px "Playfair Display"', 'italic 600 40px "Playfair Display"', '600 40px Poppins'].map(f => document.fonts.load(f))); } catch { /* polices de secours */ }
   const [fond, blason] = await Promise.all([charger('assets/fonds/fond_parole.webp'), charger('assets/logo/blason_web.webp')]);
   const c = document.createElement('canvas'); c.width = L; c.height = H;
@@ -35,7 +35,7 @@ export async function imageParole({ texte, ref }) {
 
   // Étiquette « Parole du jour »
   x.font = '600 36px Poppins';
-  const et = 'Parole du jour', ew = x.measureText(et).width + 70, ex = (L - ew) / 2, ey = 260;
+  const et = etiquette, ew = x.measureText(et).width + 70, ex = (L - ew) / 2, ey = 260;
   const or = x.createLinearGradient(0, ey, 0, ey + 66); or.addColorStop(0, '#F0C54A'); or.addColorStop(1, '#A87908');
   x.fillStyle = or; x.beginPath(); x.roundRect(ex, ey, ew, 66, 33); x.fill();
   x.fillStyle = '#fff'; x.textAlign = 'center'; x.fillText(et, L / 2, ey + 34);

@@ -1,3 +1,4 @@
+import { riche } from '../bible-refs.js';
 import { h, img, ico, contenu, store, partager, toast, mmss, ouvrirWhatsApp, aujourdhui } from '../util.js';
 import * as player from '../player.js';
 import { retour, enveloppe, ex, vide } from './commun.js';
@@ -46,15 +47,15 @@ export default async function (id) {
 
     const paras = bloc.enseignement.split('\n\n');
     const long = paras.join('').length > 220;
-    const texte = h('div', { class: 'texte-enseignement' + (long ? ' replie' : '') }, paras.map(p => h('p', {}, p)));
+    const texte = h('div', { class: 'texte-enseignement lecture-texte' + (long ? ' replie' : '') }, paras.map((p, i) => h('p', { 'data-lu': `${piste.id}:e${i}`, html: riche(p) })));
     const suite = long ? h('button', { class: 'lire-suite' }, 'Lire la suite ›') : null;
     if (suite) suite.onclick = () => { const r = texte.classList.toggle('replie'); suite.textContent = r ? 'Lire la suite ›' : 'Réduire ‹'; };
 
-    const liste = h('ul', { class: 'sujets' }, bloc.sujets.map((s, i) => {
+    const liste = h('ul', { class: 'sujets lecture-texte' }, bloc.sujets.map((s, i) => {
       const c = h('span', { class: 'case' + (coches.includes(i) ? ' coche' : ''), role: 'checkbox', tabindex: 0, 'aria-checked': coches.includes(i), 'aria-label': `Sujet ${i + 1}` }, ico('coche'));
       const bascule = () => { const a = store.get(cle, []); const n = a.includes(i) ? a.filter(x => x !== i) : [...a, i]; store.set(cle, n); const on = n.includes(i); c.classList.toggle('coche', on); c.setAttribute('aria-checked', on); };
       c.onclick = bascule; c.onkeydown = e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); bascule(); } };
-      return h('li', {}, h('span', { class: 'num' }, i + 1), h('label', { onclick: bascule }, s), c);
+      return h('li', {}, h('span', { class: 'num' }, i + 1), h('label', { onclick: e => { if (!e.target.closest('a')) bascule(); }, 'data-lu': `${piste.id}:s${i}`, html: riche(s) }), c);
     }));
 
     const merci = h('p', { class: 'merci', hidden: !prieDeja }, 'Bravo ! Tu as prié aujourd\'hui. 🙏');

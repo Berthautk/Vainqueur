@@ -1,0 +1,468 @@
+{
+ "version": "Louis Segond 1910",
+ "source": "Texte du domaine public (LSG 1910, provenance eBible.org)",
+ "livres": [
+  {
+   "id": "genese",
+   "nom": "Genèse",
+   "abr": "Gn",
+   "ch": 50,
+   "t": "AT"
+  },
+  {
+   "id": "exode",
+   "nom": "Exode",
+   "abr": "Ex",
+   "ch": 40,
+   "t": "AT"
+  },
+  {
+   "id": "levitique",
+   "nom": "Lévitique",
+   "abr": "Lv",
+   "ch": 27,
+   "t": "AT"
+  },
+  {
+   "id": "nombres",
+   "nom": "Nombres",
+   "abr": "Nb",
+   "ch": 36,
+   "t": "AT"
+  },
+  {
+   "id": "deuteronome",
+   "nom": "Deutéronome",
+   "abr": "Dt",
+   "ch": 34,
+   "t": "AT"
+  },
+  {
+   "id": "josue",
+   "nom": "Josué",
+   "abr": "Jos",
+   "ch": 24,
+   "t": "AT"
+  },
+  {
+   "id": "juges",
+   "nom": "Juges",
+   "abr": "Jg",
+   "ch": 21,
+   "t": "AT"
+  },
+  {
+   "id": "ruth",
+   "nom": "Ruth",
+   "abr": "Rt",
+   "ch": 4,
+   "t": "AT"
+  },
+  {
+   "id": "1-samuel",
+   "nom": "1 Samuel",
+   "abr": "1 S",
+   "ch": 31,
+   "t": "AT"
+  },
+  {
+   "id": "2-samuel",
+   "nom": "2 Samuel",
+   "abr": "2 S",
+   "ch": 24,
+   "t": "AT"
+  },
+  {
+   "id": "1-rois",
+   "nom": "1 Rois",
+   "abr": "1 R",
+   "ch": 22,
+   "t": "AT"
+  },
+  {
+   "id": "2-rois",
+   "nom": "2 Rois",
+   "abr": "2 R",
+   "ch": 25,
+   "t": "AT"
+  },
+  {
+   "id": "1-chroniques",
+   "nom": "1 Chroniques",
+   "abr": "1 Ch",
+   "ch": 29,
+   "t": "AT"
+  },
+  {
+   "id": "2-chroniques",
+   "nom": "2 Chroniques",
+   "abr": "2 Ch",
+   "ch": 36,
+   "t": "AT"
+  },
+  {
+   "id": "esdras",
+   "nom": "Esdras",
+   "abr": "Esd",
+   "ch": 10,
+   "t": "AT"
+  },
+  {
+   "id": "nehemie",
+   "nom": "Néhémie",
+   "abr": "Né",
+   "ch": 13,
+   "t": "AT"
+  },
+  {
+   "id": "esther",
+   "nom": "Esther",
+   "abr": "Est",
+   "ch": 10,
+   "t": "AT"
+  },
+  {
+   "id": "job",
+   "nom": "Job",
+   "abr": "Jb",
+   "ch": 42,
+   "t": "AT"
+  },
+  {
+   "id": "psaumes",
+   "nom": "Psaumes",
+   "abr": "Ps",
+   "ch": 150,
+   "t": "AT"
+  },
+  {
+   "id": "proverbes",
+   "nom": "Proverbes",
+   "abr": "Pr",
+   "ch": 31,
+   "t": "AT"
+  },
+  {
+   "id": "ecclesiaste",
+   "nom": "Ecclésiaste",
+   "abr": "Ec",
+   "ch": 12,
+   "t": "AT"
+  },
+  {
+   "id": "cantique",
+   "nom": "Cantique des Cantiques",
+   "abr": "Ct",
+   "ch": 8,
+   "t": "AT"
+  },
+  {
+   "id": "esaie",
+   "nom": "Ésaïe",
+   "abr": "És",
+   "ch": 66,
+   "t": "AT"
+  },
+  {
+   "id": "jeremie",
+   "nom": "Jérémie",
+   "abr": "Jr",
+   "ch": 52,
+   "t": "AT"
+  },
+  {
+   "id": "lamentations",
+   "nom": "Lamentations",
+   "abr": "Lm",
+   "ch": 5,
+   "t": "AT"
+  },
+  {
+   "id": "ezechiel",
+   "nom": "Ézéchiel",
+   "abr": "Éz",
+   "ch": 48,
+   "t": "AT"
+  },
+  {
+   "id": "daniel",
+   "nom": "Daniel",
+   "abr": "Dn",
+   "ch": 12,
+   "t": "AT"
+  },
+  {
+   "id": "osee",
+   "nom": "Osée",
+   "abr": "Os",
+   "ch": 14,
+   "t": "AT"
+  },
+  {
+   "id": "joel",
+   "nom": "Joël",
+   "abr": "Jl",
+   "ch": 3,
+   "t": "AT"
+  },
+  {
+   "id": "amos",
+   "nom": "Amos",
+   "abr": "Am",
+   "ch": 9,
+   "t": "AT"
+  },
+  {
+   "id": "abdias",
+   "nom": "Abdias",
+   "abr": "Ab",
+   "ch": 1,
+   "t": "AT"
+  },
+  {
+   "id": "jonas",
+   "nom": "Jonas",
+   "abr": "Jon",
+   "ch": 4,
+   "t": "AT"
+  },
+  {
+   "id": "michee",
+   "nom": "Michée",
+   "abr": "Mi",
+   "ch": 7,
+   "t": "AT"
+  },
+  {
+   "id": "nahum",
+   "nom": "Nahum",
+   "abr": "Na",
+   "ch": 3,
+   "t": "AT"
+  },
+  {
+   "id": "habacuc",
+   "nom": "Habacuc",
+   "abr": "Ha",
+   "ch": 3,
+   "t": "AT"
+  },
+  {
+   "id": "sophonie",
+   "nom": "Sophonie",
+   "abr": "So",
+   "ch": 3,
+   "t": "AT"
+  },
+  {
+   "id": "aggee",
+   "nom": "Aggée",
+   "abr": "Ag",
+   "ch": 2,
+   "t": "AT"
+  },
+  {
+   "id": "zacharie",
+   "nom": "Zacharie",
+   "abr": "Za",
+   "ch": 14,
+   "t": "AT"
+  },
+  {
+   "id": "malachie",
+   "nom": "Malachie",
+   "abr": "Ml",
+   "ch": 4,
+   "t": "AT"
+  },
+  {
+   "id": "matthieu",
+   "nom": "Matthieu",
+   "abr": "Mt",
+   "ch": 28,
+   "t": "NT"
+  },
+  {
+   "id": "marc",
+   "nom": "Marc",
+   "abr": "Mc",
+   "ch": 16,
+   "t": "NT"
+  },
+  {
+   "id": "luc",
+   "nom": "Luc",
+   "abr": "Lc",
+   "ch": 24,
+   "t": "NT"
+  },
+  {
+   "id": "jean",
+   "nom": "Jean",
+   "abr": "Jn",
+   "ch": 21,
+   "t": "NT"
+  },
+  {
+   "id": "actes",
+   "nom": "Actes",
+   "abr": "Ac",
+   "ch": 28,
+   "t": "NT"
+  },
+  {
+   "id": "romains",
+   "nom": "Romains",
+   "abr": "Rm",
+   "ch": 16,
+   "t": "NT"
+  },
+  {
+   "id": "1-corinthiens",
+   "nom": "1 Corinthiens",
+   "abr": "1 Co",
+   "ch": 16,
+   "t": "NT"
+  },
+  {
+   "id": "2-corinthiens",
+   "nom": "2 Corinthiens",
+   "abr": "2 Co",
+   "ch": 13,
+   "t": "NT"
+  },
+  {
+   "id": "galates",
+   "nom": "Galates",
+   "abr": "Ga",
+   "ch": 6,
+   "t": "NT"
+  },
+  {
+   "id": "ephesiens",
+   "nom": "Éphésiens",
+   "abr": "Ép",
+   "ch": 6,
+   "t": "NT"
+  },
+  {
+   "id": "philippiens",
+   "nom": "Philippiens",
+   "abr": "Ph",
+   "ch": 4,
+   "t": "NT"
+  },
+  {
+   "id": "colossiens",
+   "nom": "Colossiens",
+   "abr": "Col",
+   "ch": 4,
+   "t": "NT"
+  },
+  {
+   "id": "1-thessaloniciens",
+   "nom": "1 Thessaloniciens",
+   "abr": "1 Th",
+   "ch": 5,
+   "t": "NT"
+  },
+  {
+   "id": "2-thessaloniciens",
+   "nom": "2 Thessaloniciens",
+   "abr": "2 Th",
+   "ch": 3,
+   "t": "NT"
+  },
+  {
+   "id": "1-timothee",
+   "nom": "1 Timothée",
+   "abr": "1 Tm",
+   "ch": 6,
+   "t": "NT"
+  },
+  {
+   "id": "2-timothee",
+   "nom": "2 Timothée",
+   "abr": "2 Tm",
+   "ch": 4,
+   "t": "NT"
+  },
+  {
+   "id": "tite",
+   "nom": "Tite",
+   "abr": "Tt",
+   "ch": 3,
+   "t": "NT"
+  },
+  {
+   "id": "philemon",
+   "nom": "Philémon",
+   "abr": "Phm",
+   "ch": 1,
+   "t": "NT"
+  },
+  {
+   "id": "hebreux",
+   "nom": "Hébreux",
+   "abr": "Hé",
+   "ch": 13,
+   "t": "NT"
+  },
+  {
+   "id": "jacques",
+   "nom": "Jacques",
+   "abr": "Jc",
+   "ch": 5,
+   "t": "NT"
+  },
+  {
+   "id": "1-pierre",
+   "nom": "1 Pierre",
+   "abr": "1 P",
+   "ch": 5,
+   "t": "NT"
+  },
+  {
+   "id": "2-pierre",
+   "nom": "2 Pierre",
+   "abr": "2 P",
+   "ch": 3,
+   "t": "NT"
+  },
+  {
+   "id": "1-jean",
+   "nom": "1 Jean",
+   "abr": "1 Jn",
+   "ch": 5,
+   "t": "NT"
+  },
+  {
+   "id": "2-jean",
+   "nom": "2 Jean",
+   "abr": "2 Jn",
+   "ch": 1,
+   "t": "NT"
+  },
+  {
+   "id": "3-jean",
+   "nom": "3 Jean",
+   "abr": "3 Jn",
+   "ch": 1,
+   "t": "NT"
+  },
+  {
+   "id": "jude",
+   "nom": "Jude",
+   "abr": "Jd",
+   "ch": 1,
+   "t": "NT"
+  },
+  {
+   "id": "apocalypse",
+   "nom": "Apocalypse",
+   "abr": "Ap",
+   "ch": 22,
+   "t": "NT"
+  }
+ ]
+}
