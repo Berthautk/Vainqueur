@@ -1,0 +1,2 @@
+assetlinks.json est vide pour l'instant. Après la création de l'application Android avec PWABuilder,
+remplacer son contenu par le texte fourni par PWABuilder (package_name + empreinte SHA-256).
