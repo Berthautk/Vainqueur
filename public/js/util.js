@@ -44,6 +44,7 @@ export const img = (id, alt = '', cls = '', lazy = true) =>
 
 // ---- Contenu JSON (réseau d'abord, repli sur le cache du service worker) ----
 const cacheContenu = {};
+export const oublierContenu = nom => { delete cacheContenu[nom]; };
 export async function contenu(nom) {
   if (cacheContenu[nom]) return cacheContenu[nom];
   const r = await fetch(`content/${nom}.json`);

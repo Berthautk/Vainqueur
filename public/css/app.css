@@ -709,3 +709,20 @@ h2.groupe{font-family:var(--t-texte);font-size:13px;font-weight:700;text-transfo
 .verset.choisi>span[data-lu]{text-decoration:none}
 .bible-barre .revenir{width:40px;height:40px;padding:0;justify-content:center;border-radius:50%;background:var(--or-clair);border:0;color:var(--nuit)}
 .bible-barre .revenir svg{width:22px;height:22px}
+
+/* ===== Réactivité : réponse immédiate au toucher ===== */
+html{touch-action:manipulation}
+.btn,.ligne,.tuile,.onglets a,.livre,.chap,.filtre,.carte-plan-jour,.reprise,.carte-etude,.resultat,.theme-cb,.option,.bs-action,.btn-lire,.btn-fav,.retour,.fleche{transition:transform .08s ease-out,filter .08s}
+.btn:active,.ligne:active,.tuile:active,.livre:active,.chap:active,.filtre:active,.carte-plan-jour:active,.reprise:active,.carte-etude:active,.resultat:active,.option:active,.btn-lire:active,.btn-fav:active,.retour:active{transform:scale(.96);filter:brightness(.95)}
+.onglets a:active,.bs-action:active{transform:scale(.9)}
+/* ===== Chargement aux couleurs de Vainqueur ===== */
+.chargeur{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:70px 20px;color:var(--gris);animation:apparait .2s ease-out}
+@keyframes apparait{from{opacity:0}}
+.chargeur-rond{position:relative;width:92px;height:92px;border-radius:50%;display:grid;place-items:center;background:var(--nuit);box-shadow:0 6px 18px rgba(15,31,92,.3)}
+.chargeur-rond::before{content:"";position:absolute;inset:-5px;border-radius:50%;border:4px solid transparent;border-top-color:var(--or);border-right-color:var(--or-clair);animation:tourne 1s linear infinite}
+.chargeur-rond img{width:62px;height:62px;object-fit:contain;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(.9)}}
+.chargeur-barre{width:160px;height:6px;border-radius:4px;background:#E1E6F5;overflow:hidden}
+.chargeur-barre i{display:block;width:40%;height:100%;border-radius:4px;background:var(--grad-or);animation:barre 1.1s ease-in-out infinite}
+@keyframes barre{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
+.chargeur small{font-weight:600;letter-spacing:.3px}

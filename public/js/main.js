@@ -1,4 +1,4 @@
-import { $, $$, h, ico, eq, store, contenu, imgSrc, toast, getConfig } from './util.js';
+import { $, $$, h, ico, eq, store, contenu, oublierContenu, imgSrc, toast, getConfig } from './util.js';
 import { pisteAdoration } from './pistes.js';
 import { majBouton } from './views/commun.js';
 import * as surlignage from './surlignage.js';
@@ -40,6 +40,11 @@ const routes = [
   [/^sophonie$/, () => import('./views/sophonie.js'), 'plus']
 ];
 
+// Écran de chargement aux couleurs de Vainqueur (blason qui tourne doucement + barre dorée)
+const chargeur = () => h('div', { class: 'chargeur', role: 'status', 'aria-label': 'Chargement' },
+  h('div', { class: 'chargeur-rond' }, h('img', { src: 'assets/logo/blason_web.webp', alt: '' })),
+  h('div', { class: 'chargeur-barre' }, h('i')), h('small', {}, 'Chargement…'));
+let livresPrets = Promise.resolve();
 let origine = 'accueil';   // onglet d'où l'on vient (pour les pages « satellites »)
 let courant = null;        // vue affichée (pour nettoyer)
 let jeton = 0;
@@ -63,14 +68,15 @@ async function aller() {
   const vue = $('#vue');
   if (courant && courant.nettoyer) courant.nettoyer();
   courant = null;
-  vue.replaceChildren(h('div', { class: 'chargement', role: 'status', 'aria-label': 'Chargement' }, h('i')));
+  const tempo = setTimeout(() => { if (mon === jeton) vue.replaceChildren(chargeur()); }, 150);
   const enLecteur = /^nayla\/[\w-]+$/.test(chemin);
   document.body.dataset.lecteur = enLecteur ? '1' : '';
   document.body.dataset.ecoute = '';
   majMini();
   try {
-    const mod = await trouve.charge();
+    const [mod] = await Promise.all([trouve.charge(), livresPrets]);
     const resultat = await mod.default(...trouve.args, params);
+    clearTimeout(tempo);
     if (mon !== jeton) return;
     courant = resultat;
     vue.replaceChildren(resultat.noeud);
@@ -80,6 +86,7 @@ async function aller() {
     window.scrollTo(0, 0);
     vue.focus({ preventScroll: true });
   } catch (e) {
+    clearTimeout(tempo);
     console.error(e);
     if (mon !== jeton) return;
     vue.replaceChildren(h('div', { class: 'vide' }, h('strong', {}, 'Contenu indisponible'), navigator.onLine ? 'Une erreur est survenue.' : 'Tu es hors connexion et cette page n\'a pas encore été enregistrée.', h('p', {}, h('a', { class: 'btn btn-or', href: '#/' }, 'Retour à l\'accueil'))));
@@ -149,16 +156,30 @@ async function demarrer() {
   app.hidden = false;
   majReseau();
   addEventListener('hashchange', aller);
-  await chargerLivres().catch(() => {});
+  livresPrets = chargerLivres().catch(() => {});
   const prete = aller();
   // Restaure la dernière écoute
   contenu('nayla').then(c => player.restaurer(c.adorations.filter(a => a.audio).map(pisteAdoration))).catch(() => {});
   pastille(true);
   getConfig().then(c => { if (c.devise) { const k = c.devise.lastIndexOf(' '); $('#devise').replaceChildren(c.devise.slice(0, k + 1), h('b', {}, c.devise.slice(k + 1))); } }).catch(() => {});
   await prete;
-  const reste = Math.max(0, 1500 - (performance.now() - debut));
+  // Le texte et l'image de l'accueil apparaissent ensemble (au plus 2,5 s d'attente)
+  const premiereImage = $('#vue img');
+  await Promise.race([Promise.all([document.fonts ? document.fonts.ready : 0, premiereImage && premiereImage.decode ? premiereImage.decode().catch(() => {}) : 0]), new Promise(r => setTimeout(r, 2500))]);
+  const reste = Math.max(0, (store.get('ouvertures', 1) > 1 ? 700 : 1400) - (performance.now() - debut));
   setTimeout(() => { splash.classList.add('fin'); setTimeout(() => splash.remove(), 450); }, reste);
+  // Ensuite, quand le téléphone est libre : on prépare toutes les rubriques pour qu'elles s'ouvrent tout de suite
+  const auRepos = f => ('requestIdleCallback' in window ? requestIdleCallback(f, { timeout: 4000 }) : setTimeout(f, 2500));
+  setTimeout(() => auRepos(() => {
+    routes.forEach(([, charge]) => charge().catch(() => {}));
+    ['fiches', 'nayla', 'coeurs_brises', 'affaires', 'evangelisation', 'temoignages', 'plus', 'radio', 'plans'].forEach(n => contenu(n).catch(() => {}));
+  }), 1500);
 }
+
+// Un contenu a changé sur le serveur : on le relira à la prochaine ouverture de la rubrique
+navigator.serviceWorker && navigator.serviceWorker.addEventListener('message', ev => {
+  if (ev.data && ev.data.type === 'contenu-maj') { const m = ev.data.url.match(/content\/([\w-]+)\.json$/); if (m) oublierContenu(m[1]); }
+});
 
 // Installation de l'application (Android / Chrome)
 window.vqInstall = null;

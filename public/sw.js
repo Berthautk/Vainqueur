@@ -2,7 +2,7 @@
    - Précache : application, polices, logos, contenus JSON, et toutes les images/audios cités dans les JSON.
    - Les audios téléchargés par l'utilisateur vivent dans le cache « vainqueur-audio » (jamais purgé ici).
    Changer VERSION pour forcer la mise à jour de l'application chez tous les utilisateurs. */
-const VERSION = 'v10';
+const VERSION = 'v11';
 const APP = `vainqueur-app-${VERSION}`;
 const AUDIO = 'vainqueur-audio';
 const BIBLE = 'vainqueur-bible-lsg'; // texte de la Bible : gardé d'une version à l'autre
@@ -116,22 +116,30 @@ self.addEventListener('fetch', e => {
     return;
   }
 
-  // Pages : réseau d'abord (contenu à jour), repli sur le cache. Autres fichiers : cache d'abord, rafraîchi en arrière-plan.
-  const reseauD = req.mode === 'navigate' || url.pathname.endsWith('.json') || url.pathname.endsWith('.js') || url.pathname.endsWith('.css');
-  e.respondWith((async () => {
+  // Rapidité : tout ce qui est déjà sur le téléphone est servi tout de suite, sans attendre le réseau.
+  //  - code et mise en page (.html, .js, .css), polices, images : depuis le cache ; une nouvelle version
+  //    arrive avec un nouveau service worker (changer VERSION en haut de ce fichier) ;
+  //  - contenus (.json) : depuis le cache tout de suite, puis mis à jour en arrière-plan pour la prochaine fois.
+  const estContenu = url.pathname.endsWith('.json');
+  let ancien = null;
+  const cle = req.mode === 'navigate' ? './' : req;
+  const rafraichir = async () => {
     const cache = await caches.open(APP);
-    const cle = req.mode === 'navigate' ? './' : req;
-    if (reseauD) {
-      try {
-        const r = await fetch(req);
-        if (r.ok) cache.put(cle, await propre(r.clone()));
-        return r;
-      } catch {
-        return (await cache.match(cle, { ignoreSearch: true })) || (await cache.match('./')) || Response.error();
-      }
+    const r = await fetch(req.mode === 'navigate' ? req : new Request(req.url, { cache: estContenu ? 'no-cache' : 'default', credentials: 'same-origin' }));
+    if (r.ok) {
+      const copie = await propre(r.clone());
+      if (ancien && (await ancien.text()) !== (await copie.clone().text())) (await self.clients.matchAll()).forEach(c => c.postMessage({ type: 'contenu-maj', url: url.pathname }));
+      await cache.put(cle, copie);
     }
-    const trouve = await cache.match(req, { ignoreSearch: true });
-    if (trouve) return trouve;
-    try { const r = await fetch(req); if (r.ok) cache.put(req, await propre(r.clone())); return r; } catch { return Response.error(); }
-  })());
+    return r;
+  };
+  const reponse = (async () => {
+    const trouve = await (await caches.open(APP)).match(cle, { ignoreSearch: true });
+    if (trouve) { if (estContenu) ancien = trouve.clone(); return trouve; }
+    try { return await rafraichir(); }
+    catch { return (req.mode === 'navigate' && await (await caches.open(APP)).match('./')) || Response.error(); }
+  })();
+  e.respondWith(reponse);
+  // Contenus : mis à jour en arrière-plan, pour la prochaine ouverture
+  if (estContenu) e.waitUntil(reponse.then(() => (ancien ? rafraichir() : null)).catch(() => {}));
 });

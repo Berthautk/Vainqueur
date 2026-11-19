@@ -3,7 +3,8 @@
 Tout le texte de l'application se trouve dans les fichiers de ce dossier. **Pas besoin de toucher au code.**
 Chaque fichier est une liste d'éléments entre `{ }`, séparés par une virgule. Attention aux guillemets `"` et aux virgules : une virgule oubliée ou en trop empêche la page de s'afficher.
 
-Après chaque modification : sur le site, l'application se met à jour à la prochaine ouverture (avec connexion). Pour forcer la mise à jour chez tout le monde, changer `VERSION` en haut du fichier `sw.js` (`v1` → `v2`).
+Après chaque modification d'un fichier de contenu : chaque téléphone récupère la nouvelle version en arrière-plan à l'ouverture suivante, puis l'affiche à l'ouverture d'après. L'application s'ouvre ainsi tout de suite, sans attendre le réseau.
+Pour une modification du **code** (fichiers `.js`, `.css`, `index.html`), il faut changer `VERSION` en haut de `sw.js` (`v11` → `v12`), sinon les téléphones gardent l'ancienne version.
 
 ## Les images
 Dans les fichiers, une image s'écrit avec son code de la planche du catalogue, par exemple `"p2_02"` ou `"q1_08"`. Les planches sont dans `references/catalogue/`.
