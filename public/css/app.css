@@ -492,7 +492,8 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 /* ===== Plus ===== */
 h2.groupe{font-family:var(--t-texte);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--gris);margin:18px 16px 8px}
 .rythme{font-size:12px!important;color:var(--vert-fonce)!important;font-weight:600;margin-top:4px}
-.portrait{width:120px;height:120px;object-fit:contain;margin:0 auto}
+.portrait{width:200px;height:200px;object-fit:contain;margin:0 auto;filter:drop-shadow(0 6px 14px rgba(15,31,92,.3))}
+.ligne-img[src*="photos/"]{object-fit:contain}
 /* ===== Réglages ===== */
 .reglage{background:#fff;margin:12px;border-radius:var(--rayon);box-shadow:var(--ombre);padding:14px}
 .reglage h2{font-size:19px;color:var(--nuit)}

@@ -89,7 +89,7 @@
     {
       "titre": "Docteur Sophonie",
       "sous": "L'homme de Dieu et ses pages.",
-      "image": "assets/logo/blason_web.webp",
+      "image": "assets/photos/docteur-sophonie-petit.webp",
       "action": "route",
       "valeur": "#/sophonie"
     },
