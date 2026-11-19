@@ -710,11 +710,15 @@ h2.groupe{font-family:var(--t-texte);font-size:13px;font-weight:700;text-transfo
 .bible-barre .revenir{width:40px;height:40px;padding:0;justify-content:center;border-radius:50%;background:var(--or-clair);border:0;color:var(--nuit)}
 .bible-barre .revenir svg{width:22px;height:22px}
 
-/* ===== Réactivité : réponse immédiate au toucher ===== */
+/* ===== Réactivité : réponse immédiate au toucher =====
+   Aucun changement de taille sous le doigt (sur certains Android, cela fait ignorer le premier toucher) :
+   on assombrit seulement l'élément touché. */
 html{touch-action:manipulation}
-.btn,.ligne,.tuile,.onglets a,.livre,.chap,.filtre,.carte-plan-jour,.reprise,.carte-etude,.resultat,.theme-cb,.option,.bs-action,.btn-lire,.btn-fav,.retour,.fleche{transition:transform .08s ease-out,filter .08s}
-.btn:active,.ligne:active,.tuile:active,.livre:active,.chap:active,.filtre:active,.carte-plan-jour:active,.reprise:active,.carte-etude:active,.resultat:active,.option:active,.btn-lire:active,.btn-fav:active,.retour:active{transform:scale(.96);filter:brightness(.95)}
-.onglets a:active,.bs-action:active{transform:scale(.9)}
+.btn:active,.ligne:active,.tuile:active,.livre:active,.chap:active,.filtre:active,.carte-plan-jour:active,.reprise:active,.carte-etude:active,.resultat:active,.option:active,.btn-lire:active,.btn-fav:active,.retour:active,.bs-action:active{filter:brightness(.9)}
+.onglets a:active{background-color:rgba(255,255,255,.14)}
+.onglets a.actif:active{filter:brightness(.92)}
+.onglets a,.onglets a *{-webkit-tap-highlight-color:transparent}
+.onglets a svg,.onglets a span{pointer-events:none}
 /* ===== Chargement aux couleurs de Vainqueur ===== */
 .chargeur{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:70px 20px;color:var(--gris);animation:apparait .2s ease-out}
 @keyframes apparait{from{opacity:0}}

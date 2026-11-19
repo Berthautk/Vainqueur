@@ -144,6 +144,19 @@ async function pastille(annonce = false) {
 }
 window.addEventListener('vq-news', pastille);
 
+// ---- Barre du bas : la rubrique s'ouvre dès que le doigt se lève (même si le téléphone n'envoie pas de « clic ») ----
+(() => {
+  const nav = document.querySelector('.onglets'); let depart = null;
+  nav.addEventListener('pointerdown', e => { const a = e.target.closest('a[data-tab]'); depart = a ? { a, x: e.clientX, y: e.clientY } : null; }, { passive: true });
+  nav.addEventListener('pointerup', e => {
+    if (!depart) return; const { a, x, y } = depart; depart = null;
+    if (Math.abs(e.clientX - x) > 12 || Math.abs(e.clientY - y) > 12) return;
+    const cible = a.getAttribute('href');
+    if (location.hash !== cible && !(cible === '#/' && (location.hash === '' || location.hash === '#/'))) location.hash = cible;
+  });
+  nav.addEventListener('pointercancel', () => { depart = null; });
+})();
+
 // ---- Hors connexion ----
 const majReseau = () => { $('#offline').hidden = navigator.onLine; };
 addEventListener('online', majReseau); addEventListener('offline', majReseau);
