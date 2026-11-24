@@ -148,9 +148,32 @@ export function feuille(contenuNode) {
 // ---- WhatsApp / Telegram ----
 let config;
 export async function getConfig() { return config || (config = await contenu('config')); }
+// ---- Prénom de l'utilisateur : gardé uniquement sur son téléphone ----
+// Majuscule à chaque partie (samuel → Samuel, jean-paul → Jean-Paul), lettres seulement, 24 caractères au plus.
+export function nettoyerPrenom(s) {
+  s = String(s || '').normalize('NFC').replace(/<[^>]*>/g, '').replace(/[^\p{L}\p{M}'’ -]/gu, '').replace(/\s+/g, ' ').replace(/^[\s'’-]+|[\s'’-]+$/g, '').slice(0, 24).trim();
+  s = s.toLowerCase();
+  return s.replace(/(^|[ '’-])(\p{L})/gu, (_, a, b) => a + b.toUpperCase());
+}
+export const prenom = () => nettoyerPrenom(store.get('prenom', ''));
+export function definirPrenom(v) {
+  const p = nettoyerPrenom(v);
+  if (p.replace(/[^\p{L}]/gu, '').length < 2) return null;
+  store.set('prenom', p); store.set('prenom_etat', 'ok'); return p;
+}
+export function effacerPrenom() { store.set('prenom', ''); store.set('prenom_etat', 'efface'); }
+export const presenterActif = () => store.get('presenter', true) !== false;
+// « Bravo Samuel ! » ou « Bravo ! »
+export const bravo = () => { const p = prenom(); return p ? `Bravo ${p} !` : 'Bravo !'; };
+// « Bonjour, j'aimerais… » → « Bonjour, c'est Samuel. J'aimerais… » (l'équipe sait qui écrit)
+export function avecPrenom(msg) {
+  const p = prenom();
+  if (!p || !presenterActif()) return msg;
+  return msg.replace(/^Bonjour,?\s*(\S)/, (_, c) => `Bonjour, c'est ${p}. ${c.toUpperCase()}`);
+}
 export async function ouvrirWhatsApp(cle, suffixe = '') {
   const c = await getConfig();
-  const msg = (c.messages[cle] || '') + suffixe;
+  const msg = avecPrenom((c.messages[cle] || '') + suffixe);
   const num = String(c.whatsapp || '').replace(/\D/g, '');
   if (!num) return toast('Contact WhatsApp pas encore configuré — bientôt disponible');
   window.open(`https://wa.me/${num}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');

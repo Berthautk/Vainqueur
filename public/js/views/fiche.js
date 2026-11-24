@@ -1,5 +1,5 @@
 import { riche } from '../bible-refs.js';
-import { h, img, ico, contenu, store, partager, toast, mmss, ouvrirWhatsApp, aujourdhui } from '../util.js';
+import { h, img, ico, contenu, store, partager, toast, mmss, ouvrirWhatsApp, aujourdhui, bravo, prenom } from '../util.js';
 import * as player from '../player.js';
 import { retour, enveloppe, ex, vide } from './commun.js';
 import { pisteFiche, pistesFiches } from '../pistes.js';
@@ -58,9 +58,9 @@ export default async function (id) {
       return h('li', {}, h('span', { class: 'num' }, i + 1), h('label', { onclick: e => { if (!e.target.closest('a')) bascule(); }, 'data-lu': `${piste.id}:s${i}`, html: riche(s) }), c);
     }));
 
-    const merci = h('p', { class: 'merci', hidden: !prieDeja }, 'Bravo ! Tu as prié aujourd\'hui. 🙏');
+    const merci = h('p', { class: 'merci', hidden: !prieDeja }, `${bravo()} Tu as prié aujourd'hui. 🙏`);
     const btnPrie = h('button', { class: 'btn btn-or btn-bloc' }, ico('coche'), 'J\'ai prié');
-    btnPrie.onclick = () => { store.set(`prie:${f.id}:${periode}`, jour); merci.hidden = false; toast('Enregistré — que Dieu te garde !'); };
+    btnPrie.onclick = () => { store.set(`prie:${f.id}:${periode}`, jour); merci.hidden = false; toast(`Enregistré — que Dieu te garde${prenom() ? ', ' + prenom() : ''} !`); };
 
     zone.replaceChildren(
       h('section', { class: 'bloc' }, h('div', { class: 'bloc-titre' }, ico('livre'), 'Enseignement'),

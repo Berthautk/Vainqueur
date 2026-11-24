@@ -344,5 +344,14 @@
     "bouton": "Commencer",
     "lien": "#/salut",
     "image": "p3_01"
-  }
+  },
+  "salutations_prenom": [
+    "Bonjour,|{prenom} !",
+    "Bienvenue,|{prenom} !",
+    "Heureux de te revoir,|{prenom} !",
+    "Bonjour,|vainqueur {prenom} !",
+    "Que Dieu te bénisse,|{prenom} !",
+    "Dieu a un plan pour toi,|{prenom} !"
+  ],
+  "_note_prenom": "Salutations utilisées quand la personne a donné son prénom : {prenom} est remplacé. Sans prénom, ce sont les « salutations » ci-dessus."
 }

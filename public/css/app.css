@@ -743,3 +743,27 @@ html{touch-action:manipulation}
 .hero-cb .btn{padding:9px 16px}
 .cb-intro{margin:14px 16px 0;font-size:14px;color:var(--gris);font-weight:500}
 @media (max-width:370px){.hero-cb h1{font-size:27px}.hero-cb-txt{width:70%}}
+
+/* ===== Message « mise à jour » et prénom ===== */
+.maj{position:sticky;top:var(--h-entete,62px);z-index:29;display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px;padding:9px 12px;background:linear-gradient(90deg,#FFF1C4,#FFE08A);color:var(--nuit);font-weight:600;font-size:14px;border-bottom:2px solid var(--or);animation:apparait .25s ease-out}
+.maj span{flex:1 1 180px}
+.maj .btn{padding:8px 14px;min-height:36px}
+.maj-plus-tard{font-size:12.5px;text-decoration:underline;color:var(--nuit);opacity:.8;padding:6px}
+.prenom-form{text-align:center}
+.prenom-blason{margin:0 auto 6px;width:64px;height:64px;object-fit:contain}
+.prenom-form h2{font-size:23px}
+.prenom-q{font-family:var(--t-titre);font-size:19px;color:var(--nuit);font-weight:700;margin:8px 0 4px}
+.saisie-prenom{font-size:19px;text-align:center;font-weight:600;margin:6px 0}
+.saisie-erreur{color:var(--rouge);font-weight:600;font-size:13px}
+.saisie-apercu{font-family:var(--t-titre);font-style:italic;font-size:18px;color:var(--bleu);min-height:26px}
+.prenom-form .aide{margin:8px 4px 12px;text-align:left}
+.carte-prenom{display:flex;align-items:center;gap:10px;margin:12px 12px 0;padding:10px 12px;border-radius:var(--rayon);background:#EAF0FF;box-shadow:var(--ombre)}
+.carte-prenom>span{font-size:26px}
+.carte-prenom div{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}
+.carte-prenom b{color:var(--nuit);font-size:14.5px}
+.carte-prenom small{color:var(--gris);font-size:12px}
+.carte-prenom .btn{flex:none}
+.carte-prenom-x{flex:none;width:30px;height:30px;border-radius:50%;color:var(--gris);font-size:15px}
+.avec-maj .toast{top:calc(var(--h-entete,62px) + var(--h-maj,48px) + 10px)}
+.maj{gap:6px 10px;padding:8px 12px}
+.maj .btn{white-space:nowrap}

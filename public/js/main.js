@@ -1,4 +1,4 @@
-import { $, $$, h, ico, eq, store, contenu, oublierContenu, imgSrc, toast, getConfig } from './util.js';
+import { $, $$, h, ico, eq, store, contenu, oublierContenu, imgSrc, toast, getConfig, prenom } from './util.js';
 import { pisteAdoration } from './pistes.js';
 import { majBouton } from './views/commun.js';
 import * as surlignage from './surlignage.js';
@@ -155,7 +155,9 @@ async function pastille(annonce = false) {
     const neuf = !!dernier && vu !== dernier;
     $('#pastille').hidden = !neuf;
     // Annonce une seule fois chaque nouveauté
-    if (annonce && neuf && store.get('news_annonce', '') !== dernier) {
+    // (pas par-dessus la question du prénom, posée au premier lancement)
+    const prenomAttendu = !prenom() && !store.get('prenom_demande', 0) && !['refus', 'efface'].includes(store.get('prenom_etat', ''));
+    if (annonce && neuf && !prenomAttendu && store.get('news_annonce', '') !== dernier) {
       store.set('news_annonce', dernier);
       setTimeout(() => toast('🔔 Un nouveau message est arrivé', { label: 'Voir', href: '#/nouveautes' }), 2200);
     }
@@ -200,6 +202,9 @@ async function demarrer() {
   await Promise.race([Promise.all([document.fonts ? document.fonts.ready : 0, premiereImage && premiereImage.decode ? premiereImage.decode().catch(() => {}) : 0]), new Promise(r => setTimeout(r, 2500))]);
   const reste = Math.max(0, (store.get('ouvertures', 1) > 1 ? 700 : 1400) - (performance.now() - debut));
   setTimeout(() => { splash.classList.add('fin'); setTimeout(() => splash.remove(), 450); }, reste);
+  // Une seule fois : « Comment t'appelles-tu ? » (si ce n'est pas déjà fait)
+  setTimeout(() => import('./views/prenom.js').then(p => p.proposerPrenom()).catch(() => {}), reste + 900);
+  if (store.get('maj_faite', 0) && Date.now() - store.get('maj_faite', 0) < 120000) { store.set('maj_faite', 0); setTimeout(() => { if (!document.querySelector('#feuille:not([hidden])')) toast('Vainqueur est à jour ✔'); }, reste + 900); }
   // Ensuite, quand le téléphone est libre : on prépare toutes les rubriques pour qu'elles s'ouvrent tout de suite
   const auRepos = f => ('requestIdleCallback' in window ? requestIdleCallback(f, { timeout: 4000 }) : setTimeout(f, 2500));
   setTimeout(() => auRepos(() => {
@@ -207,6 +212,9 @@ async function demarrer() {
     ['fiches', 'nayla', 'coeurs_brises', 'affaires', 'evangelisation', 'temoignages', 'plus', 'radio', 'plans'].forEach(n => contenu(n).catch(() => {}));
   }), 1500);
 }
+
+// Le prénom a changé : l'accueil est refait (il garde en mémoire sa version précédente)
+window.addEventListener('vq-prenom', () => { viderGardees(); if (/^(#\/?)?$/.test(location.hash)) aller(); });
 
 // Un contenu a changé sur le serveur : on le relira à la prochaine ouverture de la rubrique
 navigator.serviceWorker && navigator.serviceWorker.addEventListener('message', ev => {
@@ -219,7 +227,48 @@ addEventListener('beforeinstallprompt', e => { e.preventDefault(); window.vqInst
 addEventListener('appinstalled', () => { window.vqInstall = null; toast('Vainqueur est installée ✔'); window.dispatchEvent(new Event('vq-installable')); });
 export { majMini };
 
+// ---- Mises à jour : un message à cliquer quand une nouvelle version est prête ----
+let regSW = null, rechargeDemande = false, avaitControleur = false;
+function afficherMaj() {
+  if ($('#maj')) return;
+  const bande = h('div', { id: 'maj', class: 'maj', role: 'alert' },
+    h('span', {}, '🔄 Une mise à jour de Vainqueur est arrivée.'),
+    h('button', { class: 'btn btn-or btn-petit', onclick: lancerMaj }, 'Mettre à jour'),
+    h('button', { class: 'maj-plus-tard', 'aria-label': 'Plus tard', onclick: () => { bande.remove(); document.body.classList.remove('avec-maj'); } }, 'Plus tard'));
+  const entete = $('.entete');
+  entete.after(bande);
+  bande.style.setProperty('--h-entete', entete.offsetHeight + 'px');
+  document.body.classList.add('avec-maj');
+  document.body.style.setProperty('--h-maj', bande.offsetHeight + 'px');
+}
+function lancerMaj() {
+  store.set('maj_faite', Date.now());
+  const b = $('#maj button'); if (b) { b.disabled = true; b.textContent = 'Mise à jour…'; }
+  const attente = regSW && regSW.waiting;
+  if (attente) { rechargeDemande = true; attente.postMessage({ type: 'SKIP_WAITING' }); setTimeout(() => location.reload(), 2500); }
+  else location.reload();
+}
 if ('serviceWorker' in navigator) {
-  addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+  const sw = navigator.serviceWorker;
+  avaitControleur = !!sw.controller;
+  // La nouvelle version répond « oui, je sais afficher la mise à jour » : elle attendra alors le clic
+  sw.addEventListener('message', ev => { if (ev.data && ev.data.type === 'MAJ_QUESTION' && ev.source) ev.source.postMessage({ type: 'MAJ_OK' }); });
+  sw.addEventListener('controllerchange', () => {
+    if (rechargeDemande) { location.reload(); return; }
+    if (avaitControleur) afficherMaj();      // la nouvelle version a pris la main toute seule : on propose de recharger
+    avaitControleur = true;
+  });
+  addEventListener('load', () => sw.register('sw.js').then(reg => {
+    regSW = reg;
+    if (reg.waiting && sw.controller) afficherMaj();
+    reg.addEventListener('updatefound', () => {
+      const nv = reg.installing;
+      nv && nv.addEventListener('statechange', () => { if (nv.state === 'installed' && sw.controller) afficherMaj(); });
+    });
+    // Vérifie régulièrement, sans qu'il faille fermer l'application : à chaque retour au premier plan, et toutes les 20 minutes
+    const verifier = () => reg.update().catch(() => {});
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') verifier(); });
+    setInterval(verifier, 20 * 60 * 1000);
+  }).catch(() => {}));
 }
 demarrer();

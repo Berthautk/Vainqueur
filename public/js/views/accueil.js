@@ -1,5 +1,5 @@
 import { riche } from '../bible-refs.js';
-import { h, img, ico, contenu, partager, toast, store, ficheDuJour, prieAujourdhui } from '../util.js';
+import { h, img, ico, contenu, partager, toast, store, ficheDuJour, prieAujourdhui, prenom } from '../util.js';
 import { pisteParole, pisteMessage } from '../pistes.js';
 import { boutonEcoute, ouvrirVideo } from './commun.js';
 import * as player from '../player.js';
@@ -17,7 +17,10 @@ export default async function () {
   const fiche = ficheDuJour(fiches);
   const fait = prieAujourdhui(fiche.id);
   // Salutation du jour : « Bonjour,|champion ! » (la 2e partie en or) ; « Bonsoir » après 18 h
-  let [sal1, sal2] = (acc.salutations || ['Bonjour,|champion !'])[j % (acc.salutations || [1]).length].split('|');
+  // Salutation du jour ; avec le prénom de la personne si elle l'a donné
+  const nom = prenom();
+  const liste = nom && (acc.salutations_prenom || []).length ? acc.salutations_prenom : (acc.salutations || ['Bonjour,|champion !']);
+  let [sal1, sal2] = liste[j % liste.length].replace(/\{prenom\}/g, nom).split('|');
   if (new Date().getHours() >= 18) sal1 = sal1.replace(/^Bonjour/, 'Bonsoir');
   const msgs = acc.messages_du_jour || [];
   const msg = msgs.find(m => m.date === new Date().toISOString().slice(0, 10)) || msgs.filter(m => !m.date)[j % Math.max(1, msgs.filter(m => !m.date).length)];
@@ -89,6 +92,7 @@ export default async function () {
         img(t.image, '', 'fond'),
         h('span', { class: 'tuile-ic' }, img(t.icone, '')),
         h('span', { class: 'tuile-bas' }, t.titre)))),
+    cartePrenom(),
     h('div', { class: 'hors-ligne' }, h('span', { class: 'pilule-vert' }, ico('wifi'), 'Disponible hors connexion')));
   const majInst = () => { const z = noeud.querySelector('.installer'); if (z) z.hidden = !window.vqInstall; };
   window.addEventListener('vq-installable', majInst);
@@ -100,4 +104,14 @@ export function installer() {
     h('img', { src: 'icons/icon-192.png', alt: '' }),
     h('div', {}, h('b', {}, 'Installer Vainqueur'), 'Sur ton écran d\'accueil, même sans internet.'),
     h('button', { class: 'btn btn-or btn-petit', onclick: async () => { const e = window.vqInstall; if (!e) return; e.prompt(); try { await e.userChoice; } catch { /* ignoré */ } window.vqInstall = null; window.dispatchEvent(new Event('vq-installable')); } }, 'Installer'));
+}
+
+// Petite invitation discrète (si la personne n'a pas encore donné son prénom, et ne l'a pas refusé)
+function cartePrenom() {
+  if (prenom() || store.get('prenom_etat', '') === 'refus' || store.get('prenom_etat', '') === 'efface') return null;
+  const carte = h('section', { class: 'carte-prenom' }, h('span', { 'aria-hidden': 'true' }, '👋'),
+    h('div', {}, h('b', {}, 'Comment t\'appelles-tu ?'), h('small', {}, 'Pour te saluer par ton prénom.')),
+    h('button', { class: 'btn btn-or btn-petit', onclick: async () => { const m = await import('./prenom.js'); m.demanderPrenom(() => { location.hash = '#/'; window.dispatchEvent(new Event('vq-prenom')); }); } }, 'Mon prénom'),
+    h('button', { class: 'carte-prenom-x', 'aria-label': 'Ne plus me le proposer', onclick: () => { store.set('prenom_etat', 'refus'); carte.remove(); } }, '✕'));
+  return carte;
 }

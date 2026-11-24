@@ -4,7 +4,11 @@ Tout le texte de l'application se trouve dans les fichiers de ce dossier. **Pas 
 Chaque fichier est une liste d'éléments entre `{ }`, séparés par une virgule. Attention aux guillemets `"` et aux virgules : une virgule oubliée ou en trop empêche la page de s'afficher.
 
 Après chaque modification d'un fichier de contenu : chaque téléphone récupère la nouvelle version en arrière-plan à l'ouverture suivante, puis l'affiche à l'ouverture d'après. L'application s'ouvre ainsi tout de suite, sans attendre le réseau.
-Pour une modification du **code** (fichiers `.js`, `.css`, `index.html`), il faut changer `VERSION` en haut de `sw.js` (`v11` → `v12`), sinon les téléphones gardent l'ancienne version.
+Pour une modification du **code** (fichiers `.js`, `.css`, `index.html`), il faut changer `VERSION` en haut de `sw.js` (`v15` → `v16`), sinon les téléphones gardent l'ancienne version.
+Quand une nouvelle version du code est publiée, les personnes qui ont l'application ouverte voient un message jaune **« Une mise à jour de Vainqueur est arrivée — Mettre à jour »** (l'application vérifie toute seule, à chaque retour au premier plan et toutes les 20 minutes). Un clic recharge l'application avec la nouvelle version.
+
+## Le prénom de l'utilisateur
+Au premier lancement, l'application demande « Comment t'appelles-tu ? ». Le prénom reste **sur le téléphone** de la personne (Plus › Réglages permet de le changer ou de l'effacer). L'accueil la salue alors par son prénom, avec les phrases de `accueil.json` › `salutations_prenom` (`{prenom}` est remplacé ; sans prénom, ce sont les `salutations` habituelles). Dans les demandes par WhatsApp, l'application ajoute « Bonjour, c'est Samuel. » (la personne peut choisir de rester anonyme dans les Réglages).
 
 ## Les images
 Dans les fichiers, une image s'écrit avec son code de la planche du catalogue, par exemple `"p2_02"` ou `"q1_08"`. Les planches sont dans `references/catalogue/`.

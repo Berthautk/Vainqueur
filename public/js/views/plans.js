@@ -1,5 +1,5 @@
 import { riche } from '../bible-refs.js';
-import { h, img, ico, toast, aujourdhui } from '../util.js';
+import { h, img, ico, toast, aujourdhui, bravo } from '../util.js';
 import { livre } from '../bible-refs.js';
 import { chapitre } from '../bible-data.js';
 import { pisteChapitre } from '../pistes.js';
@@ -38,7 +38,7 @@ export async function planPage() {
   const carteJour = (j, titre) => {
     const file = j.chapitres.map(x => pisteChapitre(livre(x.id), x.c, chapitre));
     const lu = P.estLu(j.cle);
-    const btnLu = h('button', { class: 'btn ' + (lu ? 'btn-vert' : 'btn-clair') + ' btn-petit', 'aria-pressed': String(lu), onclick: () => { P.marquer(j.cle, !P.estLu(j.cle)); dessiner(); if (!lu) toast('Bravo ! Lecture enregistrée 🙏'); } }, ico('coche'), lu ? 'Lu' : 'J\'ai lu');
+    const btnLu = h('button', { class: 'btn ' + (lu ? 'btn-vert' : 'btn-clair') + ' btn-petit', 'aria-pressed': String(lu), onclick: () => { P.marquer(j.cle, !P.estLu(j.cle)); dessiner(); if (!lu) toast(bravo() + ' Lecture enregistrée 🙏'); } }, ico('coche'), lu ? 'Lu' : 'J\'ai lu');
     const m = plan.type === 'mensuel' ? plan.mois[j.mois] : null;
     return h('section', { class: 'jour-plan' + (lu ? ' lu' : '') },
       h('div', { class: 'jour-plan-tete' }, h('span', { class: 'etiquette' }, titre), h('small', {}, plan.type === 'mensuel' ? `${fmt(j.date)} · thème du mois` : `Jour ${j.n} sur ${liste.length} · ${fmt(j.date)}`)),

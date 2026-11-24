@@ -2,7 +2,7 @@
    - Précache : application, polices, logos, contenus JSON, et toutes les images/audios cités dans les JSON.
    - Les audios téléchargés par l'utilisateur vivent dans le cache « vainqueur-audio » (jamais purgé ici).
    Changer VERSION pour forcer la mise à jour de l'application chez tous les utilisateurs. */
-const VERSION = 'v14';
+const VERSION = 'v15';
 const APP = `vainqueur-app-${VERSION}`;
 const AUDIO = 'vainqueur-audio';
 const BIBLE = 'vainqueur-bible-lsg'; // texte de la Bible : gardé d'une version à l'autre
@@ -12,7 +12,7 @@ const STATIQUE = [
   'js/main.js', 'js/util.js', 'js/player.js', 'js/downloads.js', 'js/partage.js', 'js/pistes.js', 'js/bible-refs.js', 'js/bible-data.js', 'js/plans.js', 'js/marques.js', 'js/reglages.js', 'js/surlignage.js',
   'js/views/commun.js', 'js/views/accueil.js', 'js/views/priere.js', 'js/views/fiche.js', 'js/views/nayla.js', 'js/views/lecteur.js',
   'js/views/coeurs.js', 'js/views/article.js', 'js/views/affaires.js', 'js/views/evangelisation.js', 'js/views/salut.js',
-  'js/views/temoignages.js', 'js/views/plus.js', 'js/views/telechargements.js', 'js/views/apropos.js', 'js/views/nouveautes.js', 'js/views/bible.js', 'js/views/plans.js', 'js/views/etudes.js', 'js/views/reglages.js', 'js/views/radio.js', 'js/views/sophonie.js', 'bible/livres.json',
+  'js/views/temoignages.js', 'js/views/plus.js', 'js/views/telechargements.js', 'js/views/apropos.js', 'js/views/nouveautes.js', 'js/views/bible.js', 'js/views/plans.js', 'js/views/etudes.js', 'js/views/prenom.js', 'js/views/reglages.js', 'js/views/radio.js', 'js/views/sophonie.js', 'bible/livres.json',
   'fonts/playfair-display-latin-600-normal.woff2', 'fonts/playfair-display-latin-700-normal.woff2', 'fonts/playfair-display-latin-800-normal.woff2',
   'fonts/playfair-display-latin-600-italic.woff2', 'fonts/playfair-display-latin-700-italic.woff2',
   'fonts/poppins-latin-400-normal.woff2', 'fonts/poppins-latin-500-normal.woff2', 'fonts/poppins-latin-600-normal.woff2', 'fonts/poppins-latin-700-normal.woff2',
@@ -66,9 +66,29 @@ self.addEventListener('install', e => {
       await cache.put(u, await propre(r));
     }));
     await Promise.all([...urls].filter(u => !essentiels.includes(u)).map(u => cache.add(u).catch(() => {})));
-    self.skipWaiting();
+    // Mise à jour : si tous les écrans ouverts savent proposer « Mettre à jour » (message à cliquer), la nouvelle
+    // version attend ce clic, pour ne jamais mélanger ancien et nouveau code. Sinon (anciennes versions de
+    // l'application, ou personne), elle s'active tout de suite.
+    if (!(await tousSavent())) self.skipWaiting();
   })());
 });
+
+// Demande à chaque écran ouvert s'il sait afficher la bannière de mise à jour (réponse « MAJ_OK »)
+async function tousSavent() {
+  try {
+    const cs = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    if (!cs.length) return false;
+    const ok = new Set();
+    const ecoute = ev => { if (ev.data && ev.data.type === 'MAJ_OK' && ev.source) ok.add(ev.source.id); };
+    self.addEventListener('message', ecoute);
+    cs.forEach(c => c.postMessage({ type: 'MAJ_QUESTION' }));
+    await new Promise(r => setTimeout(r, 900));
+    self.removeEventListener('message', ecoute);
+    return cs.every(c => ok.has(c.id));
+  } catch { return false; }
+}
+// L'utilisateur a touché « Mettre à jour »
+self.addEventListener('message', e => { if (e.data && e.data.type === 'SKIP_WAITING') self.skipWaiting(); });
 
 self.addEventListener('activate', e => {
   e.waitUntil((async () => {

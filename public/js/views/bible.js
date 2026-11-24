@@ -1,4 +1,4 @@
-import { h, ico, toast, store, feuille, demander, partager } from '../util.js';
+import { h, ico, toast, store, feuille, demander, partager, bravo } from '../util.js';
 import { listeLivres, livre, livreDeNom, trouverRefs, lienRef } from '../bible-refs.js';
 import { chapitre, livreData, livresGardes, toutGarder } from '../bible-data.js';
 import { pisteChapitre } from '../pistes.js';
@@ -208,7 +208,7 @@ export async function chapitrePage(id, cs, params) {
       const dernier = k === j.chapitres.length - 1;
       const suiv = !dernier && j.chapitres[k + 1];
       const fait = h('button', { class: 'btn btn-vert' }, ico('coche'), 'J\'ai lu ma lecture du jour');
-      fait.onclick = () => { P.marquer(cleplan, true); toast('Bravo ! Lecture du jour terminée 🙏'); location.hash = '#/bible/plan'; };
+      fait.onclick = () => { P.marquer(cleplan, true); toast(bravo() + ' Lecture du jour terminée 🙏'); location.hash = '#/bible/plan'; };
       bandePlan = h('div', { class: 'bande-plan' }, h('small', {}, `Plan · jour ${j.n} — chapitre ${k + 1} sur ${j.chapitres.length}`),
         dernier ? fait : h('a', { class: 'btn btn-or', href: `#/bible/${suiv.id}/${suiv.c}${suffixe}` }, `${nomChap(livre(suiv.id), suiv.c)}`, ico('suivant')));
     }

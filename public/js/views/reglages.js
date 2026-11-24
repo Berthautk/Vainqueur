@@ -1,4 +1,4 @@
-import { h, ico, toast } from '../util.js';
+import { h, ico, toast, store, prenom, definirPrenom, effacerPrenom, presenterActif } from '../util.js';
 import * as R from '../reglages.js';
 import * as player from '../player.js';
 import { hero, enveloppe, boutonEcoute } from './commun.js';
@@ -14,8 +14,29 @@ export default async function () {
         h('button', { class: 'option' + (r[cle] === k ? ' actif' : ''), role: 'radio', 'aria-checked': String(r[cle] === k),
           onclick: () => { R.ecrire(cle, k); dessiner(); toast('Réglage enregistré'); } }, rendu ? rendu(k, v) : v.nom))));
   }
+  // Mon prénom : changer, effacer, et choisir de se présenter dans les demandes WhatsApp
+  function sectionPrenom() {
+    const champ = h('input', { class: 'saisie', type: 'text', value: prenom(), placeholder: 'Ton prénom', maxlength: 24, autocomplete: 'given-name', autocapitalize: 'words', 'aria-label': 'Ton prénom' });
+    const enregistrer = () => {
+      if (!champ.value.trim()) { effacerPrenom(); toast('Prénom effacé'); }
+      else { const p = definirPrenom(champ.value); if (!p) return toast('Écris au moins deux lettres'); toast(`Enregistré : ${p}`); }
+      window.dispatchEvent(new Event('vq-prenom')); dessiner();
+    };
+    const pres = presenterActif();
+    return h('section', { class: 'reglage' }, h('h2', {}, 'Mon prénom'),
+      h('p', { class: 'aide' }, prenom() ? `L'accueil te salue par ton prénom : ${prenom()}.` : 'Donne ton prénom pour que l\'accueil te salue personnellement.'),
+      champ,
+      h('div', { class: 'choix' },
+        h('button', { class: 'option actif', onclick: enregistrer }, ico('coche'), 'Enregistrer'),
+        prenom() ? h('button', { class: 'option', onclick: () => { champ.value = ''; enregistrer(); } }, 'Effacer') : null),
+      h('div', { class: 'choix', role: 'radiogroup', 'aria-label': 'Me présenter dans mes messages WhatsApp', style: 'margin-top:14px' },
+        h('p', { class: 'aide', style: 'flex-basis:100%;margin:0' }, 'Dans mes demandes par WhatsApp (conseil, prière, appel…) :'),
+        h('button', { class: 'option' + (pres ? ' actif' : ''), role: 'radio', 'aria-checked': String(pres), onclick: () => { store.set('presenter', true); dessiner(); } }, 'Me présenter'),
+        h('button', { class: 'option' + (!pres ? ' actif' : ''), role: 'radio', 'aria-checked': String(!pres), onclick: () => { store.set('presenter', false); dessiner(); } }, 'Rester anonyme')),
+      h('p', { class: 'aide' }, 'Ton prénom n\'est jamais envoyé automatiquement : il n\'apparaît que dans le message WhatsApp que tu choisis d\'envoyer.'));
+  }
   function dessiner() {
-    zone.replaceChildren(
+    zone.replaceChildren(sectionPrenom(), 
       choix('Couleur du mot lu', 'Pendant la lecture à voix haute, le mot prononcé prend cette couleur.', 'couleur', R.COULEURS,
         (k, v) => [h('i', { class: 'pastille-couleur', style: `background:${k === 'aucune' ? 'repeating-linear-gradient(45deg,#ddd 0 4px,#fff 4px 8px)' : v.fond}` }), v.nom]),
       choix('Vitesse de la voix', null, 'vitesse', R.VITESSES),
