@@ -41,7 +41,6 @@ export default async function () {
   let image = null;
   let prete = null;
   const preparer = () => (prete = prete || imageParole(pa).then(b => (image = b)).catch(() => null));
-  setTimeout(() => ('requestIdleCallback' in window ? requestIdleCallback(preparer, { timeout: 6000 }) : preparer()), 4000);
   const btnPartager = h('button', { class: 'btn btn-clair btn-petit' }, ico('partager'), 'Partager');
   const texteParole = `« ${pa.texte} » — ${pa.ref}\nParole du jour · Vainqueur, Les Vainqueurs de Dieu\n${location.origin}${location.pathname}`;
   btnPartager.onclick = async () => {

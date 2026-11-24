@@ -45,6 +45,11 @@ const chargeur = () => h('div', { class: 'chargeur', role: 'status', 'aria-label
   h('div', { class: 'chargeur-rond' }, h('img', { src: 'assets/logo/blason_web.webp', alt: '' })),
   h('div', { class: 'chargeur-barre' }, h('i')), h('small', {}, 'Chargement…'));
 let livresPrets = Promise.resolve();
+// Rubriques de la barre du bas gardées prêtes (réaffichées instantanément).
+// Elles sont refaites après la visite d'une autre page (une fiche lue, un favori…) ou un autre jour.
+const GARDEES = new Set(['', 'priere', 'nayla', 'coeurs', 'plus']);
+let gardees = {}; let jourGarde = '';
+const viderGardees = () => { gardees = {}; };
 let origine = 'accueil';   // onglet d'où l'on vient (pour les pages « satellites »)
 let courant = null;        // vue affichée (pour nettoyer)
 let jeton = 0;
@@ -66,8 +71,21 @@ async function aller() {
   $$('.onglets a').forEach(a => { const on = a.dataset.tab === onglet; a.classList.toggle('actif', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'); });
 
   const vue = $('#vue');
-  if (courant && courant.nettoyer) courant.nettoyer();
+  if (courant && courant.nettoyer && !courant.garde) courant.nettoyer();
   courant = null;
+  const jour = new Date().toDateString();
+  if (jour !== jourGarde) { jourGarde = jour; viderGardees(); }
+  const garder = GARDEES.has(chemin) && !requete;
+  if (!garder) viderGardees();
+  if (garder && gardees[chemin]) {
+    courant = gardees[chemin];
+    document.body.dataset.lecteur = ''; document.body.dataset.ecoute = '';
+    vue.replaceChildren(courant.noeud);
+    document.querySelectorAll('[data-piste]').forEach(majBouton);
+    majMini();
+    window.scrollTo(0, 0);
+    return;
+  }
   const tempo = setTimeout(() => { if (mon === jeton) vue.replaceChildren(chargeur()); }, 150);
   const enLecteur = /^nayla\/[\w-]+$/.test(chemin);
   document.body.dataset.lecteur = enLecteur ? '1' : '';
@@ -79,6 +97,7 @@ async function aller() {
     clearTimeout(tempo);
     if (mon !== jeton) return;
     courant = resultat;
+    if (garder) { resultat.garde = true; gardees[chemin] = resultat; }
     vue.replaceChildren(resultat.noeud);
     majMini();
     const t = vue.querySelector('h1');
@@ -191,7 +210,7 @@ async function demarrer() {
 
 // Un contenu a changé sur le serveur : on le relira à la prochaine ouverture de la rubrique
 navigator.serviceWorker && navigator.serviceWorker.addEventListener('message', ev => {
-  if (ev.data && ev.data.type === 'contenu-maj') { const m = ev.data.url.match(/content\/([\w-]+)\.json$/); if (m) oublierContenu(m[1]); }
+  if (ev.data && ev.data.type === 'contenu-maj') { const m = ev.data.url.match(/content\/([\w-]+)\.json$/); if (m) { oublierContenu(m[1]); viderGardees(); } }
 });
 
 // Installation de l'application (Android / Chrome)
