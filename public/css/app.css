@@ -787,11 +787,15 @@ html{touch-action:manipulation}
 /* ===== Tuiles : la photo d'abord, le texte dessous ===== */
 .tuiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px;padding:0 12px}
 .tuile{display:grid;align-content:start;gap:2px;color:var(--titre);min-width:0}
-.tuile img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;display:block;margin-bottom:8px;box-shadow:var(--ombre)}
+.tuile-photo{position:relative;display:block;margin-bottom:8px}
+.tuile-photo>img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;display:block;box-shadow:var(--ombre)}
+/* Le petit rond avec l'icône de la rubrique, en haut à gauche de la photo (signature de l'application) */
+.tuile-ic{position:absolute;left:9px;top:9px;z-index:2;width:42px;height:42px;border-radius:50%;border:2px solid #fff;overflow:hidden;background:var(--or);box-shadow:0 2px 8px rgba(15,31,92,.3)}
+.tuile-ic img{width:100%;height:100%;object-fit:cover;display:block}
 .tuile b{font-family:var(--police-titre);font-weight:600;font-size:.98rem;line-height:1.25}
 .tuile>span{font-size:.78rem;line-height:1.35;color:var(--texte-doux);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .tuile:active{filter:none}
-.tuile:active img{filter:brightness(.93)}
+.tuile:active .tuile-photo>img{filter:brightness(.93)}
 .titre-tuiles{margin-top:20px}
 
 /* ===== Mes temps avec Dieu ===== */
