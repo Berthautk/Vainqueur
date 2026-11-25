@@ -19,6 +19,8 @@ Au premier lancement, l'application demande « Comment t'appelles-tu ? ». Le pr
 Dans les fichiers, une image s'écrit avec son code de la planche du catalogue, par exemple `"p2_02"` ou `"q1_08"`. Les planches sont dans `references/catalogue/`.
 
 ## Les fiches de prière — dossier `prieres/`
+> **Rubrique EN MAINTENANCE** (fermée en attendant le paiement) : l'onglet Prière affiche « Rubrique en préparation » et **aucune fiche n'est publiée** — elles sont gardées dans `sources/recueil/app/prieres/`, hors du site. Pour rouvrir : `PUBLIER = True` dans `outils/importer_recueil.py` puis relancer l'import ; `PRIERE_OUVERTE = true` dans `js/ouverture.js` ; remettre `'prieres/index'` dans `CONTENUS` de `sw.js` et changer `VERSION`.
+
 Les 66 fiches viennent du **Recueil de prière du Dr Sophonie** (`sources/recueil/prieres.json`, non publié). **Le texte des prières ne se modifie pas à la main** : on corrige le recueil, puis on relance `python3 -I outils/importer_recueil.py`, qui refait :
 - `prieres/index.json` : la liste légère (titre, partie, image, nombre de sujets, durées calculées sur 130 mots par minute) et le **thème de la semaine** ;
 - `prieres/fiche-01.json` … `fiche-66.json` : le texte complet de chaque fiche, copié sans changement (chargé seulement à l'ouverture, puis gardé pour le hors connexion).

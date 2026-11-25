@@ -9,7 +9,9 @@ import json, math, os, re, sys
 
 RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SOURCE = os.path.join(RACINE, 'sources', 'recueil', 'prieres.json')
-SORTIE = os.path.join(RACINE, 'public', 'content', 'prieres')
+# Rubrique Prière en maintenance : les fiches restent HORS du site publié tant que PUBLIER = False
+PUBLIER = False
+SORTIE = os.path.join(RACINE, 'public', 'content', 'prieres') if PUBLIER else os.path.join(RACINE, 'sources', 'recueil', 'app', 'prieres')
 MOTS_PAR_MINUTE = 130   # vitesse d'une prière dite à voix haute
 
 # Illustrations existantes de l'application (aucune image générée), choisies selon le sujet de la fiche

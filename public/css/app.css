@@ -878,3 +878,13 @@ html{touch-action:manipulation}
 .theme-txt h2{font-size:clamp(19px,5.6vw,25px);overflow-wrap:break-word;hyphens:manual}
 .theme-txt h2 em{overflow-wrap:break-word}
 .theme-txt{padding-right:12px}
+/* Rubrique en maintenance */
+.maintenance{margin:18px 16px;padding:26px 20px;background:var(--carte,#fff);border-radius:18px;box-shadow:0 4px 18px rgba(10,30,80,.08);text-align:center}
+.maintenance-ic{width:64px;height:64px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;background:var(--grad-bleu);color:var(--or-clair)}
+.maintenance-ic svg{width:32px;height:32px}
+.maintenance h2{font-size:22px;margin-bottom:10px}
+.maintenance p{margin:6px 0;line-height:1.5}
+.maintenance blockquote{margin:18px 0;font-style:italic;font-size:18px}
+.maintenance cite{display:block;font-style:normal;font-size:14px;color:var(--gris);margin-top:4px}
+.maintenance-attente{font-weight:600;margin-top:16px!important}
+.maintenance-liens{display:grid;gap:10px;margin-top:10px}

@@ -1,6 +1,7 @@
 import { riche, trouverRefs, lienRef } from '../bible-refs.js';
 import { carrousel } from '../carrousel.js';
 import { bilan, ACTIVITES } from '../temps.js';
+import { PRIERE_OUVERTE } from '../ouverture.js';
 import { h, img, imgSrc, ico, contenu, partager, toast, store, feuille, ficheDuJour, prieAujourdhui, prenom, jourTheme } from '../util.js';
 import { pisteParole, pisteMessage } from '../pistes.js';
 import { boutonEcoute, ouvrirVideo } from './commun.js';
@@ -12,11 +13,11 @@ const jourDeAnnee = () => Math.floor((Date.now() - new Date(new Date().getFullYe
 const court = (t, n) => (t && t.length > n ? t.slice(0, n).replace(/\s+\S*$/, '') + '…' : t || '');
 
 export default async function () {
-  const [acc, fiches, nayla] = await Promise.all([contenu('accueil'), contenu('prieres/index'), contenu('nayla').catch(() => ({ adorations: [] }))]);
+  const [acc, fiches, nayla] = await Promise.all([contenu('accueil'), (PRIERE_OUVERTE ? contenu('prieres/index').catch(() => null) : Promise.resolve(null)), contenu('nayla').catch(() => ({ adorations: [] }))]);
   const j = jourDeAnnee();
   const ac = acc.accroches[j % acc.accroches.length];
   const pa = acc.paroles[j % acc.paroles.length];
-  const fiche = ficheDuJour(fiches);
+  const fiche = fiches && fiches.fiches && fiches.fiches.length ? ficheDuJour(fiches) : null;   // null : rubrique Prière fermée
   // Salutation du jour ; avec le prénom de la personne si elle l'a donné (« Bonsoir » après 18 h)
   const nom = prenom();
   const liste = nom && (acc.salutations_prenom || []).length ? acc.salutations_prenom : (acc.salutations || ['Bonjour,|champion !']);
@@ -75,13 +76,13 @@ export default async function () {
   const adoration = aimer.length ? aimer[j % aimer.length] : null;
   const sectionBanniere = h('section', { class: 'carrousel carrousel--accueil', 'aria-roledescription': 'carrousel', 'aria-label': 'À la une aujourd\'hui' });
   const construireDiapos = () => {
-    const ok = prieAujourdhui(fiche.id);
+    const ok = fiche ? prieAujourdhui(fiche.id) : false;
     const d = [];
     if (nouveau) d.push({
       lien: nv.lien, image: imgSrc(nv.image), etiquette: nv.titre, titre: 'La nouvelle naissance', texte: court(nv.texte, 90),
       actions: [{ aria: 'Plus tard', label: '✕', onClick: () => { store.set('salut_vu', true); nouveau = false; monterBanniere(); } }]
     });
-    d.push({
+    if (fiche) d.push({
       lien: `#/priere/${fiche.id}`, image: imgSrc(fiche.image), etiquette: 'Prière du jour', titre: fiche.titre,
       texte: ok ? 'Tu as prié aujourd\'hui ✔ · toucher pour revoir' : (() => { const soir = new Date().getHours() >= 17; return `≈ ${soir ? fiche.duree_soir : fiche.duree_matin} min · enseignement puis ${soir ? fiche.sujets_soir : fiche.sujets_matin} sujets`; })()
     });
@@ -118,7 +119,7 @@ export default async function () {
           img(t.image, '', '', true),
           t.icone ? h('span', { class: 'tuile-ic' }, img(t.icone, '', '', true)) : null),
         h('b', {}, t.titre),
-        h('span', {}, t.route === '#/priere' && fiches.theme ? `Thème de la semaine · jour ${jourTheme(fiches.theme)} sur ${fiches.theme.total}` : (t.sous || ''))))),
+        h('span', {}, t.route === '#/priere' && !fiches ? 'Bientôt disponible' : t.route === '#/priere' && fiches.theme ? `Thème de la semaine · jour ${jourTheme(fiches.theme)} sur ${fiches.theme.total}` : (t.sous || ''))))),
     cartePrenom(),
     h('div', { class: 'hors-ligne' }, h('span', { class: 'pilule-vert' }, ico('wifi'), 'Disponible hors connexion')));
   monterBanniere();

@@ -9,11 +9,12 @@ reglages.appliquer();
 player.regleVitesse(reglages.vitesse);
 player.surMot((lu, k) => surlignage.marquer(lu, k));
 import * as player from './player.js';
+import { PRIERE_OUVERTE } from './ouverture.js';
 
 const routes = [
   [/^$/, () => import('./views/accueil.js'), 'accueil'],
-  [/^priere$/, () => import('./views/priere.js'), 'priere'],
-  [/^priere\/([\w-]+)$/, () => import('./views/fiche.js'), 'priere'],
+  [/^priere$/, () => (PRIERE_OUVERTE ? import('./views/priere.js') : import('./views/maintenance.js')), 'priere'],
+  [/^priere\/([\w-]+)$/, () => (PRIERE_OUVERTE ? import('./views/fiche.js') : import('./views/maintenance.js')), 'priere'],
   [/^nayla$/, () => import('./views/nayla.js'), 'nayla'],
   [/^nayla\/([\w-]+)$/, () => import('./views/lecteur.js'), 'nayla'],
   [/^coeurs$/, () => import('./views/coeurs.js'), 'coeurs'],
@@ -216,7 +217,7 @@ async function demarrer() {
   const auRepos = f => ('requestIdleCallback' in window ? requestIdleCallback(f, { timeout: 4000 }) : setTimeout(f, 2500));
   setTimeout(() => auRepos(() => {
     routes.forEach(([, charge]) => charge().catch(() => {}));
-    ['prieres/index', 'nayla', 'coeurs_brises', 'affaires', 'evangelisation', 'temoignages', 'plus', 'radio', 'plans'].forEach(n => contenu(n).catch(() => {}));
+    [...(PRIERE_OUVERTE ? ['prieres/index'] : []), 'nayla', 'coeurs_brises', 'affaires', 'evangelisation', 'temoignages', 'plus', 'radio', 'plans'].forEach(n => contenu(n).catch(() => {}));
   }), 1500);
 }
 
