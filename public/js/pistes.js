@@ -11,7 +11,7 @@ export const paras = t => String(t || '').split('\n\n').filter(Boolean);
 export function pisteFiche(m, periode = periodeDuMoment()) {
   const id = `f-${m.id}-${periode}`;
   return {
-    id, titre: m.titre, audio: '', image: m.image, type: 'fiche', lien: `#/priere/${m.id}`,
+    id, titre: m.titre, audio: (m.audios && m.audios[periode]) || m.audio || '', image: m.image, type: 'fiche', lien: `#/priere/${m.id}`,
     segments: async () => segmentsFiche(await contenu(`prieres/${m.id}`), periode, id)
   };
 }

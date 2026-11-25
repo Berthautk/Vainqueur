@@ -4,11 +4,11 @@ Tout le texte de l'application se trouve dans les fichiers de ce dossier. **Pas 
 Chaque fichier est une liste d'éléments entre `{ }`, séparés par une virgule. Attention aux guillemets `"` et aux virgules : une virgule oubliée ou en trop empêche la page de s'afficher.
 
 Après chaque modification d'un fichier de contenu : chaque téléphone récupère la nouvelle version en arrière-plan à l'ouverture suivante, puis l'affiche à l'ouverture d'après. L'application s'ouvre ainsi tout de suite, sans attendre le réseau.
-Pour une modification du **code** (fichiers `.js`, `.css`, `index.html`), il faut changer `VERSION` en haut de `sw.js` (`v18` → `v19`), sinon les téléphones gardent l'ancienne version.
+Pour une modification du **code** (fichiers `.js`, `.css`, `index.html`), il faut changer `VERSION` en haut de `sw.js` (`v19` → `v20`), sinon les téléphones gardent l'ancienne version.
 Quand une nouvelle version du code est publiée, les personnes qui ont l'application ouverte voient un message jaune **« Une mise à jour de Vainqueur est arrivée — Mettre à jour »** (l'application vérifie toute seule, à chaque retour au premier plan et toutes les 20 minutes). Un clic recharge l'application avec la nouvelle version.
 
 ## La bannière de l'accueil, les tuiles et « Mes temps avec Dieu »
-- **Bannière qui défile** (sous la salutation) : jusqu'à 5 cartes qui changent chaque jour, calculées à partir du contenu existant : « Nouveau ici ? » (`accueil.json` › `nouveau_venu`, avec un ✕ « plus tard »), la **prière du jour** (`fiches.json`), la **parole du jour** (`accueil.json` › `paroles` : s'ouvre dans une fenêtre avec écoute, partage en image et accès à la Bible), le **message du jour** (`messages_du_jour` : texte, écoute, vidéo) et une **adoration** (`nayla.json`). Elle avance toute seule toutes les 6 secondes, toujours vers la droite, et s'arrête 15 secondes quand on la touche. Rien à régler : elle suit le contenu.
+- **Bannière qui défile** (sous la salutation) : jusqu'à 5 cartes qui changent chaque jour, calculées à partir du contenu existant : « Nouveau ici ? » (`accueil.json` › `nouveau_venu`, avec un ✕ « plus tard »), la **prière du jour** (`prieres/index.json`), la **parole du jour** (`accueil.json` › `paroles` : s'ouvre dans une fenêtre avec écoute, partage en image et accès à la Bible), le **message du jour** (`messages_du_jour` : texte, écoute, vidéo) et une **adoration** (`nayla.json`). Elle avance toute seule toutes les 6 secondes, toujours vers la droite, et s'arrête 15 secondes quand on la touche. Rien à régler : elle suit le contenu.
 - **Tuiles « Explorer »** : chaque tuile a une photo, un titre et une courte explication (`accueil.json` › `tuiles` › `sous`). La tuile « Prière » affiche toute seule « Thème de la semaine · jour X sur 7 ».
 - **Mes temps avec Dieu** : sous la bannière, toujours visible : le temps passé ces 7 derniers jours dans la prière, la Bible, les adorations, etc. « Tout voir » ouvre le détail (7 ou 30 jours, jours avec Dieu, jours d'affilée). Le décompte reste **sur le téléphone**, n'est envoyé à personne, et s'efface dans la page de détail ou dans Plus › Réglages.
 
@@ -18,11 +18,16 @@ Au premier lancement, l'application demande « Comment t'appelles-tu ? ». Le pr
 ## Les images
 Dans les fichiers, une image s'écrit avec son code de la planche du catalogue, par exemple `"p2_02"` ou `"q1_08"`. Les planches sont dans `references/catalogue/`.
 
-## Ajouter une fiche de prière — `fiches.json`
-Copier une fiche complète (de `{ "id": ...` jusqu'à son `}`), la coller à la suite, et changer :
-`id` (unique, ex. `"f5"`), `titre`, `duree` (en minutes), `image`, `audio` (chemin du MP3, ex. `"audio/ma-fiche.mp3"`), puis le texte `matin` et `soir` (un enseignement et exactement 5 `sujets`).
-**Thème de la semaine** (dans `"theme"`) : écrire la date du jour 1 dans `"debut"` (ex. `"2026-11-15"`). Le « Jour X sur 7 » avance alors tout seul chaque jour, et la « Prière du jour » de l'accueil change avec lui (jour 1 = 1re fiche, jour 2 = 2e fiche…).
-Pour imposer une fiche précise sur l'accueil, remplacer `"du_jour": "auto"` par son `id` (ex. `"f2"`).
+## Les fiches de prière — dossier `prieres/`
+Les 66 fiches viennent du **Recueil de prière du Dr Sophonie** (`sources/recueil/prieres.json`, non publié). **Le texte des prières ne se modifie pas à la main** : on corrige le recueil, puis on relance `python3 -I outils/importer_recueil.py`, qui refait :
+- `prieres/index.json` : la liste légère (titre, partie, image, nombre de sujets, durées calculées sur 130 mots par minute) et le **thème de la semaine** ;
+- `prieres/fiche-01.json` … `fiche-66.json` : le texte complet de chaque fiche, copié sans changement (chargé seulement à l'ouverture, puis gardé pour le hors connexion).
+
+**Thème de la semaine** (dans `outils/importer_recueil.py`, variable `THEME`) : actuellement la série « Bombarder comme Élie le Thischbite » (fiches 44 à 50), jour 1 = `"debut"` (`2026-11-23`), recommencée chaque semaine (`"repeter"`). Le « Jour X sur 7 » et la « Prière du jour » de l'accueil avancent tout seuls.
+Pour imposer une fiche précise sur l'accueil, ajouter `"du_jour": "fiche-12"` dans `prieres/index.json`.
+**Audio enregistré** : dans `prieres/index.json`, ajouter à la fiche `"audios": { "matin": "…", "soir": "…" }` (sinon la voix du téléphone lit la fiche). Ces ajouts sont gardés quand on relance l'import.
+**Images** : choisies parmi les illustrations existantes (variable `IMAGES` du même outil).
+**Vérification biblique** : `python3 -I outils/verifier_bible_recueil.py` refait `sources/recueil/VERIFICATION_BIBLE.md` (rien n'est corrigé automatiquement).
 
 ## Ajouter une adoration — `nayla.json`
 Copier une adoration et changer `id` (unique), `titre`, `duree` (ex. `"6:24"`), `image` (pochette), `audio`, `paroles` (utiliser `\n` pour passer à la ligne et `\n\n` pour une ligne vide) et `enseignement`.

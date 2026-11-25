@@ -56,7 +56,8 @@ export default async function (id) {
     document.body.dataset.ecoute = piste.id; window.dispatchEvent(new Event('vq-mini'));
     const pp = h('button', { class: 'btn-lire', 'aria-label': 'Lecture' });
     const curs = h('input', { type: 'range', min: 0, max: 1000, value: 0, 'aria-label': 'Position' });
-    const tps = h('span', {}, 'Lu par la voix du téléphone');
+    const repos = piste.audio ? `0:00 / ≈ ${meta[periode === 'soir' ? 'duree_soir' : 'duree_matin'] || meta.duree} min` : 'Lu par la voix du téléphone';
+    const tps = h('span', {}, repos);
     const maj = () => {
       const p = player.etat.piste;
       // « Suivant » dans le lecteur : on suit la fiche qui joue
@@ -65,7 +66,7 @@ export default async function (id) {
       pp.replaceChildren(ico(mien && player.lit() ? 'pause' : 'play'));
       const { t, d: du } = mien ? player.temps() : { t: 0, d: 0 };
       curs.value = du ? (t / du) * 1000 : 0; curs.style.setProperty('--p', `${du ? (t / du) * 100 : 0}%`);
-      tps.textContent = mien ? player.libelleTemps() : 'Lu par la voix du téléphone';
+      tps.textContent = mien ? player.libelleTemps() : repos;
     };
     pp.onclick = () => { if (player.etat.piste && player.etat.piste.id === piste.id) player.basculer(); else player.jouer(piste, file); };
     curs.oninput = () => { const { d: du } = player.temps(); if (player.etat.piste && player.etat.piste.id === piste.id) player.aller((curs.value / 1000) * du); };

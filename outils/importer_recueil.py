@@ -38,6 +38,11 @@ def mots(items):
 def main():
     d = json.load(open(SOURCE, encoding='utf-8'))
     os.makedirs(SORTIE, exist_ok=True)
+    # Ce qui a été ajouté à la main dans index.json (audios MP3, fiche imposée) est gardé d'un import à l'autre
+    ancien = {}
+    try: ancien = json.load(open(os.path.join(SORTIE, 'index.json'), encoding='utf-8'))
+    except (OSError, ValueError): pass
+    garde = {x['id']: {k: x[k] for k in ('audios', 'audio') if k in x} for x in ancien.get('fiches', [])}
     index = {
         'source': d['source'], 'copyright': d['copyright'], 'parties': d['parties'], 'theme': THEME,
         'titre_page': 'Prière de délivrance et de guérison',
@@ -62,7 +67,9 @@ def main():
             'duree_matin': max(1, math.ceil((m_ens + m_mat) / MOTS_PAR_MINUTE)),
             'duree_soir': max(1, math.ceil((m_ens + m_soi) / MOTS_PAR_MINUTE)),
             'dans_quels_cas': bool(f.get('dans_quels_cas')),
+            **garde.get(f['id'], {}),
         })
+    if ancien.get('du_jour'): index['du_jour'] = ancien['du_jour']
     json.dump(index, open(os.path.join(SORTIE, 'index.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(f"{len(index['fiches'])} fiches, {total} sujets → {SORTIE}")
 

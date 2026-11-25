@@ -1,9 +1,13 @@
 import { h, img, ico, contenu, store, jourTheme, ficheDuJour, prieAujourdhui } from '../util.js';
+import * as dl from '../downloads.js';
 import { enveloppe, boutonEcoute } from './commun.js';
 import { pisteFiche, pistesFiches } from '../pistes.js';
 
 // Comparaison sans accents ni majuscules ; garde la même longueur que le texte d'origine (pour les extraits)
 const plat = s => String(s).split('').map(c => c.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().charAt(0) || ' ').join('');
+// Position du mot cherché, seulement en début de mot (« Élie » ne trouve pas « délier »)
+const lettre = c => /[a-z0-9]/.test(c);
+function chercher(t, q) { let k = t.indexOf(q); while (k > 0 && lettre(t[k - 1])) k = t.indexOf(q, k + 1); return k; }
 const textes = it => (it || []).map(x => x.texte).join(' • ');
 
 // Texte complet des 66 fiches, chargé une seule fois (puis gardé pour le hors connexion)
@@ -49,14 +53,14 @@ export default async function () {
     const mon = ++jeton;
     if (!q) { liste.replaceChildren(...parParties()); return; }
     // 1. Titres : tout de suite
-    const parTitre = d.fiches.filter(f => plat(f.titre).includes(q));
+    const parTitre = d.fiches.filter(f => chercher(plat(f.titre), q) >= 0);
     const etat = h('p', { class: 'consigne', role: 'status' }, 'Recherche dans le texte des fiches…');
     liste.replaceChildren(etat, ...parTitre.map(f => ligne(f, file)));
     // 2. Texte des fiches (chargé une fois)
     const tout = await chargerTexte(d, (n, tot) => { if (mon === jeton) etat.textContent = `Recherche dans le texte des fiches… ${n}/${tot}`; });
     if (mon !== jeton) return;
     const trouve = new Map();
-    for (const x of tout) { const k = plat(x.texte).indexOf(q); if (k >= 0) trouve.set(x.id, extrait(x.texte, k, q.length)); }
+    for (const x of tout) { const k = chercher(plat(x.texte), q); if (k >= 0) trouve.set(x.id, extrait(x.texte, k, q.length)); }
     const res = d.fiches.filter(f => parTitre.includes(f) || trouve.has(f.id));
     etat.textContent = res.length ? `${res.length} fiche${res.length > 1 ? 's' : ''} trouvée${res.length > 1 ? 's' : ''}` + (tout.length < d.fiches.length ? ` (texte de ${tout.length} fiches sur ${d.fiches.length} : reconnecte-toi pour chercher partout)` : '') : 'Aucune fiche trouvée. Essaie un autre mot.';
     liste.replaceChildren(etat, ...res.map(f => ligne(f, file, trouve.get(f.id))));
@@ -89,6 +93,14 @@ function extrait(texte, k, n) {
 function ligne(f, file, ext) {
   const piste = pisteFiche(f);
   const ecoute = boutonEcoute(piste, file, { cls: 'btn btn-bleu btn-rond btn-ecoute-fiche', aria: `Écouter « ${f.titre} »` });
+  // Bouton Télécharger : seulement si la fiche a un vrai MP3 (« audios » dans index.json)
+  let down = null;
+  if (piste.audio) {
+    down = h('button', { class: 'btn btn-vert btn-rond', 'aria-label': `Télécharger ${f.titre}` }, ico('telecharger'));
+    const marque = () => { down.classList.add('fait'); down.replaceChildren(ico('coche')); down.setAttribute('aria-label', `${f.titre} : téléchargé (voir Mes téléchargements)`); };
+    down.onclick = async e => { e.stopPropagation(); if (down.classList.contains('fait')) { location.hash = '#/telechargements'; return; } if (await dl.telecharger(piste.audio, f.titre)) marque(); };
+    dl.estGarde(piste.audio).then(ok => { if (ok) marque(); });
+  }
   const aller = () => { location.hash = `#/priere/${f.id}`; };
   return h('div', { class: 'ligne ligne-fiche', role: 'link', tabindex: 0, onclick: e => { if (!e.target.closest('button')) aller(); }, onkeydown: e => { if (e.key === 'Enter') aller(); } },
     img(f.image, '', 'ligne-img'),
@@ -97,6 +109,6 @@ function ligne(f, file, ext) {
       ext || null,
       h('div', { class: 'ligne-bas' },
         h('div', { class: 'ligne-meta' }, ico('horloge'), `Fiche ${f.numero} · ≈ ${f.duree} min · ${f.nb_sujets} sujets`),
-        ecoute),
+        h('div', { class: 'ligne-actions' }, ecoute, down)),
       prieAujourdhui(f.id) ? h('span', { class: 'prie-ok' }, ico('coche'), 'Prié aujourd\'hui') : null));
 }
