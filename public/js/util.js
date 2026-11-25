@@ -225,13 +225,20 @@ export const octets = n => n > 1048576 ? (n / 1048576).toFixed(1).replace('.', '
 export const aujourdhui = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 export function jourTheme(t) {
   if (t && t.debut) {
-    const n = Math.floor((new Date(aujourdhui() + 'T00:00:00') - new Date(t.debut + 'T00:00:00')) / 864e5) + 1;
-    return Math.min(Math.max(n, 1), t.total || 7);
+    const tot = t.total || 7;
+    const n = Math.floor((new Date(aujourdhui() + 'T00:00:00') - new Date(t.debut + 'T00:00:00')) / 864e5);
+    if (n < 0) return 1;
+    return t.repeter ? (n % tot) + 1 : Math.min(n + 1, tot);   // « repeter » : la série recommence après le dernier jour
   }
   return (t && t.jour) || 1;
 }
 export function ficheDuJour(d) {
   if (d.du_jour && d.du_jour !== 'auto') return d.fiches.find(f => f.id === d.du_jour) || d.fiches[0];
+  // Série du thème donnée par la liste de ses fiches (recueil)
+  if (d.theme && Array.isArray(d.theme.fiches) && d.theme.fiches.length) {
+    const id = d.theme.fiches[(jourTheme(d.theme) - 1) % d.theme.fiches.length];
+    return d.fiches.find(f => f.id === id) || d.fiches[0];
+  }
   const duTheme = d.theme && d.theme.id ? d.fiches.filter(f => f.theme === d.theme.id) : d.fiches;
   const liste = duTheme.length ? duTheme : d.fiches;
   return liste[(jourTheme(d.theme) - 1) % liste.length];

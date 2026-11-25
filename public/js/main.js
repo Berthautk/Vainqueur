@@ -192,6 +192,9 @@ async function demarrer() {
   const splash = $('#splash'), app = $('#app');
   const debut = performance.now();
   app.hidden = false;
+  // Hauteur de l'en-tête, pour les éléments qui restent collés juste en dessous (compteur des sujets…)
+  const hEntete = () => document.documentElement.style.setProperty('--h-entete', $('.entete').offsetHeight + 'px');
+  hEntete(); addEventListener('resize', hEntete);
   majReseau();
   addEventListener('hashchange', aller);
   livresPrets = chargerLivres().catch(() => {});
@@ -213,7 +216,7 @@ async function demarrer() {
   const auRepos = f => ('requestIdleCallback' in window ? requestIdleCallback(f, { timeout: 4000 }) : setTimeout(f, 2500));
   setTimeout(() => auRepos(() => {
     routes.forEach(([, charge]) => charge().catch(() => {}));
-    ['fiches', 'nayla', 'coeurs_brises', 'affaires', 'evangelisation', 'temoignages', 'plus', 'radio', 'plans'].forEach(n => contenu(n).catch(() => {}));
+    ['prieres/index', 'nayla', 'coeurs_brises', 'affaires', 'evangelisation', 'temoignages', 'plus', 'radio', 'plans'].forEach(n => contenu(n).catch(() => {}));
   }), 1500);
 }
 
@@ -222,7 +225,7 @@ window.addEventListener('vq-prenom', () => { viderGardees(); if (/^(#\/?)?$/.tes
 
 // Un contenu a changé sur le serveur : on le relira à la prochaine ouverture de la rubrique
 navigator.serviceWorker && navigator.serviceWorker.addEventListener('message', ev => {
-  if (ev.data && ev.data.type === 'contenu-maj') { const m = ev.data.url.match(/content\/([\w-]+)\.json$/); if (m) { oublierContenu(m[1]); viderGardees(); } }
+  if (ev.data && ev.data.type === 'contenu-maj') { const m = ev.data.url.match(/content\/([\w\/-]+)\.json$/); if (m) { oublierContenu(m[1]); viderGardees(); } }
 });
 
 // Installation de l'application (Android / Chrome)

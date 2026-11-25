@@ -12,7 +12,7 @@ const jourDeAnnee = () => Math.floor((Date.now() - new Date(new Date().getFullYe
 const court = (t, n) => (t && t.length > n ? t.slice(0, n).replace(/\s+\S*$/, '') + '…' : t || '');
 
 export default async function () {
-  const [acc, fiches, nayla] = await Promise.all([contenu('accueil'), contenu('fiches'), contenu('nayla').catch(() => ({ adorations: [] }))]);
+  const [acc, fiches, nayla] = await Promise.all([contenu('accueil'), contenu('prieres/index'), contenu('nayla').catch(() => ({ adorations: [] }))]);
   const j = jourDeAnnee();
   const ac = acc.accroches[j % acc.accroches.length];
   const pa = acc.paroles[j % acc.paroles.length];
@@ -83,7 +83,7 @@ export default async function () {
     });
     d.push({
       lien: `#/priere/${fiche.id}`, image: imgSrc(fiche.image), etiquette: 'Prière du jour', titre: fiche.titre,
-      texte: ok ? 'Tu as prié aujourd\'hui ✔ · toucher pour revoir' : `${fiche.duree} min · enseignement puis 5 sujets`
+      texte: ok ? 'Tu as prié aujourd\'hui ✔ · toucher pour revoir' : (() => { const soir = new Date().getHours() >= 17; return `≈ ${soir ? fiche.duree_soir : fiche.duree_matin} min · enseignement puis ${soir ? fiche.sujets_soir : fiche.sujets_matin} sujets`; })()
     });
     d.push({ lien: lienBible, surClic: ouvrirParole, image: imgSrc('assets/fonds/fond_parole.webp'), bas: '40%',
       etiquette: 'Parole du jour', titre: '« ' + court(pa.texte, 95) + ' »', texte: pa.ref + ' · toucher pour écouter et partager' });

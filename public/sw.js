@@ -2,7 +2,7 @@
    - Précache : application, polices, logos, contenus JSON, et toutes les images/audios cités dans les JSON.
    - Les audios téléchargés par l'utilisateur vivent dans le cache « vainqueur-audio » (jamais purgé ici).
    Changer VERSION pour forcer la mise à jour de l'application chez tous les utilisateurs. */
-const VERSION = 'v18';
+const VERSION = 'v19';
 const APP = `vainqueur-app-${VERSION}`;
 const AUDIO = 'vainqueur-audio';
 const BIBLE = 'vainqueur-bible-lsg'; // texte de la Bible : gardé d'une version à l'autre
@@ -20,7 +20,7 @@ const STATIQUE = [
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png',
   'assets/illustrations/personnages/p1_12.webp'
 ];
-const CONTENUS = ['config', 'accueil', 'fiches', 'nayla', 'coeurs_brises', 'affaires', 'evangelisation', 'temoignages', 'nouveautes', 'radio', 'plus', 'plans'];
+const CONTENUS = ['config', 'accueil', 'prieres/index', 'nayla', 'coeurs_brises', 'affaires', 'evangelisation', 'temoignages', 'nouveautes', 'radio', 'plus', 'plans'];
 
 function imgChemin(id) {
   if (/^i\d/.test(id)) return `assets/illustrations/icones/${id}.webp`;

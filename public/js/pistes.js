@@ -2,22 +2,31 @@
 // Sans MP3, la piste lit ses segments avec la voix du téléphone ; « lu » relie chaque segment
 // au texte affiché (attribut data-lu) pour colorer le mot prononcé.
 import { sansGras } from './bible-refs.js';
+import { contenu } from './util.js';
 const periodeDuMoment = () => (new Date().getHours() >= 17 ? 'soir' : 'matin');
-const NOMBRES = ['Un', 'Deux', 'Trois', 'Quatre', 'Cinq', 'Six', 'Sept', 'Huit', 'Neuf', 'Dix'];
 export const paras = t => String(t || '').split('\n\n').filter(Boolean);
 
-export function pisteFiche(f, periode = periodeDuMoment()) {
-  const b = f[periode] || f.matin; const id = `f-${f.id}-${periode}`;
+// Fiche du recueil : le texte complet n'est chargé qu'au moment de l'écoute.
+// « lu » : e<i> = élément i de l'enseignement, s<i> = élément i de la séance (matin ou soir).
+export function pisteFiche(m, periode = periodeDuMoment()) {
+  const id = `f-${m.id}-${periode}`;
   return {
-    id, titre: f.titre, audio: (f.audios && f.audios[periode]) || f.audio || '', image: f.image, type: 'fiche', lien: `#/priere/${f.id}`,
-    segments: [
-      { t: `${f.titre}. Enseignement du ${periode}.` },
-      ...paras(b.enseignement).map((p, i) => ({ t: p, lu: `${id}:e${i}` })),
-      { t: 'Tes cinq sujets de prière.' },
-      ...b.sujets.flatMap((s, i) => [{ t: `${NOMBRES[i] || i + 1}.` }, { t: s, lu: `${id}:s${i}` }]),
-      { t: 'Amen.' }
-    ]
+    id, titre: m.titre, audio: '', image: m.image, type: 'fiche', lien: `#/priere/${m.id}`,
+    segments: async () => segmentsFiche(await contenu(`prieres/${m.id}`), periode, id)
   };
+}
+export function segmentsFiche(f, periode, id) {
+  const sess = f[periode] || [];
+  const n = sess.filter(x => x.type === 'sujet').length;
+  const dire = (it, cle) => (it.type === 'sujet' && it.numero != null ? [{ t: `${it.numero}.` }, { t: it.texte, lu: cle }] : [{ t: it.texte, lu: cle }]);
+  return [
+    { t: `${f.titre}. Séance du ${periode}.` },
+    { t: 'Enseignement.' },
+    ...f.enseignement.flatMap((it, i) => dire(it, `${id}:e${i}`)),
+    { t: n > 1 ? `Tes ${n} sujets de prière.` : 'Ton sujet de prière.' },
+    ...sess.flatMap((it, i) => dire(it, `${id}:s${i}`)),
+    { t: 'Amen.' }
+  ];
 }
 export const pistesFiches = (d, periode) => d.fiches.map(f => pisteFiche(f, periode));
 
