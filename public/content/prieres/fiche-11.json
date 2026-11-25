@@ -1,0 +1,418 @@
+{
+ "id": "fiche-11",
+ "numero": 11,
+ "partie": "B",
+ "titre": "Apprendre à donner",
+ "titre_original": "APPRENDRE À DONNER",
+ "nb_sujets": 74,
+ "enseignement": [
+  {
+   "type": "sous_titre",
+   "texte": "Textes de méditation :"
+  },
+  {
+   "type": "paragraphe",
+   "texte": "Jean 3 : 16 « Car Dieu a tant aimé le monde qu'il a donné son Fils unique, afin que quiconque croit en lui ne périsse point, mais qu'il ait la vie éternelle. »"
+  },
+  {
+   "type": "paragraphe",
+   "texte": "Matthieu 6 : 1-4 « Gardez-vous de pratiquer votre justice devant les hommes, pour en être vus ; autrement, vous n'aurez point de récompense auprès de votre Père qui est dans les cieux. Lors donc que tu fais l'aumône, ne sonne pas de la trompette devant toi, comme font les hypocrites dans les synagogues et dans les rues, afin d'être glorifiés par les hommes. Je vous le dis en vérité, ils reçoivent leur récompense. Mais quand tu fais l'aumône, que ta main gauche ne sache pas ce que fait ta droite, afin que ton aumône se fasse en secret ; et ton Père, qui voit dans le secret, te le rendra. »"
+  },
+  {
+   "type": "paragraphe",
+   "texte": "Marc 12 : 30-31 « et : Tu aimeras le Seigneur, ton Dieu, de tout ton cœur, de toute ton âme, de toute ta pensée, et de toute ta force. Voici le second : Tu aimeras ton prochain comme toi-même. Il n'y a pas d'autre commandement plus grand que ceux-là. »"
+  },
+  {
+   "type": "paragraphe",
+   "texte": "Actes 20 : 34-35 « Vous savez vous-mêmes que ces mains ont pourvu à mes besoins et à ceux des personnes qui étaient avec moi. Je vous ai montré de toutes manières que c'est en travaillant ainsi qu'il faut soutenir les faibles, et se rappeler les paroles du Seigneur, qui a dit lui-même : Il y a plus de bonheur à donner qu'à recevoir. »"
+  },
+  {
+   "type": "paragraphe",
+   "texte": "Tite 2 : 13-14 « en attendant la bienheureuse espérance, et la manifestation de la gloire du grand Dieu et de notre Sauveur Jésus-Christ, qui s'est donné lui-même pour nous, afin de nous racheter de toute iniquité, et de se faire un peuple qui lui appartienne, purifié par lui et zélé pour les bonnes œuvres. » Marc 10 : 42-45 « Jésus les appela, et leur dit : Vous savez que ceux qu'on regarde comme les chefs des nations les tyrannisent, et que les grands les dominent. Il n'en est pas de même au milieu de vous. Mais quiconque veut être grand parmi vous, qu'il soit votre serviteur ; et quiconque veut être le premier parmi vous, qu'il soit l'esclave de tous. Car le Fils de l'homme est venu, non pour être servi, mais pour servir et donner sa vie comme la rançon de plusieurs. »"
+  },
+  {
+   "type": "paragraphe",
+   "texte": "La Bible déclare dans Actes 20 : 35 qu’il y a plus de bonheur à donner qu’à recevoir. Ceci est une vérité absolue. Cependant, saviez-vous qu’on peut donner sans aimer, mais qu’on ne peut pas aimer sans donner ? Alors que de nombreuses personnes donnent pour insulter, pour assujettir et pour manipuler, ceux qui désirent réjouir le cœur de Dieu donnent par amour. Ils ont compris ce que c’est que le don véritable et veulent, comme Dieu, tout donner pour le bien-être de l’humanité et pour réjouir le cœur de Celui qui leur a tout donné. Si vous désirez également atteindre cette cime, cette fiche est idéale pour vous. Elle vous permettra de saisir ce que c’est réellement qu'un don et fera certainement de vous un être d’amour dont les dons seront purs et apporteront la vie aux Hommes. Lisez-la, méditez-la, utilisez-la et témoignez de ce que Dieu fera dans votre vie et dans votre entourage au travers de ces sujets de prière inspirés par Lui."
+  }
+ ],
+ "dans_quels_cas": [],
+ "matin": [
+  {
+   "type": "sujet",
+   "numero": 1,
+   "texte": "Père, donne-moi de donner comme tu t’es donné."
+  },
+  {
+   "type": "sujet",
+   "numero": 2,
+   "texte": "Seigneur, donne-moi de donner comme tu m’as donné."
+  },
+  {
+   "type": "sujet",
+   "numero": 3,
+   "texte": "Seigneur, donne-moi de donner de tout mon cœur."
+  },
+  {
+   "type": "sujet",
+   "numero": 4,
+   "texte": "Seigneur Jésus, donne-moi de donner avec amour."
+  },
+  {
+   "type": "sujet",
+   "numero": 5,
+   "texte": "Seigneur, donne-moi de donner sans motif."
+  },
+  {
+   "type": "sujet",
+   "numero": 6,
+   "texte": "Seigneur, donne-moi de donner comme un enfant."
+  },
+  {
+   "type": "sujet",
+   "numero": 7,
+   "texte": "Seigneur, donne-moi de donner sans désir de notoriété (c’est-à-dire sans le désir de se faire connaitre)."
+  },
+  {
+   "type": "sujet",
+   "numero": 8,
+   "texte": "Père, donne-moi de donner en secret."
+  },
+  {
+   "type": "sujet",
+   "numero": 9,
+   "texte": "Seigneur, donne-moi de donner en silence."
+  },
+  {
+   "type": "sujet",
+   "numero": 10,
+   "texte": "Seigneur, donne-moi de trouver plaisir à donner."
+  },
+  {
+   "type": "sujet",
+   "numero": 11,
+   "texte": "Seigneur, donne-moi de trouver la joie à recevoir."
+  },
+  {
+   "type": "sujet",
+   "numero": 12,
+   "texte": "Seigneur, donne-moi de donner sans fierté, sans orgueil."
+  },
+  {
+   "type": "sujet",
+   "numero": 13,
+   "texte": "Seigneur, donne-moi de donner sans récompense."
+  },
+  {
+   "type": "sujet",
+   "numero": 14,
+   "texte": "Seigneur, donne-moi de donner avec reconnaissance sans rien espérer en retour."
+  },
+  {
+   "type": "sujet",
+   "numero": 15,
+   "texte": "Seigneur, donne-moi de donner par fardeau."
+  },
+  {
+   "type": "sujet",
+   "numero": 16,
+   "texte": "Ô Dieu, donne-moi de donner avec actions de grâces."
+  },
+  {
+   "type": "sujet",
+   "numero": 17,
+   "texte": "Seigneur, donne-moi de donner par besoin."
+  },
+  {
+   "type": "sujet",
+   "numero": 18,
+   "texte": "Seigneur, donne-moi de donner avec conviction."
+  },
+  {
+   "type": "sujet",
+   "numero": 19,
+   "texte": "Seigneur, donne-moi de donner mes meilleurs produits."
+  },
+  {
+   "type": "sujet",
+   "numero": 20,
+   "texte": "Seigneur, donne-moi de donner mes objets les plus précieux."
+  },
+  {
+   "type": "sujet",
+   "numero": 21,
+   "texte": "Seigneur, donne-moi de donner mes connaissances les plus chéries."
+  },
+  {
+   "type": "sujet",
+   "numero": 22,
+   "texte": "Seigneur, donne-moi de donner infiniment grand."
+  },
+  {
+   "type": "sujet",
+   "numero": 23,
+   "texte": "Seigneur, donne-moi de donner abondamment et avec extrême largesse."
+  },
+  {
+   "type": "sujet",
+   "numero": 24,
+   "texte": "Seigneur, donne-moi de donner avec vérité."
+  },
+  {
+   "type": "sujet",
+   "numero": 25,
+   "texte": "Seigneur, donne-moi de donner sans calcul."
+  },
+  {
+   "type": "sujet",
+   "numero": 26,
+   "texte": "Seigneur, donne-moi de donner sans rancœur."
+  },
+  {
+   "type": "sujet",
+   "numero": 27,
+   "texte": "Éternel, donne-moi de donner sans impureté."
+  },
+  {
+   "type": "sujet",
+   "numero": 28,
+   "texte": "Seigneur, donne-moi de donner sans parcimonie (c’est-à-dire avarice ou cupidité)."
+  },
+  {
+   "type": "sujet",
+   "numero": 29,
+   "texte": "Père, donne-moi de donner mon tout comme tu as donné ton tout au monde."
+  },
+  {
+   "type": "sujet",
+   "numero": 30,
+   "texte": "Seigneur, donne-moi de donner mon peu."
+  },
+  {
+   "type": "sujet",
+   "numero": 31,
+   "texte": "Seigneur, donne-moi de donner dans l’abondance."
+  },
+  {
+   "type": "sujet",
+   "numero": 32,
+   "texte": "Seigneur, donne-moi de donner dans la disette."
+  },
+  {
+   "type": "sujet",
+   "numero": 33,
+   "texte": "Seigneur, donne-moi de donner dans la pauvreté."
+  },
+  {
+   "type": "sujet",
+   "numero": 34,
+   "texte": "Seigneur, donne-moi de donner mon manteau."
+  },
+  {
+   "type": "sujet",
+   "numero": 35,
+   "texte": "Seigneur, donne-moi de donner mes chaussures."
+  },
+  {
+   "type": "sujet",
+   "numero": 36,
+   "texte": "Seigneur, donne-moi de donner dans la joie."
+  },
+  {
+   "type": "sujet",
+   "numero": 37,
+   "texte": "Seigneur, donne-moi de donner avec joie."
+  }
+ ],
+ "soir": [
+  {
+   "type": "sujet",
+   "numero": 38,
+   "texte": "Seigneur, donne-moi de donner en nature."
+  },
+  {
+   "type": "sujet",
+   "numero": 39,
+   "texte": "Seigneur, donne-moi de donner de mon argent."
+  },
+  {
+   "type": "sujet",
+   "numero": 40,
+   "texte": "Seigneur, donne-moi de donner mon temps."
+  },
+  {
+   "type": "sujet",
+   "numero": 41,
+   "texte": "Seigneur, donne-moi de donner mes biens."
+  },
+  {
+   "type": "sujet",
+   "numero": 42,
+   "texte": "Seigneur, donne-moi de donner mon service."
+  },
+  {
+   "type": "sujet",
+   "numero": 43,
+   "texte": "Seigneur Jésus, donne-moi de me donner moi-même."
+  },
+  {
+   "type": "sujet",
+   "numero": 44,
+   "texte": "Seigneur, donne-moi de me donner corps, âme et esprit."
+  },
+  {
+   "type": "sujet",
+   "numero": 45,
+   "texte": "Seigneur, donne-moi de donner avec discernement et avec sagesse."
+  },
+  {
+   "type": "sujet",
+   "numero": 46,
+   "texte": "Seigneur, donne-moi de recevoir avec discernement et avec sagesse."
+  },
+  {
+   "type": "sujet",
+   "numero": 47,
+   "texte": "Seigneur, donne-moi de me donner à toi."
+  },
+  {
+   "type": "sujet",
+   "numero": 48,
+   "texte": "Seigneur, donne-moi de me donner à ton œuvre."
+  },
+  {
+   "type": "sujet",
+   "numero": 49,
+   "texte": "Père, donne-moi de me donner à tes âmes."
+  },
+  {
+   "type": "sujet",
+   "numero": 50,
+   "texte": "Seigneur, donne-moi de me donner à mes frères."
+  },
+  {
+   "type": "sujet",
+   "numero": 51,
+   "texte": "Père, donne-moi de me donner à mes enfants."
+  },
+  {
+   "type": "sujet",
+   "numero": 52,
+   "texte": "Seigneur, donne-moi de me donner à tous et à chacun."
+  },
+  {
+   "type": "sujet",
+   "numero": 53,
+   "texte": "Seigneur, donne-moi de donner à qui il faut."
+  },
+  {
+   "type": "sujet",
+   "numero": 54,
+   "texte": "Seigneur, donne-moi de donner tout ce qu’il faut, quand il faut, où il faut et comme il le faut."
+  },
+  {
+   "type": "sujet",
+   "numero": 55,
+   "texte": "Seigneur, donne-moi de me donner sans économie et avec persévérance."
+  },
+  {
+   "type": "sujet",
+   "numero": 56,
+   "texte": "Seigneur, donne-moi de donner avec douleur."
+  },
+  {
+   "type": "sujet",
+   "numero": 57,
+   "texte": "Seigneur, donne-moi de donner avec humilité et humiliation."
+  },
+  {
+   "type": "sujet",
+   "numero": 58,
+   "texte": "Seigneur, oblige-moi à me donner."
+  },
+  {
+   "type": "sujet",
+   "numero": 59,
+   "texte": "Seigneur, donne-moi de donner dans la tristesse."
+  },
+  {
+   "type": "sujet",
+   "numero": 60,
+   "texte": "Seigneur, donne-moi de donner avec compassion."
+  },
+  {
+   "type": "sujet",
+   "numero": 61,
+   "texte": "Seigneur, donne-moi de donner avec douceur."
+  },
+  {
+   "type": "sujet",
+   "numero": 62,
+   "texte": "Seigneur, donne-moi de donner chaque jour de ma vie."
+  },
+  {
+   "type": "sujet",
+   "numero": 63,
+   "texte": "Seigneur, donne-moi de donner toute ma vie."
+  },
+  {
+   "type": "sujet",
+   "numero": 64,
+   "texte": "Seigneur, donne-moi de donner pour l’éternité."
+  },
+  {
+   "type": "sujet",
+   "numero": 65,
+   "texte": "Seigneur, donne-moi de gagner pour donner."
+  },
+  {
+   "type": "sujet",
+   "numero": 66,
+   "texte": "Seigneur, donne-moi de travailler pour donner."
+  },
+  {
+   "type": "sujet",
+   "numero": 67,
+   "texte": "Seigneur, donne-moi de souffrir pour donner."
+  },
+  {
+   "type": "sujet",
+   "numero": 68,
+   "texte": "Seigneur, permets que ton fruit sorte de moi pour donner."
+  },
+  {
+   "type": "sujet",
+   "numero": 69,
+   "texte": "Seigneur, permets que chaque fruit d’amour produit en moi produise d’autres fruits d’amour."
+  },
+  {
+   "type": "sujet",
+   "numero": 70,
+   "texte": "Seigneur, donne-moi de produire des fruits juteux (selon Galates 5 :22)."
+  },
+  {
+   "type": "sujet",
+   "numero": 71,
+   "texte": "Seigneur, donne-moi d’être un don pour l’humanité dans le plan de ton dessein éternel."
+  },
+  {
+   "type": "sujet",
+   "numero": 72,
+   "texte": "Seigneur, donne-moi d’être un don pour l’humanité dans ton plan éternel, dans le plan de ton éternité."
+  },
+  {
+   "type": "sujet",
+   "numero": 73,
+   "texte": "Seigneur, donne-moi de me donner comme sacrifice pour Dieu."
+  },
+  {
+   "type": "sujet",
+   "numero": 74,
+   "texte": "Seigneur, fais ta gloire de ton fruit en nous, pour que nous soyons des sacrifices agréables à toi."
+  },
+  {
+   "type": "paragraphe",
+   "texte": "AMEN ! ! !"
+  }
+ ],
+ "image": "p3_06"
+}

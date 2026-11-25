@@ -1,0 +1,599 @@
+{
+ "id": "fiche-04",
+ "numero": 4,
+ "partie": "A",
+ "titre": "Vaincre les parasites du foyer",
+ "titre_original": "VAINCRE LES PARASITES DU FOYER",
+ "nb_sujets": 106,
+ "enseignement": [
+  {
+   "type": "paragraphe",
+   "texte": "Dieu a institué le mariage comme un sanctuaire d’alliance où l’homme et la femme deviennent une seule chair. Ce que Dieu a joint, aucune force humaine ou démoniaque n’a le droit de le séparer. Pourtant, dans plusieurs foyers, l’ennemi tente d’introduire des présences étrangères, des influences destructrices et des liaisons impies pour ronger l’amour, affaiblir l’unité et détruire progressivement ce que Dieu a bâti."
+  },
+  {
+   "type": "paragraphe",
+   "texte": "Un parasite du foyer est toute personne, toute force spirituelle ou toute influence qui s’introduit illégalement dans une union pour en extraire la paix, la fidélité, la joie, l’intimité, la prospérité et l’harmonie. Ces parasites peuvent prendre plusieurs visages : un mari ou une femme esprit, un esprit de Jézabel, une tierce personne liée au conjoint par des charmes ou des envoûtements, des beaux-parents hostiles ou démoniaques, des amis mal intentionnés, des objets enterrés, des repas envoûtants, des alliances occultes, des rapports illégaux ou encore des malédictions héritées de péchés sexuels et familiaux."
+  },
+  {
+   "type": "paragraphe",
+   "texte": "Leurs actions se font souvent dans l’ombre, mais leurs effets deviennent visibles : froideur soudaine entre les époux, disputes répétées, rejet du lit conjugal, attrait irrésistible pour une personne étrangère, instabilité, pauvreté, stagnation, confusion, manipulation et perte de paix dans la maison. Mais la bonne nouvelle est certaine : Jésus-Christ, le Prince de la paix, a donné à ses enfants l’autorité pour résister à tout destructeur de foyer, annuler les pactes impies, briser les dots spirituelles payées en leur nom, chasser les intrus et récupérer ce que l’ennemi a volé."
+  },
+  {
+   "type": "paragraphe",
+   "texte": "Cette fiche de prière est une opération de nettoyage spirituel radical. Elle vous aide à purifier votre foyer de toute présence étrangère, destructrice ou manipulatrice ; à exposer et expulser tout parasite introduit dans votre mariage ; à briser l’emprise des esprits de Jézabel, des maris et femmes esprits, des beaux-parents démoniaques et de tout intrus spirituel ; puis à établir de nouveau l’amour, la paix, la fidélité et la présence de Dieu comme fondement de votre demeure."
+  }
+ ],
+ "dans_quels_cas": [
+  {
+   "type": "paragraphe",
+   "texte": "Priez cette fiche de prière si :"
+  },
+  {
+   "type": "puce",
+   "texte": "Vous soupçonnez qu’une tierce personne interfère spirituellement dans votre mariage par des charmes, des envoûtements ou des relations illégales avec votre conjoint ;"
+  },
+  {
+   "type": "puce",
+   "texte": "Votre conjoint semble attiré par une autre personne de façon inexplicable, excessive ou irrationnelle ;"
+  },
+  {
+   "type": "puce",
+   "texte": "Vous ressentez la présence d’influences extérieures néfastes : beaux-parents hostiles, amis mal intentionnés, forces occultes ou manipulations dirigées contre votre foyer ;"
+  },
+  {
+   "type": "puce",
+   "texte": "Votre foyer est marqué par des disputes récurrentes, une froideur soudaine, le rejet du lit conjugal, la pauvreté, la stagnation ou une perte de paix inexpliquée ;"
+  },
+  {
+   "type": "puce",
+   "texte": "Des objets, repas, paroles, sacrifices, alliances ou pratiques maléfiques ont été utilisés contre votre union ;"
+  },
+  {
+   "type": "puce",
+   "texte": "Vous voulez récupérer tout ce que l’ennemi a volé dans votre foyer : l’amour, la paix, la fidélité, l’intimité, la joie et la prospérité."
+  }
+ ],
+ "matin": [
+  {
+   "type": "sujet",
+   "numero": 1,
+   "texte": "J’ordonne que tout parasite dans mon foyer soit exposé et anéanti au nom de Jésus-Christ de Nazareth."
+  },
+  {
+   "type": "sujet",
+   "numero": 2,
+   "texte": "Père, lève-toi et proclame la délivrance de mon foyer au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 3,
+   "texte": "J’annule toute parole de malédiction décrétée contre moi et mon foyer au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 4,
+   "texte": "Je détruis par le feu du Saint-Esprit toute force d’herbe, tout pouvoir d’écorce œuvrant contre mon foyer au nom de Jésus-Christ de Nazareth."
+  },
+  {
+   "type": "sujet",
+   "numero": 5,
+   "texte": "Que toute imprécation, toute pratique et incantation visant à détruire mon mariage avec… (cite le nom de ton/ta partenaire) soit voué à l’échec au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 6,
+   "texte": "Que tout sort, tout envoûtement programmé contre moi, contre mon union avec… (cite le nom de ton/ta partenaire) soient révoqués et annulés au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 7,
+   "texte": "Que toute flèche de séparation et de division jetée contre mon foyer retourne à l’envoyeur, au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 8,
+   "texte": "Que tout nœud de séparation et de division, ainsi que les repas de séparation programmés contre la bonne santé de mon foyer, soient anéantis par les anges de Dieu au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 9,
+   "texte": "Père, laisse ton jugement s’abattre sur les ennemis de mon mariage avec … (cite le nom de ton/ta conjointe) au nom de Jésus-Christ de Nazareth."
+  },
+  {
+   "type": "sujet",
+   "numero": 10,
+   "texte": "Que le feu du tonnerre de Dieu persécute les persécuteurs de mon foyer au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 11,
+   "texte": "Que leur chemin soit glissant et ténébreux, que la paix leur soit enlevée au nom de Jésus-Christ. Qu’ils soient frappés de confusion au nom de Jésus- Christ de Nazareth."
+  },
+  {
+   "type": "sujet",
+   "numero": 12,
+   "texte": "Que tout plan et projet qu’ils ont forgés contre mon foyer échouent lamentablement au nom de Jésus-Christ ; qu’ils tombent dans leur propre piège, dans le nom de Jésus-Christ de Nazareth."
+  },
+  {
+   "type": "sujet",
+   "numero": 13,
+   "texte": "Que tout poison qu’ils ont préparé pour moi et mon foyer soit nul et sans effet au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 14,
+   "texte": "Par le pouvoir de l’onction que Dieu m’a donné, je réclame tout ce qu’ils ont volé dans mon foyer, au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 15,
+   "texte": "Je récupère mon mari ou ma femme (déclare son nom) au nom de Jésus-Christ de Nazareth."
+  },
+  {
+   "type": "sujet",
+   "numero": 16,
+   "texte": "Je détruis tout envoûtement lancé à travers les repas empoisonnés, par les rapports sexuels, par les charmes qu’ils ont lancés contre moi, contre mon mari ou ma femme dans le nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 17,
+   "texte": "Je détruis toute pratique … (cite le nom de l’adversaire si tu connais), que X ou Y, que Jézabel et ses agents ont fait contre mon mari/ma femme et mon mariage au nom de Jésus-Christ de Nazareth."
+  },
+  {
+   "type": "paragraphe",
+   "texte": "La Bible dit que : Dieu frappera la grande prostituée et elle ne se relèvera plus. Apocalypse 18 :8"
+  },
+  {
+   "type": "sujet",
+   "numero": 18,
+   "texte": "Que la lumière de Dieu rende toute prostituée œuvrant contre mon foyer aveugle au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 19,
+   "texte": "Je récupère tous les prélèvements qu’elle a faits sur mon mari ou ma femme, au nom de Jésus-Christ de Nazareth et je les détruis pour toujours."
+  },
+  {
+   "type": "sujet",
+   "numero": 20,
+   "texte": "J’anéantis tout charme, tout envoûtement, tout sort, tout ensorcellement que … (cite le nom de l’adversaire si possible), Jézabel et ses agents ont faits sur mon mari ou sur ma femme (déclare son nom) au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 21,
+   "texte": "Que toute écorce, toute herbe, tout instrument œuvrant à détruire mon mari/ma femme ou mon mariage soient calcinés par le feu du Saint-Esprit au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 22,
+   "texte": "Que tout cauri, que tout canari, que toute bouteille, que tout contenant enterrés par X ou Y (cite le nom de l’adversaire) contre mon mari et mon foyer pour nous tourmenter soient détruits et réduits en cendres par le feu dévorant du Saint-Esprit, au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 23,
+   "texte": "Que tout repas envoûtant consommé par mon mari chez la prostituée perde son pouvoir au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 24,
+   "texte": "Que tout pacte et lien les liants soient brisés par le sang éternel de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 25,
+   "texte": "Que toute infestation satanique que mon mari X ou ma femme (cite le nom de ton partenaire), a reçue de Y (nom de l’adversaire), lors de leur rapport sexuel illégal soit enlevé de son corps maintenant, au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 26,
+   "texte": "Que le sang de Jésus et la colère de Dieu détruisent toute preuve de cette folie au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 27,
+   "texte": "Ô Dieu, sème inimitié entre Jézabel et mon mari/ou ma femme, au nom de Jésus-Christ. Qu’ils deviennent désormais comme l’eau et le feu, comme la lumière et les ténèbres au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 28,
+   "texte": "Ô Dieu, qu’ils deviennent comme le chat et le chien dans le nom de Jésus- Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 29,
+   "texte": "Ô Dieu, Éternel qui restaure, arrange tout dégât causé par cette folie sur mon foyer au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 30,
+   "texte": "Que tous les agents qui sont contre la paix et l’union dans ma maison tombent et meurent à tour de rôle au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 31,
+   "texte": "Que tout pied étrange œuvrant ou opérant contre mon mariage, mes affaires, ma prospérité soit paralysée pour toujours au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 32,
+   "texte": "Que toute flèche tirée contre mon mariage soit anéantie par le feu du Saint- Esprit, au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 33,
+   "texte": "Que chaque partie de mon foyer que Satan détenait captive soit libérée par le feu du Dieu d’Elie au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 34,
+   "texte": "Que tout problème dans mon foyer, relatif aux beaux-parents, soit détruit au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 35,
+   "texte": "Que le sang de Jésus-Christ lave et efface mon nom et celui de mon mari/ma femme du livre des parasites du foyer au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 36,
+   "texte": "Je récupère mes enfants des mains des ennemis de mon foyer au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 37,
+   "texte": "Ô Seigneur, aide-moi à être victorieux, que je n’échoue pas au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 38,
+   "texte": "Je retourne et annule toute dote spirituelle payée ou reçue en mon nom au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 39,
+   "texte": "Je brise l’emprise de toute malédiction héritée des péchés sexuels de mes parents et de mes propres péchés sur ma vie conjugale au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 40,
+   "texte": "Je libère mon foyer de toute malédiction conjugale et ancestrale au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 41,
+   "texte": "Au nom de Jésus-Christ de Nazareth, je résiste à tout destructeur de foyer délégué contre mon mariage."
+  },
+  {
+   "type": "sujet",
+   "numero": 42,
+   "texte": "Je résiste à toute compétition avec la femme étrangère, les agents de la grande prostituée au nom de Jésus. Je leur commande de quitter mon foyer par le feu du Saint-Esprit au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 43,
+   "texte": "Je résiste à tous beaux-parents démoniaques ; qu’ils soient confus et honteux, ceux qui en veulent à mon foyer au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 44,
+   "texte": "Je résiste à tout échec et pauvreté dans mon mariage au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 45,
+   "texte": "Je résiste à toute marque démoniaque sur mon foyer par le feu du Saint-Esprit au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 46,
+   "texte": "Je résiste à tout destructeur de mariage, au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 47,
+   "texte": "Je résiste à tout pollueur de foyer. Que la pluie de feu tombe sur eux et qu’ils soient couverts d’afflictions au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 48,
+   "texte": "Je résiste à l’esprit de Jézabel œuvrant contre mon foyer au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 49,
+   "texte": "Je résiste à toute malédiction, aux esprits de divorce et de célibat hérités de mes parents sur mon mariage au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 50,
+   "texte": "Je résiste et annule toute malédiction matrimoniale sur mon foyer au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 51,
+   "texte": "J’annule toute alliance contre les mariages signés en mon nom et au nom de mon mari au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 52,
+   "texte": "Je lie et j’enchaine tout esprit de mésentente, de fausse interprétation et d’exagération œuvrant contre mon foyer, au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 53,
+   "texte": "Je détruis tout esprit d’attachement impie aux parents polluant mon foyer au nom de Jésus-Christ de Nazareth."
+  }
+ ],
+ "soir": [
+  {
+   "type": "sujet",
+   "numero": 54,
+   "texte": "Je détruis tout esprit d’attachement impie à un quelconque personnage, à une quelconque religion, à un quelconque ami polluant mon foyer au nom de Jésus- Christ de Nazareth."
+  },
+  {
+   "type": "sujet",
+   "numero": 55,
+   "texte": "J’annule l’influence satanique des colas, du vin blanc, des coupes bizarres, des cornes d’animaux et de tout sacrifice sur mon mariage, au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 56,
+   "texte": "Je détruis tout esprit d’attachement impie à un quelconque personnage, à une quelconque religion, à un quelconque ami polluant mon foyer, au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 57,
+   "texte": "J’annule l’influence satanique des paroles négatives déclarées le jour de ma dot ainsi que celui des jaloux sur mon mariage, au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 58,
+   "texte": "J’annule l’influence satanique des eaux démoniaques versées sur les pieds, des bagues, des chaussures infestées ainsi que des cadeaux démoniaques, sur la vie de mon foyer au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 59,
+   "texte": "J’annule l’influence des esprits de famille et de la sorcellerie sur mon mariage au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 60,
+   "texte": "J’annule l’influence de tout trône et de tout dépôt satanique se trouvant dans ma maison ou dans celle de mes parents, sur la vie de mon foyer, au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 61,
+   "texte": "J’annule et révoque l’influence de toute pensée et de toute parole négative provenant des insatisfaits, sur mon foyer au nom de Jésus-Christ de Nazareth."
+  },
+  {
+   "type": "sujet",
+   "numero": 62,
+   "texte": "Je brise et révoque l’influence de toute abomination générationnelle ou ancestrale sur mon foyer au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 63,
+   "texte": "J’annule et brise l’influence de toute pratique satanique faite le jour de ma dot sur mon mariage au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 64,
+   "texte": "Ô Seigneur Jésus-Christ, Prince de paix, règne sur mon foyer et décrète la réconciliation entre moi et mon mari/ma femme au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 65,
+   "texte": "Que tout pouvoir complotant avec qui que ce soit contre mon mariage meurt dans le nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 66,
+   "texte": "Que tout conseiller et conseil sataniques œuvrant contre mon mariage et mon foyer échouent pour toujours au nom de Jésus-Christ de Nazareth. Alléluia ! Alléluia ! Alléluia ! « Proclame et dis ce que tu veux voir dans ton foyer à partir d’aujourd’hui. Proclame bien-aimé(e) et ne t’arrête pas ! ! ! Au nom de Jésus-Christ. Déclare que tu veux voir ton foyer être le modèle, déclare que tu veux voir ton foyer être un havre de paix et d’amour etc. »"
+  },
+  {
+   "type": "paragraphe",
+   "texte": "RENVERSER LES PARASITES DU FOYER (2ème partie)"
+  },
+  {
+   "type": "sujet",
+   "numero": 67,
+   "texte": "Que tous les agents qui sont contre la paix et l’unité dans ma maison tombent et meurent au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 68,
+   "texte": "Que tout pied étranger opérant contre mon mariage, mes affaires, ma prospérité soit paralysée au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 69,
+   "texte": "Que toute flèche tirée contre mon mariage soit anéantie et rôtie par le feu du Dieu d’Élie le Thischbite au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 70,
+   "texte": "Que chaque partie de mon foyer que Satan détient en captivité soit libérée, au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 71,
+   "texte": "Que tout problème dans mon foyer, relatif aux beaux-parents, meure au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 72,
+   "texte": "Que le sang de Jésus lave mon nom du livre des parasites du foyer."
+  },
+  {
+   "type": "sujet",
+   "numero": 73,
+   "texte": "Je récupère mes enfants des mains de mes ennemis au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 74,
+   "texte": "Ô Seigneur, aide-moi à être victorieux et que je n’échoue pas au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 75,
+   "texte": "Je retourne et annule toute dot spirituelle payée ou reçue en mon nom, au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 76,
+   "texte": "Je brise toute malédiction héritée des péchés sexuels de mes parents et de mes propres péchés sur ma vie conjugale au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 77,
+   "texte": "Je libère mon foyer de toute malédiction conjugale et ancestrale au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 78,
+   "texte": "Au nom de Jésus-Christ de Nazareth, je résiste à tout destructeur de foyer délégué contre mon foyer."
+  },
+  {
+   "type": "sujet",
+   "numero": 79,
+   "texte": "Je résiste à toute compétition avec les femmes étrangères, les agents de la grande prostituée au nom de Jésus-Christ de Nazareth, je leur commande de quitter mon foyer par le feu."
+  },
+  {
+   "type": "sujet",
+   "numero": 80,
+   "texte": "Je résiste à tous beaux-parents démoniaques ; qu’ils soient confus et couverts de honte au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 81,
+   "texte": "Je résiste à tout échec et pauvreté dans mon mariage."
+  },
+  {
+   "type": "sujet",
+   "numero": 82,
+   "texte": "Je résiste à toute marque démoniaque sur mon mariage par le feu."
+  },
+  {
+   "type": "sujet",
+   "numero": 83,
+   "texte": "Je résiste à tout destructeur de mariage au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 84,
+   "texte": "Je résiste à tout pollueur de mariage."
+  },
+  {
+   "type": "sujet",
+   "numero": 85,
+   "texte": "Je résiste à tout esprit de Jézabel œuvrant contre mon mariage."
+  },
+  {
+   "type": "sujet",
+   "numero": 86,
+   "texte": "Je résiste à toute malédiction ou esprit de divorce hérité de mon père ou de ma mère, au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 87,
+   "texte": "Je résiste et annule toute malédiction matrimoniale sur ma vie et mon foyer au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 88,
+   "texte": "J’annule toute alliance contre les mariages signée en mon nom, au nom de Jésus-Christ de Nazareth."
+  },
+  {
+   "type": "sujet",
+   "numero": 89,
+   "texte": "Je lie et enchaine tout esprit de mésentente, de fausse interprétation et d’exagération œuvrant dans mon foyer au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 90,
+   "texte": "Je détruis tout esprit d’attachement impie aux parents polluant mon foyer, au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 91,
+   "texte": "J’annule l’influence satanique des colas, du vin blanc, des coupes bizarres et des cornes de bœuf sur mon mariage au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 92,
+   "texte": "J’annule l’influence des paroles négatives déclarées le jour de ma dot sur mon mariage au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 93,
+   "texte": "J’annule l’influence satanique de l’eau démoniaque versée sur mon corps le jour du mariage au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 94,
+   "texte": "J’annule l’influence des bagues et chaussures de mariage contaminées sur ma vie au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 95,
+   "texte": "J’annule l’influence des esprits de famille et de sorcellerie sur mon foyer au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 96,
+   "texte": "J’annule l’influence de toute collecte de dot provenant des esprits, de toute parole et pensées négatives venant des insatisfaits sur mon foyer au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 97,
+   "texte": "Je brise et annule l’influence de toute abomination générationnelle et ancestrale sur mon foyer au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 98,
+   "texte": "Que Jésus-Christ, le Prince de Paix, règne sur mon mariage au nom de Jésus- Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 99,
+   "texte": "Que tout pouvoir qui complote avec quelqu’un contre mon mariage périsse au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 100,
+   "texte": "Que tout conseiller et conseil sataniques contre mon mariage et mon foyer échouent lamentablement au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 101,
+   "texte": "Je déclare que toi, femme-esprit ou mari-esprit, il n’y a plus de place pour toi dans mon foyer au nom de Jésus-Christ."
+  },
+  {
+   "type": "sujet",
+   "numero": 102,
+   "texte": "Seigneur, arrose-moi avec l’eau de Dieu au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 103,
+   "texte": "Que le siège de la femme ou du mari-esprit dans ma vie soit détruit par le feu du Dieu d’Élie le Thischbite au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 104,
+   "texte": "Ô Seigneur, défends ton intérêt dans ma vie."
+  },
+  {
+   "type": "sujet",
+   "numero": 105,
+   "texte": "Que tout ce qui a été écrit contre moi dans le cycle lunaire soit effacé par le feu du Saint-Esprit au nom de Jésus."
+  },
+  {
+   "type": "sujet",
+   "numero": 106,
+   "texte": "Que toute chose programmée dans le soleil et les étoiles, programmé dans la lune contre moi, contre mon foyer, soit anéantie pour toujours au nom de Jésus-Christ. AMEN ! !"
+  }
+ ],
+ "image": "p5_07"
+}

@@ -1,0 +1,150 @@
+# F. Mener la guerre spirituelle
+
+## Fiche 31 — Barricader sa vie de foi / nettoyer sa vie spirituelle
+
+- **id** : fiche-31
+- **partie** : F. Mener la guerre spirituelle
+- **titre original** : BARRICADER SA VIE DE FOI / NETTOYER SA VIE SPIRITUELLE
+- **sujets** : 57 (matin 29, soir 28)
+
+### Enseignement
+
+Cette fiche de prière vous aidera à protéger et à garder votre vie de foi contre toute puissance néfaste visant à vous nuire et à frustrer votre prospérité financière, spirituelle et même émotionnelle. Si vous subissez très souvent des pertes financières inexplicables ou luttez constamment avec des pensées impudiques et une attitude passive, utilisez cette fiche de prière pour purifier votre pensée et votre âme de manière générale, et réveiller votre homme intérieur de toute léthargie qui vous a envahi. Cette fiche vous permettra aussi de ramener à votre mémoire toute porte ouverte sur laquelle Satan se tient pour vous attaquer.
+
+Soyez fortifié, vainqueur, pendant que vous priez.
+
+### Dans quels cas prier cette fiche
+
+_(Le recueil ne contient pas de partie séparée pour cette fiche : ces indications sont dans l’enseignement ci-dessus.)_
+
+### Sujets de prière — Matin
+
+1. Je crois et je confesse que le pacte que j’ai fait avec mon Dieu par le sang de son Fils Jésus-Christ de Nazareth dit et oblige :
+
+   - Que je suis au-dessus de la sorcellerie,
+   - Je suis au-dessus des esprits familiers,
+   - Je suis au-dessus de la possession,
+   - Je suis au-dessus des puissances des ténèbres,
+   - Je suis au-dessus des limitations,
+   - Je suis au-dessus de toutes les ruses du diable, Car il a affirmé dans Luc 10 :19 : « voici, je vous ai donné le pouvoir de marcher sur les serpents et sur les scorpions, et sur toute la puissance du diable, et rien ne pourra vous nuire ».
+
+2. Au nom de Jésus-Christ de Nazareth, je te commande toi puissance satanique, auteur des oppressions frustrantes, j’ordonne ta mort pour toujours au nom de Jésus.
+
+3. J’ordonne ta destruction, toi, puissance satanique, te manifestant dans ma vie, par des rêves où je me trouve en train de jouer avec des serpents. J’ordonne que je ne serai plus jamais la nourriture des serpents.
+
+4. Par la puissance qui tua Pharaon et son armée, j’ordonne à tout serpent des ténèbres délégué contre moi, chargé de manger ma chair, qu’il tombe et meure au nom de Jésus-Christ de Nazareth.
+
+5. Par le talon de celui qui écrasa la tête du serpent ancien, Jésus-Christ de Nazareth, j’écrase ta tête pour toujours au nom de Jésus.
+
+6. Au nom de Jésus-Christ de Nazareth, j’ordonne la mort de toute puissance des ténèbres se manifestant dans ma vie par des rêves où je me vois hors de mon corps, où je me vois au bord des eaux. J’ordonne ta destruction dans le nom de Jésus-Christ. Je proclame que je ne serai pas noyé(e) avec Pharaon au nom de Jésus-Christ de Nazareth.
+
+7. Seigneur, je prie en ton nom !
+
+8. Toi, puissance satanique, force maléfique te manifestant dans ma vie par des rêves où je me vois quémandant l’aumône, je t’ordonne au nom de Jésus-Christ de Nazareth, esprit de pauvreté extrême, sors et meurs au nom de Jésus-Christ.
+
+9. Toi, puissance satanique, te manifestant dans ma vie, par des rêves où je me vois entrain d’entreprendre un voyage sans fin, je t’ordonne de quitter ma vie pour toujours maintenant, au nom puissant de Jésus-Christ de Nazareth.
+
+10. Toi, puissance des ténèbres, te manifestant dans ma vie, par des rêves où je me vois conduit(e) par des personnes inconnues, à une distance inconnue, je te rappelle que mon berger, mon Maître c’est Jésus-Christ de Nazareth. Je quitte la main de tout inconnu dans le nom de Jésus-Christ de Nazareth.
+
+11. Vous, auteurs des barrières et des limitations dans ma vie, puissances des ténèbres vous manifestant par des rêves où je vois des portes se fermer avant que je n’entre, se manifestant par des rêves où je vois la description des choses s’achever avant que cela n’arrive à mon tour, j’ordonne votre destruction par le tonnerre de Dieu au nom de Jésus-Christ.
+
+12. Toi, force maléfique, auteure des haillons et des chaussures percées, j’ordonne ta mort dans le nom de Jésus-Christ.
+
+13. Force satanique, auteure des problèmes incurables, auteure de la déception, meurs par le feu.
+
+14. Toi, puissance satanique, qui te manifeste dans ma vie, par des rêves où je me vois avec des biens ou des marchandises non-vendus, aujourd’hui, par la main de celui qui frappa Pharaon et son armée, je t’abats au nom de Jésus- Christ de Nazareth, car la Bible déclare qu’il s’est fait pauvre de riche qu’il était afin que je fusse enrichi.
+
+15. Toi, esprit de pauvreté extrême, qui te manifeste dans ma vie, par des rêves où je vois mes biens vendus aux enchères, j’ordonne ta débandade pour toujours au nom de Jésus-Christ de Nazareth.
+
+16. Toi, esprit de poches trouées et de paniers percés, tombe et meurs dans le nom de Jésus-Christ.
+
+17. Esprit de Satan, puissance diabolique, auteur des pertes des sommes énormes d’argent, j’ordonne ta destruction pour toujours dans le nom de Jésus.
+
+18. Puissance des ténèbres, qui te manifeste dans ma vie, par le fait que je vois des voleurs entrant en infraction chez moi, et volant mes choses, je vous ordonne vous tous, bandits armés spirituels, de même que Dathan, Koré et Abiram ne pouvaient voler la gloire de Moïse, je déclare que vous ne volerez point ma gloire dans le nom de Jésus.
+
+19. Vous, esprits des ténèbres, puissances de sorcellerie, vous manifestant dans ma vie, par le fait que je vois des rats, courant partout dans ma maison, par le fait que je vois des rats courant et entrant dans mon corps, par le fait que je me retrouve avec de la fausse monnaie, j’ordonne votre destruction au nom de Jésus-Christ.
+
+20. Au nom de Jésus, que toute force satanique, auteure du fait que les gens me remettent toujours de l’argent détruit, je t’ordonne maintenant de quitter ma destinée par le feu et le tonnerre de Dieu.
+
+21. Au nom de Jésus-Christ de Nazareth, toi, puissance satanique, te manifestant dans ma vie par le fait que je me vois toujours en train de faire des examens, et ne jamais finir avant le temps requis, toi, puissance de l’éternel recommencement, j’ordonne ta destruction dans ma vie au nom puissant de Jésus-Christ de Nazareth.
+
+22. Esprit des ténèbres, toi qui draines mon sang spirituel, puissance satanique, toi qui suces ma paix, puissance des ténèbres, toi qui voles ma gloire, salissant ma réputation, aujourd’hui, tu n’échapperas pas à la main de l’Éternel. J’ordonne par la puissance qui tua Pharaon et son armée et qui détruisit Sodome et Gomorrhe, meurs dans le nom de Jésus-Christ de Nazareth.
+
+23. Je déclare au nom de Jésus-Christ de Nazareth, que ma résidence ne se trouve pas au milieu des cadavres. Je quitte du milieu de tout cadavre ambulant au nom de Jésus-Christ. J’efface mon nom de la liste de tout cadavre ambulant au nom de Jésus-Christ de Nazareth. Je déclare que mon Dieu est un Dieu Vivant ; il est le Dieu des vivants ; et que je suis vivant (e) au nom de Jésus- Christ.
+
+24. Esprit de toile d’araignée chargé de me ralentir dans ma lancée, chargé de ralentir l’accomplissement de ce pourquoi Dieu m’a appelé pour retourner au ciel, j’ordonne ta destruction totale au nom de Jésus-Christ.
+
+25. Que toute montagne me retenant captive soit détruite par le traineau de l’Éternel des armées.
+
+26. Que tout tribunal satanique, tout juge des ténèbres, tout jury satanique, tout avocat du monde des ténèbres, chargé de me juger et de me condamner, soient pendus par les chaines de feu au nom de Jésus.
+
+27. Que toute plateforme d’échec, montée contre moi par la désobéissance de mes parents, par ma propre désobéissance, et par quelque erreur que ce soit, soit brisée par le sang de Jésus-Christ de Nazareth.
+
+28. Que toute chienne jézabélique lancée à la poursuite de ma destinée, tombe et meure au nom de Jésus-Christ.
+
+29. Que tout chat, tout crocodile, et autres animaux dangereux du monde des ténèbres, du monde des eaux lancés à la poursuite de ma destinée et de ma gloire, tombent et meurent au nom de Jésus.
+
+### Sujets de prière — Soir
+
+30. Toi, prostituée religieuse, chargée de salir mon corps, meurs par le feu.
+
+31. Toi, puissance des ténèbres, auteure du fait que je reçois de l’argent sale ou en mauvais état, je t’ordonne de mourir aujourd’hui au nom de Jésus.
+
+32. Aujourd’hui, par la main de l’Éternel, je fais la guerre à toute langue qui se lève contre moi, à toute langue de malédiction agitée contre moi, au nom de Jésus-Christ.
+
+33. Toi, puissance des ténèbres, chargée de faire des amputations dans mon corps, j’ordonne aux chirurgiens sataniques de mourir par le feu. Vous, chirurgiens sataniques, chargés d’amputer les membres de ma vie, chargés d’amputer les parties de ma destinée, j’ordonne votre destruction au nom de Jésus-Christ.
+
+34. De même que Babylone la Grande, la mère des impudiques est tombée, je déclare que son œuvre dans ma vie ne résistera point. Toi, puissance jézabélique, auteure des pensées sexuelles impures, des imaginations sexuelles impures, des fantasmes sexuels, des rêves sexuels constants, j’ordonne ta destruction totale au nom puissant de Jésus-Christ de Nazareth.
+
+35. Toi, puissance satanique, auteure des perturbations émotionnelles, j’ordonne ta destruction dans le nom de Jésus-Christ.
+
+36. Seigneur, lève-toi, et que ma langue malade soit guérie. Que tout démon chargé de manipuler ma langue, sorte par le feu au nom de Jésus-Christ de Nazareth.
+
+37. Seigneur, que toute tendance constante à tomber, que toute tendance constante des vertiges, que toute puissance des ténèbres, auteure d’un enflement, des mouvements serpentés autour de mon corps, sortent et meurent pour toujours au nom de Jésus-Christ.
+
+38. Père, lève-toi et que tout trouble émotionnel persistant dans ma vie meure au nom de Jésus.
+
+39. Lève-toi Père, afin que tout tourment mental, tout usage incontrôlé de ma langue, prenne fin au nom de Jésus-Christ.
+
+40. Seigneur Jésus, lève-toi dans ta grandeur et ta miséricorde, afin que tout problème sexuel, des pensées sexuelles impures frustrantes telles que les expériences sexuelles imaginaires, Seigneur que ces choses dans ma vie, soient totalement démolis au nom de Jésus-Christ.
+
+41. Père, lève-toi dans ta grandeur, que tout problème gynécologique, soit totalement suspendu et anéantit au nom de Jésus.
+
+42. Jehovah Rapha, lève-toi dans ta toute puissance, et que toute prédisposition aux accidents et aux désastres dans ma vie, soit bombardée au nom de Jésus- Christ.
+
+43. Abba, lève-toi et que l’effondrement de ma famille prenne fin. Que toute puissance satanique, auteure de l’échec matrimonial, et des querelles familiales, meure dans le nom de Jésus.
+
+44. Seigneur, lève-toi et que tout démon, toute puissance satanique, auteure de la mauvaise réputation dans ma vie tombe et meure au nom de Jésus-Christ.
+
+45. Père, lève-toi et défends ma cause comme tu défendis la cause de ton serviteur Jésus-Christ.
+
+46. Que toute puissance satanique, auteure d’une volonté paralysée et passive dans ma vie, tombe et meure.
+
+47. Que toute puissance satanique, auteure d’une vie sexuelle anormale, meurs au nom de Jésus.
+
+48. Seigneur, je prie afin que toute puissance satanique, toute cécité spirituelle, dans ma vie, soient démantelées et démolies pour toujours au nom de Jésus- Christ.
+
+49. Père, je prie afin que toute puissance des ténèbres, auteure des tendances à commettre l’immoralité, tombe et meure, au nom de Jésus.
+
+50. Seigneur, lève-toi par la puissance de ton sang précieux, et que tout lien d’âme maléfique dans ma vie, soit brisé au nom de Jésus.
+
+51. Ô Dieu, lève-toi Éternel et révèle-moi tous les secrets sur ma vie au nom de Jésus.
+
+52. Ô Éternel, lave mon cerveau avec le sang de Jésus-Christ, et enlève les mauvaises habitudes qui y sont physiquement gravées au nom de Jésus.
+
+53. Mon nom, je t’ordonne de devenir tonnerre, je t’ordonne de devenir feu et éclair, quand les gens t’appellent pour des buts maléfiques au nom de Jésus- Christ de Nazareth (2 fois)
+
+54. Que toutes les fois que les ennemis appelleront mon nom au mal, que mes ennemis appelleront mon nom au mal, que ton feu réponde, que ton tonnerre réponde, que ta foudre réponde, que ton éclair réponde au nom de Jésus-Christ de Nazareth.
+
+55. Je me libère de toute malédiction émanant des hérésies ou des blasphèmes passés au nom de Jésus-Christ de Nazareth.
+
+56. Je me libère de toute malédiction émanant :
+
+   - Du fait que j’ai brisé le cœur de quelqu’un ;
+   - Du fait que j’ai commis des péchés délibérés ;
+   - Du fait que je me suis imposé moi-même des malédictions ;
+   - Du fait que les mots négatifs sont sortis de ma bouche ;
+   - Du fait que je me suis approprié la gloire de Dieu ;
+   - Du fait de ma participation passée à l’immoralité et à la perversion sexuelle, au nom de Jésus-Christ de Nazareth.
+
+57. Seigneur, je te demande de faire revenir dans ma mémoire, le droit légal où les portes ouvertes que les forces de la méchanceté spirituelle utilisent pour pénétrer dans ma vie. Amen ! ! !
