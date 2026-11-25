@@ -810,3 +810,28 @@ html{touch-action:manipulation}
 .stat-perso__part{display:block;height:5px;border-radius:999px;background:var(--bord);overflow:hidden;margin-top:3px}
 .stat-perso__part i{display:block;height:100%;border-radius:999px;background:var(--or)}
 .stat-perso__pc{font-size:.72rem;color:var(--texte-doux)}
+
+/* ===== Bannière : boutons d'action, fenêtres parole/message, statistiques en tête d'accueil ===== */
+.carrousel__case{position:relative}
+.diapo__actions{position:absolute;top:10px;right:22px;z-index:3;display:flex;gap:6px}
+.diapo__actions button{width:32px;height:32px;border-radius:50%;background:rgba(15,31,92,.6);color:#fff;font-size:14px;line-height:1;border:1px solid rgba(255,255,255,.5)}
+.feuille-parole{text-align:left}
+.feuille-parole .etiquette{margin-bottom:8px}
+.feuille-parole q{display:block;font-family:var(--t-titre);font-weight:700;font-size:21px;line-height:1.4;color:var(--nuit);margin:6px 0 4px;quotes:"« " " »"}
+.feuille-parole .message-texte{font-family:var(--t-titre);font-size:18px;line-height:1.5;color:var(--nuit);margin:6px 0 4px}
+.parole-ref{font-size:14px;color:var(--gris);margin-bottom:10px}
+.feuille-parole .parole-btns{display:flex;gap:8px;border:0;padding:0;margin:10px 0 0;width:100%}
+.feuille-parole .parole-btns .btn{flex:1}
+.titre-ligne{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.titre-ligne .titre-section{margin:22px 4px 6px}
+.voir-tout{font-weight:600;font-size:.82rem;color:var(--bleu);text-decoration:underline;text-underline-offset:3px;padding:8px 4px;margin-top:14px}
+.stats-bloc{margin-top:6px}
+.temps-resume{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px}
+.temps-resume>div{display:flex;flex-direction:column;gap:2px;background:var(--surface-2,#F7F8FC);border:1px solid var(--bord);border-radius:14px;padding:10px 8px;text-align:center}
+.temps-resume small{font-size:.7rem;color:var(--texte-doux)}
+.temps-resume b{font-family:var(--police-titre);font-size:1.05rem;color:var(--titre)}
+.temps-ligne{display:grid;grid-template-columns:1fr auto;gap:4px 8px;background:#fff;border:1px solid var(--bord);border-radius:14px;padding:10px 12px}
+.temps-ligne .temps-nom{font-size:.9rem;color:var(--titre);font-weight:600}
+.temps-ligne b{font-family:var(--police-titre);color:var(--titre)}
+.temps-ligne .stat-perso__part{grid-column:1/2;align-self:center}
+.temps-ligne .stat-perso__pc{text-align:right}

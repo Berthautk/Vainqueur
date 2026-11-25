@@ -36,6 +36,7 @@ const routes = [
   [/^bible\/plan$/, () => import('./views/plans.js').then(m => ({ default: m.planPage })), 'origine'],
   [/^bible\/([\w-]+)$/, () => import('./views/bible.js').then(m => ({ default: m.livrePage })), 'origine'],
   [/^bible\/([\w-]+)\/(\d+)$/, () => import('./views/bible.js').then(m => ({ default: m.chapitrePage })), 'origine'],
+  [/^temps$/, () => import('./views/temps.js'), 'origine'],
   [/^reglages$/, () => import('./views/reglages.js'), 'plus'],
   [/^radio$/, () => import('./views/radio.js'), 'origine'],
   [/^sophonie$/, () => import('./views/sophonie.js'), 'plus']

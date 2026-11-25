@@ -67,4 +67,22 @@ export function bilan(jours = 7) {
   }
   return res;
 }
+// Nombre de jours (sur N) où la personne a passé au moins une minute dans une rubrique
+export function joursActifs(jours = 7) {
+  cloturer(); if (courant) depuis = Date.now();
+  const t = lire(); let n = 0;
+  for (let i = 0; i < jours; i++) { const d = new Date(); d.setDate(d.getDate() - i); const q = t[jourCle(d)] || {}; if (Object.values(q).reduce((a, c) => a + c, 0) >= 60) n++; }
+  return n;
+}
+// Jours d'affilée jusqu'à aujourd'hui (si aujourd'hui est encore vide, on part d'hier : la série n'est pas perdue)
+export function serie() {
+  cloturer(); if (courant) depuis = Date.now();
+  const t = lire(); let n = 0;
+  for (let i = 0; i < 61; i++) {
+    const d = new Date(); d.setDate(d.getDate() - i); const q = t[jourCle(d)] || {};
+    const actif = Object.values(q).reduce((a, c) => a + c, 0) >= 60;
+    if (actif) n++; else if (i > 0) break;
+  }
+  return n;
+}
 export const effacerTemps = () => store.set('temps', {});

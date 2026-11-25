@@ -38,6 +38,12 @@ export function carrousel(racine, diapos, delai = 6000) {
     if (d.texte) { const s = document.createElement('span'); s.textContent = d.texte; txt.append(s); }
     a.append(img, txt);
     caisse.append(a);
+    // Petits boutons facultatifs posés sur la bannière (ex. « ✕ Plus tard »), hors du lien, sur les vraies cartes seulement
+    if (d.actions && d.actions.length && (!boucle || (rang >= 1 && rang <= n))) {
+      const zone = document.createElement('div'); zone.className = 'diapo__actions';
+      for (const ac of d.actions) { const bt = document.createElement('button'); bt.type = 'button'; bt.textContent = ac.label; bt.setAttribute('aria-label', ac.aria || ac.label); bt.addEventListener('click', ac.onClick); zone.append(bt); }
+      caisse.append(zone);
+    }
     return caisse;
   }));
 
