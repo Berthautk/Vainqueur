@@ -2,14 +2,14 @@
    - Précache : application, polices, logos, contenus JSON, et toutes les images/audios cités dans les JSON.
    - Les audios téléchargés par l'utilisateur vivent dans le cache « vainqueur-audio » (jamais purgé ici).
    Changer VERSION pour forcer la mise à jour de l'application chez tous les utilisateurs. */
-const VERSION = 'v15';
+const VERSION = 'v16';
 const APP = `vainqueur-app-${VERSION}`;
 const AUDIO = 'vainqueur-audio';
 const BIBLE = 'vainqueur-bible-lsg'; // texte de la Bible : gardé d'une version à l'autre
 
 const STATIQUE = [
   './', 'manifest.webmanifest', 'css/app.css',
-  'js/main.js', 'js/util.js', 'js/player.js', 'js/downloads.js', 'js/partage.js', 'js/pistes.js', 'js/bible-refs.js', 'js/bible-data.js', 'js/plans.js', 'js/marques.js', 'js/reglages.js', 'js/surlignage.js',
+  'js/main.js', 'js/util.js', 'js/player.js', 'js/downloads.js', 'js/partage.js', 'js/pistes.js', 'js/bible-refs.js', 'js/bible-data.js', 'js/plans.js', 'js/marques.js', 'js/carrousel.js', 'js/temps.js', 'js/reglages.js', 'js/surlignage.js',
   'js/views/commun.js', 'js/views/accueil.js', 'js/views/priere.js', 'js/views/fiche.js', 'js/views/nayla.js', 'js/views/lecteur.js',
   'js/views/coeurs.js', 'js/views/article.js', 'js/views/affaires.js', 'js/views/evangelisation.js', 'js/views/salut.js',
   'js/views/temoignages.js', 'js/views/plus.js', 'js/views/telechargements.js', 'js/views/apropos.js', 'js/views/nouveautes.js', 'js/views/bible.js', 'js/views/plans.js', 'js/views/etudes.js', 'js/views/prenom.js', 'js/views/reglages.js', 'js/views/radio.js', 'js/views/sophonie.js', 'bible/livres.json',

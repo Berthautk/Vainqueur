@@ -287,37 +287,43 @@
       "titre": "Prière de délivrance",
       "image": "p4_05",
       "icone": "i8_05",
-      "route": "#/priere"
+      "route": "#/priere",
+      "sous": "Fiches guidées, matin et soir"
     },
     {
       "titre": "Nayla",
       "image": "p3_09",
       "icone": "i8_02",
-      "route": "#/nayla"
+      "route": "#/nayla",
+      "sous": "Adorations à écouter et à chanter"
     },
     {
       "titre": "Médecin des cœurs brisés",
       "image": "p1_02",
       "icone": "i6_05",
-      "route": "#/coeurs"
+      "route": "#/coeurs",
+      "sous": "Lire ou écouter, à ton rythme"
     },
     {
       "titre": "Hommes et femmes d'affaires",
       "image": "p1_11",
       "icone": "i6_04",
-      "route": "#/affaires"
+      "route": "#/affaires",
+      "sous": "Coaching : vision, finances, créativité"
     },
     {
       "titre": "Évangélisation",
       "image": "q3_06",
       "icone": "i5_07",
-      "route": "#/evangelisation"
+      "route": "#/evangelisation",
+      "sous": "Jésus t'aime encore"
     },
     {
       "titre": "Témoignages",
       "image": "p3_08",
       "icone": "i8_06",
-      "route": "#/temoignages"
+      "route": "#/temoignages",
+      "sous": "Ce que Dieu a fait pour eux"
     }
   ],
   "_note": "Une accroche et une parole différentes chaque jour (elles tournent dans l'ordre de la liste). On peut en ajouter autant qu'on veut.",

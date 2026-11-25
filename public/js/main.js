@@ -1,5 +1,6 @@
 import { $, $$, h, ico, eq, store, contenu, oublierContenu, imgSrc, toast, getConfig, prenom } from './util.js';
 import { pisteAdoration } from './pistes.js';
+import { suivre } from './temps.js';
 import { majBouton } from './views/commun.js';
 import * as surlignage from './surlignage.js';
 import * as reglages from './reglages.js';
@@ -49,7 +50,7 @@ let livresPrets = Promise.resolve();
 // Elles sont refaites après la visite d'une autre page (une fiche lue, un favori…) ou un autre jour.
 const GARDEES = new Set(['', 'priere', 'nayla', 'coeurs', 'plus']);
 let gardees = {}; let jourGarde = '';
-const viderGardees = () => { gardees = {}; };
+const viderGardees = () => { const vieux = Object.values(gardees); gardees = {}; vieux.forEach(g => { try { g.nettoyer && g.nettoyer(); } catch { /* ignoré */ } }); };
 let origine = 'accueil';   // onglet d'où l'on vient (pour les pages « satellites »)
 let courant = null;        // vue affichée (pour nettoyer)
 let jeton = 0;
@@ -60,6 +61,7 @@ async function aller() {
   const chemin = decodeURIComponent(cheminBrut.replace(/\/$/, ''));
   const params = new URLSearchParams(requete);
   const mon = ++jeton;
+  suivre(chemin);
   let trouve = null;
   for (const [re, charge, onglet] of routes) { const m = chemin.match(re); if (m) { trouve = { charge, onglet, args: m.slice(1) }; break; } }
   if (!trouve) { location.replace('#/'); return; }
@@ -82,6 +84,7 @@ async function aller() {
     document.body.dataset.lecteur = ''; document.body.dataset.ecoute = '';
     vue.replaceChildren(courant.noeud);
     document.querySelectorAll('[data-piste]').forEach(majBouton);
+    try { courant.reafficher && courant.reafficher(); } catch { /* ignoré */ }
     majMini();
     window.scrollTo(0, 0);
     return;

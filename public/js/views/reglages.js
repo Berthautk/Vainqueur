@@ -1,4 +1,5 @@
 import { h, ico, toast, store, prenom, definirPrenom, effacerPrenom, presenterActif } from '../util.js';
+import { effacerTemps, bilan } from '../temps.js';
 import * as R from '../reglages.js';
 import * as player from '../player.js';
 import { hero, enveloppe, boutonEcoute } from './commun.js';
@@ -36,6 +37,10 @@ export default async function () {
       h('p', { class: 'aide' }, 'Ton prénom n\'est jamais envoyé automatiquement : il n\'apparaît que dans le message WhatsApp que tu choisis d\'envoyer.'));
   }
   function dessiner() {
+    const nb = Object.values(bilan(60)).reduce((a, c) => a + c, 0);
+    const sectionTemps = h('section', { class: 'reglage' }, h('h2', {}, 'Mes temps avec Dieu'),
+      h('p', { class: 'aide' }, 'L\'accueil montre ce que tu as le plus vécu ces 7 derniers jours. Ce décompte reste sur ton téléphone : il n\'est envoyé à personne.'),
+      h('div', { class: 'choix' }, h('button', { class: 'option', disabled: !nb, onclick: () => { effacerTemps(); window.dispatchEvent(new Event('vq-prenom')); toast('Décompte effacé'); dessiner(); } }, nb ? 'Effacer le décompte' : 'Rien à effacer')));
     zone.replaceChildren(sectionPrenom(), 
       choix('Couleur du mot lu', 'Pendant la lecture à voix haute, le mot prononcé prend cette couleur.', 'couleur', R.COULEURS,
         (k, v) => [h('i', { class: 'pastille-couleur', style: `background:${k === 'aucune' ? 'repeating-linear-gradient(45deg,#ddd 0 4px,#fff 4px 8px)' : v.fond}` }), v.nom]),
@@ -44,6 +49,7 @@ export default async function () {
       h('section', { class: 'reglage' }, h('h2', {}, 'Essayer'),
         h('p', { class: 'essai lecture-texte', 'data-lu': 'essai-voix:t' }, exemple.segments[0].t),
         boutonEcoute(exemple, null, { cls: 'btn btn-or', off: 'Écouter l’essai', on: 'Pause' })),
+      sectionTemps,
       h('p', { class: 'aide', style: 'margin:0 16px 20px' }, 'La voix est celle du téléphone. Si rien ne se lit, installe une voix française dans les réglages du téléphone (« Synthèse vocale »).'));
   }
   dessiner();
